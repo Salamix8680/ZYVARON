@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZYVARON — Security Operations Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #020408; --bg2: #050d14; --bg3: #0a1520; --bg4: #0f1e2e;
+  --cyan: #00f5ff; --cyan2: #00a8b5; --cg: rgba(0,245,255,0.15);
+  --red: #ff2d55; --rg: rgba(255,45,85,0.15);
+  --orange: #ff6b00; --og: rgba(255,107,0,0.15);
+  --green: #00ff88; --gg: rgba(0,255,136,0.15);
+  --yellow: #ffd700;
+  --t1: #e0f0ff; --t2: #4a7a9b; --t3: #2a4a6b;
+  --b: rgba(0,245,255,0.12); --bb: rgba(0,245,255,0.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--t1);font-family:'Rajdhani',sans-serif;font-size:14px;overflow-x:hidden;cursor:crosshair}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,245,255,0.03) 2px,rgba(0,245,255,0.03) 4px);pointer-events:none;z-index:1000}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,245,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,245,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+
+/* HEADER */
+.hdr{position:fixed;top:0;left:0;right:0;height:60px;background:rgba(2,4,8,0.96);border-bottom:1px solid var(--bb);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:100;backdrop-filter:blur(20px)}
+.hdr::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);animation:scanH 4s linear infinite}
+@keyframes scanH{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-hex{width:36px;height:36px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);background:var(--cg);border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:11px;font-weight:900;color:var(--cyan);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 10px var(--cyan)}50%{box-shadow:0 0 30px var(--cyan),0 0 60px var(--cg)}}
+.logo-name{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:var(--cyan);letter-spacing:4px;text-shadow:0 0 20px var(--cyan)}
+.logo-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:3px}
+.hdr-stats{display:flex;align-items:center;gap:28px}
+.hdr-stat{text-align:center}
+.hdr-val{font-family:'Share Tech Mono',monospace;font-size:16px}
+.hdr-lbl{font-size:9px;color:var(--t2);letter-spacing:2px;text-transform:uppercase}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* LAYOUT */
+.app{display:flex;min-height:100vh;padding-top:60px;position:relative;z-index:1}
+.sidebar{width:220px;min-height:calc(100vh - 60px);background:rgba(5,13,20,0.9);border-right:1px solid var(--b);padding:24px 0;position:fixed;top:60px;left:0;bottom:0;overflow-y:auto}
+.nav-sec{margin-bottom:28px}
+.nav-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:3px;padding:0 20px;margin-bottom:8px}
+.nav-item{display:flex;align-items:center;gap:12px;padding:10px 20px;cursor:pointer;transition:all 0.2s;border-left:2px solid transparent;font-size:12px;font-weight:600;letter-spacing:1px;color:var(--t2);text-transform:uppercase}
+.nav-item:hover,.nav-item.active{background:var(--cg);color:var(--cyan);border-left-color:var(--cyan)}
+.main{flex:1;margin-left:220px;padding:24px;min-height:calc(100vh - 60px)}
+
+/* PANELS */
+.ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.pt{font-family:'Orbitron',monospace;font-size:20px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.pt span{color:var(--cyan)}
+.rbtn{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--cyan);background:var(--cg);border:1px solid var(--bb);padding:8px 16px;cursor:pointer;letter-spacing:2px;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:all 0.2s}
+.rbtn:hover{background:rgba(0,245,255,0.25);box-shadow:0 0 20px var(--cg)}
+.panel{background:var(--bg3);border:1px solid var(--b);overflow:hidden;margin-bottom:16px}
+.panel-hdr{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--b);background:rgba(0,245,255,0.02)}
+.panel-title{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:3px}
+.badge{font-family:'Share Tech Mono',monospace;font-size:9px;padding:3px 10px;border:1px solid;letter-spacing:1px}
+.b-red{color:var(--red);border-color:var(--red);background:var(--rg)}
+.b-green{color:var(--green);border-color:var(--green);background:var(--gg)}
+.b-cyan{color:var(--cyan);border-color:var(--cyan);background:var(--cg)}
+.b-orange{color:var(--orange);border-color:var(--orange);background:var(--og)}
+.pb{padding:16px 20px}
+
+/* STAT CARDS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.sc{background:var(--bg3);border:1px solid var(--b);padding:20px;position:relative;overflow:hidden;transition:all 0.3s;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ac,var(--cyan));box-shadow:0 0 10px var(--ac,var(--cyan))}
+.sc:hover{background:var(--bg4);transform:translateY(-2px)}
+.sc.red{--ac:var(--red)}.sc.orange{--ac:var(--orange)}.sc.green{--ac:var(--green)}.sc.cyan{--ac:var(--cyan)}
+.sc-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:3px;margin-bottom:10px}
+.sc-val{font-family:'Orbitron',monospace;font-size:36px;font-weight:900;color:var(--ac,var(--cyan));text-shadow:0 0 20px var(--ac,var(--cyan));line-height:1;margin-bottom:6px}
+.sc-sub{font-size:11px;color:var(--t2);letter-spacing:1px}
+.sc-icon{position:absolute;top:14px;right:14px;font-size:28px;opacity:0.12}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g31{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+
+/* SECURE BANNER */
+.secure-banner{background:linear-gradient(135deg,rgba(0,255,136,0.06),rgba(0,255,136,0.02));border:1px solid rgba(0,255,136,0.35);padding:28px 32px;display:flex;align-items:center;gap:28px;margin-bottom:20px;position:relative;overflow:hidden;animation:sglow 3s ease-in-out infinite}
+@keyframes sglow{0%,100%{box-shadow:0 0 20px rgba(0,255,136,0.1)}50%{box-shadow:0 0 50px rgba(0,255,136,0.2),inset 0 0 40px rgba(0,255,136,0.04)}}
+.secure-banner::before{content:'';position:absolute;top:0;left:-100%;bottom:0;width:60%;background:linear-gradient(90deg,transparent,rgba(0,255,136,0.06),transparent);animation:shimmer 3s linear infinite}
+@keyframes shimmer{0%{left:-100%}100%{left:100%}}
+.s-icon{font-size:60px;filter:drop-shadow(0 0 20px var(--green));flex-shrink:0;animation:spulse 2s ease-in-out infinite}
+@keyframes spulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.s-title{font-family:'Orbitron',monospace;font-size:26px;font-weight:900;color:var(--green);letter-spacing:4px;text-shadow:0 0 30px var(--green);margin-bottom:6px}
+.s-sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--t2);letter-spacing:2px;margin-bottom:16px}
+.s-stats{display:flex;gap:28px}
+.s-stat-val{font-family:'Orbitron',monospace;font-size:22px;font-weight:700;color:var(--green);text-shadow:0 0 10px var(--green)}
+.s-stat-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:2px;margin-top:3px}
+
+/* REMEDIATION ITEMS */
+.rem-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--b);animation:slideIn 0.4s ease}
+.rem-item:last-child{border-bottom:none}
+@keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+.rem-dot{width:32px;height:32px;border-radius:50%;background:var(--gg);border:1px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;box-shadow:0 0 10px var(--gg)}
+.rem-title{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:3px}
+.rem-desc{font-size:11px;color:var(--t2)}
+.rem-time{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t3);margin-top:3px}
+
+/* ALERT ITEMS */
+.al-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--b)}
+.al-item:last-child{border-bottom:none}
+.sev{font-family:'Share Tech Mono',monospace;font-size:9px;padding:4px 8px;border:1px solid;letter-spacing:1px;white-space:nowrap;min-width:70px;text-align:center}
+.sev-CRITICAL{color:var(--red);border-color:var(--red);background:var(--rg);animation:flash 1s ease-in-out infinite}
+.sev-HIGH{color:var(--orange);border-color:var(--orange);background:var(--og)}
+.sev-MEDIUM{color:var(--yellow);border-color:var(--yellow)}
+.sev-LOW{color:var(--green);border-color:var(--green)}
+@keyframes flash{0%,100%{opacity:1}50%{opacity:0.5}}
+.al-title{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px}
+.al-desc{font-size:11px;color:var(--t2);line-height:1.5}
+.al-time{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t3);white-space:nowrap}
+
+/* THREAT GAUGE */
+.gauge-wrap{display:flex;flex-direction:column;align-items:center;padding:20px 16px}
+.gauge{width:120px;height:120px;border-radius:50%;border:3px solid var(--b);display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:12px}
+.gauge::before{content:'';position:absolute;inset:-3px;border-radius:50%;border:3px solid transparent;border-top-color:var(--gc,var(--green));border-right-color:var(--gc,var(--green));animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.gauge-val{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:var(--gc,var(--green));text-shadow:0 0 20px var(--gc,var(--green))}
+.gauge-lbl{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:2px}
+
+/* METRICS */
+.metric{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.m-lbl{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:1px;width:55px}
+.m-bar{flex:1;height:4px;background:rgba(255,255,255,0.05);border:1px solid var(--b)}
+.m-fill{height:100%;transition:width 1s ease}
+.m-cpu{background:linear-gradient(90deg,var(--cyan2),var(--cyan));box-shadow:0 0 8px var(--cyan)}
+.m-ram{background:linear-gradient(90deg,#7b2fff,#a855f7);box-shadow:0 0 8px #a855f7}
+.m-disk{background:linear-gradient(90deg,var(--orange),#ffaa00);box-shadow:0 0 8px var(--orange)}
+.m-val{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;width:42px;text-align:right}
+
+/* PORT/DEVICE ITEMS */
+.port-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--b);font-family:'Share Tech Mono',monospace;font-size:12px}
+.port-row:last-child{border-bottom:none}
+.dev-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid var(--b);margin-bottom:8px;background:var(--bg2);position:relative;overflow:hidden;cursor:pointer;transition:all 0.2s}
+.dev-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--green);box-shadow:0 0 8px var(--green)}
+.dev-row:hover{background:var(--bg4);border-color:var(--cyan2)}
+.risk{font-family:'Orbitron',monospace;font-size:20px;font-weight:700}
+.risk.low{color:var(--green)}.risk.medium{color:var(--yellow)}.risk.high{color:var(--orange)}.risk.critical{color:var(--red);text-shadow:0 0 10px var(--red)}
+
+/* EMPTY / LOADING */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;gap:10px;color:var(--t3)}
+.spinner{width:36px;height:36px;border:2px solid var(--b);border-top-color:var(--cyan);border-radius:50%;animation:spin 1s linear infinite;margin-bottom:8px}
+.fade-in{animation:fadeUp 0.4s ease forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--cyan2)}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="logo">
+    <div class="logo-hex">Z</div>
+    <div>
+      <div class="logo-name">ZYVARON</div>
+      <div class="logo-sub">SECURITY OPERATIONS CENTER</div>
+    </div>
+  </div>
+  <div class="hdr-stats">
+    <div class="hdr-stat"><div class="hdr-val" id="h-devices">—</div><div class="hdr-lbl">Devices Online</div></div>
+    <div class="hdr-stat"><div class="hdr-val" id="h-alerts" style="color:var(--red)">—</div><div class="hdr-lbl">Active Alerts</div></div>
+    <div class="hdr-stat"><div class="hdr-val" id="h-resolved" style="color:var(--green)">—</div><div class="hdr-lbl">Threats Resolved</div></div>
+    <div class="hdr-stat"><div class="hdr-val" id="clock">00:00:00</div><div class="hdr-lbl">Local Time</div></div>
+    <div class="dot"></div>
+  </div>
+</header>
+
+<div class="app">
+  <nav class="sidebar">
+    <div class="nav-sec">
+      <div class="nav-lbl">Monitor</div>
+      <div class="nav-item active" onclick="go('overview',this)">⬡ &nbsp;Overview</div>
+      <div class="nav-item" onclick="go('devices',this)">◈ &nbsp;Devices</div>
+      <div class="nav-item" onclick="go('alerts',this)">⚠ &nbsp;Alerts</div>
+      <div class="nav-item" onclick="go('remediation',this)">⚙ &nbsp;Remediation</div>
+    </div>
+    <div class="nav-sec">
+      <div class="nav-lbl">Protect</div>
+      <div class="nav-item" onclick="go('files',this)">◉ &nbsp;File Vault</div>
+      <div class="nav-item" onclick="go('ports',this)">◈ &nbsp;Port Scanner</div>
+      <div class="nav-item" onclick="go('cve',this)">⬡ &nbsp;CVE Scanner</div>
+    </div>
+    <div class="nav-sec">
+      <div class="nav-lbl">System</div>
+      <div class="nav-item" onclick="go('system',this)">▣ &nbsp;System Health</div>
+    </div>
+  </nav>
+  <main class="main" id="main"></main>
+</div>
+
+<script>
+const API = 'http://localhost:8000';
+let S = { devices:[], alerts:[], resolved:[], counts:{}, summary:{}, fileStats:{}, deletedFiles:[], recoveredFiles:[], page:'overview', remMode:'smart', cveSummary:{}, cveEntries:[], cveLatest:{} };
+
+// Clock
+setInterval(()=>{document.getElementById('clock').textContent=new Date().toTimeString().slice(0,8)},1000);
+
+function timeAgo(iso){
+  if(!iso) return 'unknown';
+  // Server stores UTC timestamps without 'Z' suffix — add it so JS parses as UTC not local
+  const utc = iso.endsWith('Z') ? iso : iso + 'Z';
+  const s = Math.floor((Date.now() - new Date(utc)) / 1000);
+  if(s < 0) return 'just now';
+  if(s < 60) return s + 's ago';
+  if(s < 3600) return Math.floor(s/60) + 'm ago';
+  if(s < 86400) return Math.floor(s/3600) + 'h ago';
+  return Math.floor(s/86400) + 'd ago';
+}
+function riskClass(n){return n>=20?'critical':n>=10?'high':n>=5?'medium':'low'}
+function sevColor(s){return{CRITICAL:'var(--red)',HIGH:'var(--orange)',MEDIUM:'var(--yellow)',LOW:'var(--green)'}[s]||'var(--cyan)'}
+
+async function fetchAll(){
+  try{
+    const [dr,ar,allr,fsr,dfr,mr] = await Promise.all([
+      fetch(`${API}/api/devices/`).then(r=>r.json()).catch(()=>({devices:[]})),
+      fetch(`${API}/api/alerts/`).then(r=>r.json()).catch(()=>({alerts:[],severity_counts:{}})),
+      fetch(`${API}/api/alerts/all`).then(r=>r.json()).catch(()=>({resolved_alerts:[],total_resolved:0})),
+      fetch(`${API}/api/files/stats`).then(r=>r.json()).catch(()=>({})),
+      fetch(`${API}/api/files/deleted`).then(r=>r.json()).catch(()=>({deleted_files:[]})),
+      fetch(`${API}/api/alerts/remediation-mode`).then(r=>r.json()).catch(()=>({mode:'smart'})),
+    ]);
+    S.devices      = dr.devices||[];
+    S.alerts       = ar.alerts||[];
+    S.counts       = ar.severity_counts||{};
+    S.resolved     = allr.resolved_alerts||[];
+    S.fileStats    = fsr||{};
+    S.deletedFiles = dfr.deleted_files||[];
+    S.remMode      = mr.mode||'smart';
+
+    // Fetch CVE summary
+    try {
+      const devId = S.devices[0]?.id||'';
+      if(devId){
+        const [cveSum, cveEnt] = await Promise.all([
+          fetch(`${API}/api/cve/summary?device_id=${devId}`).then(r=>r.json()).catch(()=>({})),
+          fetch(`${API}/api/cve/entries?device_id=${devId}&limit=50`).then(r=>r.json()).catch(()=>({entries:[]})),
+        ]);
+        S.cveSummary  = cveSum||{};
+        S.cveEntries  = cveEnt.entries||[];
+      }
+    } catch(e){}
+
+    const online = S.devices.filter(d=>d.online).length;
+    document.getElementById('h-devices').textContent  = online;
+    document.getElementById('h-alerts').textContent   = S.alerts.length;
+    document.getElementById('h-resolved').textContent = S.resolved.length;
+
+    if(S.devices[0]){
+      try{
+        const sr = await fetch(`${API}/api/devices/${S.devices[0].id}/summary`).then(r=>r.json());
+        S.summary = sr;
+      }catch(e){}
+    }
+    renderPage(S.page);
+  }catch(e){ renderPage(S.page); }
+}
+
+function safeHash(s){
+  return Math.abs(s.split('').reduce(function(h,c){return(Math.imul(31,h)+c.charCodeAt(0))|0;},0)).toString(36);
+}
+
+function renderDeletedList(deleted, deviceId){
+  if(!deleted || deleted.length===0) return "";
+  var seen = {};
+  var html = "";
+  var btnStyle = [
+    "font-family:Share Tech Mono,monospace",
+    "font-size:10px",
+    "color:var(--cyan)",
+    "background:var(--cg)",
+    "border:1px solid var(--cyan)",
+    "padding:8px 14px",
+    "cursor:pointer",
+    "letter-spacing:1px",
+    "white-space:nowrap",
+    "clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)",
+    "transition:all 0.2s",
+    "flex-shrink:0"
+  ].join(";");
+  for(var i=0;i<deleted.length;i++){
+    var f = deleted[i];
+    var fp = f.file_path || "";
+    var parts = fp.replace(/\\/g,"/").split("/");
+    var fname = parts[parts.length-1];
+    if(!fname || seen[fname]) continue;
+    seen[fname] = true;
+    var dir = fp.substring(0, fp.length - fname.length);
+    var sid = "rbtn-" + safeHash(fp);
+    var det = f.detected_at || "";
+    var did = f.device_id || deviceId || "";
+    var safeFp = fp.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
+    html += "<div data-file-row=\"1\" style=\"display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--b)\">";
+    html += "<div style=\"font-size:24px;flex-shrink:0\">🗑</div>";
+    html += "<div style=\"flex:1;min-width:0\">";
+    html += "<div style=\"font-family:Share Tech Mono,monospace;font-size:12px;color:var(--red);white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">" + fname + "</div>";
+    html += "<div style=\"font-size:10px;color:var(--t3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">" + dir + "</div>";
+    html += "<div style=\"font-size:9px;color:var(--t2);margin-top:3px;font-family:Share Tech Mono,monospace\">" + timeAgo(det) + " &middot; " + did + "</div>";
+    html += "</div>";
+    html += "<button id=\"" + sid + "\" data-fp=\"" + safeFp + "\" data-did=\"" + did + "\"";
+    html += " onclick=\"handleRecover(this)\"";
+    html += " style=\"" + btnStyle + "\"";
+    html += " onmouseover=\"this.style.background='rgba(0,245,255,0.25)'\"";
+    html += " onmouseout=\"this.style.background='var(--cg)'\"";
+    html += ">&#x27F3; RECOVER</button>";
+    html += "</div>";
+  }
+  return html;
+}
+
+function handleRecover(btn){
+  var fp = btn.getAttribute('data-fp');
+  var did = btn.getAttribute('data-did');
+  requestRecovery(fp, did, btn);
+}
+
+async function requestRecovery(filePath, deviceId, btn){
+  if(!btn){ var sid='rbtn-'+safeHash(filePath); btn=document.getElementById(sid); }
+  if(btn){ btn.textContent='QUEUING...'; btn.disabled=true; btn.style.opacity='0.5'; }
+  try{
+    const r = await fetch(`${API}/api/files/recover`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({file_path: filePath, device_id: deviceId})
+    });
+    const d = await r.json();
+    if(d.success){
+      if(btn){
+        btn.textContent='✓ QUEUED';
+        btn.style.color='var(--green)';
+        btn.style.borderColor='var(--green)';
+        btn.style.opacity='1';
+      }
+      // Remove item from the deleted list immediately in UI
+      const row = btn ? btn.closest('[data-file-row]') : null;
+      if(row){ row.style.opacity='0.4'; row.style.pointerEvents='none'; }
+      // Full refresh after agent picks it up (30s poll + buffer)
+      setTimeout(fetchAll, 35000);
+    } else {
+      if(btn){ btn.textContent='FAILED'; btn.style.color='var(--red)'; btn.style.opacity='1'; btn.disabled=false; }
+    }
+  }catch(e){
+    if(btn){ btn.textContent='ERROR'; btn.style.color='var(--red)'; btn.style.opacity='1'; btn.disabled=false; }
+  }
+}
+
+async function setRemMode(mode){
+  try{
+    const r = await fetch(`${API}/api/alerts/remediation-mode`,{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({mode})
+    });
+    const d = await r.json();
+    if(d.status==='ok'){
+      S.remMode = mode;
+      // Update button states
+      ['smart','auto','manual'].forEach(m=>{
+        const b = document.getElementById('rem-btn-'+m);
+        if(b){
+          b.style.background = m===mode ? 'rgba(0,245,255,0.35)' : 'var(--cg)';
+          b.style.borderColor = m===mode ? 'var(--cyan)' : 'rgba(0,245,255,0.3)';
+          b.style.color = m===mode ? 'var(--cyan)' : 'var(--t2)';
+          b.style.boxShadow = m===mode ? '0 0 20px rgba(0,245,255,0.3)' : 'none';
+        }
+      });
+      // Show confirmation
+      const status = document.getElementById('rem-mode-status');
+      if(status){
+        const labels = {smart:'SMART MODE — Auto-blocks threats, skips file recovery', auto:'AUTO MODE — Fully autonomous, recovers files too', manual:'MANUAL MODE — Detects only, no automatic actions'};
+        status.textContent = labels[mode]||mode.toUpperCase();
+        status.style.color = mode==='manual'?'var(--orange)':mode==='auto'?'var(--green)':'var(--cyan)';
+      }
+    }
+  }catch(e){ console.error('Mode switch failed:', e); }
+}
+
+function remModePanel(){
+  const m = S.remMode||'smart';
+  const modes = [
+    {id:'smart', label:'SMART', icon:'⚡', desc:'Auto-blocks threats only', color:'var(--cyan)'},
+    {id:'auto',  label:'AUTO',  icon:'🤖', desc:'Fully autonomous',         color:'var(--green)'},
+    {id:'manual',label:'MANUAL',icon:'🖱', desc:'Detect only, no actions',  color:'var(--orange)'},
+  ];
+  const labels = {smart:'SMART MODE — Auto-blocks threats, skips file recovery', auto:'AUTO MODE — Fully autonomous, recovers files too', manual:'MANUAL MODE — Detects only, no automatic actions'};
+  return `
+  <div class="panel fade-in" style="margin-bottom:20px">
+    <div class="panel-hdr">
+      <div class="panel-title">Remediation Mode</div>
+      <span class="badge ${m==='manual'?'b-orange':m==='auto'?'b-green':'b-cyan'}">${m.toUpperCase()} ACTIVE</span>
+    </div>
+    <div class="pb">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px">
+        ${modes.map(mo=>`
+          <button id="rem-btn-${mo.id}" onclick="setRemMode('${mo.id}')"
+            style="padding:16px 10px;background:${mo.id===m?'rgba(0,245,255,0.35)':'var(--cg)'};
+              border:1px solid ${mo.id===m?'var(--cyan)':'rgba(0,245,255,0.3)'};
+              cursor:pointer;transition:all 0.2s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+              color:${mo.id===m?mo.color:'var(--t2)'};
+              box-shadow:${mo.id===m?'0 0 20px rgba(0,245,255,0.3)':'none'}">
+            <div style="font-size:22px;margin-bottom:6px">${mo.icon}</div>
+            <div style="font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:2px">${mo.label}</div>
+            <div style="font-size:10px;color:var(--t2);margin-top:4px;font-family:'Share Tech Mono',monospace">${mo.desc}</div>
+          </button>`).join('')}
+      </div>
+      <div id="rem-mode-status" style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;text-align:center;padding:8px;background:var(--bg2);border:1px solid var(--b);color:${m==='manual'?'var(--orange)':m==='auto'?'var(--green)':'var(--cyan)'}">
+        ${labels[m]||m.toUpperCase()}
+      </div>
+    </div>
+  </div>`;
+}
+
+function go(page,el){
+  S.page=page;
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if(el)el.classList.add('active');
+  renderPage(page);
+}
+
+function renderPage(p){
+  const m=document.getElementById('main');
+  if(p==='overview')renderOverview(m);
+  else if(p==='devices')renderDevices(m);
+  else if(p==='alerts')renderAlerts(m);
+  else if(p==='remediation')renderRemediation(m);
+  else if(p==='files')renderFiles(m);
+  else if(p==='ports')renderPorts(m);
+  else if(p==='system')renderSystem(m);
+  else if(p==='cve')renderCVE(m);
+}
+
+// ── OVERVIEW ─────────────────────────────────────────────────
+function renderOverview(el){
+  const critical = S.counts.CRITICAL||0, high=S.counts.HIGH||0;
+  const online   = S.devices.filter(d=>d.online).length;
+  const files    = S.devices.reduce((a,d)=>a+(d.indexed_files||0),0) || S.fileStats.total_indexed || 0;
+  const resolved = S.resolved.length;
+  const secure   = S.alerts.length===0;
+  const isHighRisk = critical>0;
+
+  el.innerHTML=`
+  <div class="ph fade-in">
+    <div class="pt">SECURITY <span>OVERVIEW</span></div>
+    <button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button>
+  </div>
+
+  ${secure?`
+  <div class="secure-banner fade-in">
+    <div class="s-icon">🛡</div>
+    <div>
+      <div class="s-title">SYSTEM SECURED</div>
+      <div class="s-sub">ALL THREATS NEUTRALIZED — ZYVARON AUTONOMOUS ENGINE ACTIVE</div>
+      <div class="s-stats">
+        <div><div class="s-stat-val">${resolved}</div><div class="s-stat-lbl">Threats Resolved</div></div>
+        <div><div class="s-stat-val">${files.toLocaleString()}</div><div class="s-stat-lbl">Files Protected</div></div>
+        <div><div class="s-stat-val">${online}</div><div class="s-stat-lbl">Devices Online</div></div>
+        <div><div class="s-stat-val">24/7</div><div class="s-stat-lbl">Monitoring Active</div></div>
+      </div>
+    </div>
+  </div>`:``}
+
+  ${remModePanel()}
+
+  <div class="stats-grid fade-in">
+    <div class="sc red"><div class="sc-icon">⚠</div><div class="sc-lbl">Critical Alerts</div>
+      <div class="sc-val">${critical}</div><div class="sc-sub">${critical===0?'✓ ALL CLEAR':'IMMEDIATE ACTION'}</div></div>
+    <div class="sc orange"><div class="sc-icon">◈</div><div class="sc-lbl">High Alerts</div>
+      <div class="sc-val">${high}</div><div class="sc-sub">${high===0?'✓ ALL CLEAR':'HIGH PRIORITY'}</div></div>
+    <div class="sc green"><div class="sc-icon">✓</div><div class="sc-lbl">Threats Resolved</div>
+      <div class="sc-val" style="color:var(--green);text-shadow:0 0 20px var(--green)">${resolved}</div><div class="sc-sub">AUTO-REMEDIATED</div></div>
+    <div class="sc cyan"><div class="sc-icon">▣</div><div class="sc-lbl">Files Protected</div>
+      <div class="sc-val">${files.toLocaleString()}</div><div class="sc-sub">MONITORED & SNAPSHOTTED</div></div>
+  </div>
+
+  <div class="g31 fade-in">
+    <div>
+      <div class="panel">
+        <div class="panel-hdr">
+          <div class="panel-title">${secure?'Recently Resolved Threats':'Active Alerts'}</div>
+          <span class="badge ${secure?'b-green':'b-red'}">${secure?resolved+' FIXED':S.alerts.length+' ACTIVE'}</span>
+        </div>
+        <div class="pb">
+          ${secure&&resolved===0?`<div class="empty"><div class="spinner"></div><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:2px">REMEDIATION CYCLE RUNNING...</div></div>`:
+            secure?S.resolved.slice(0,5).map(a=>`
+              <div class="rem-item">
+                <div class="rem-dot">✓</div>
+                <div style="flex:1">
+                  <div class="rem-title">${a.title}</div>
+                  <div class="rem-desc">${a.description}</div>
+                  <div class="rem-time">${timeAgo(a.created_at)} · ${a.device_id} · was ${a.severity}</div>
+                </div>
+                <span class="badge b-green">FIXED</span>
+              </div>`).join(''):
+            S.alerts.slice(0,6).map(a=>`
+              <div class="al-item">
+                <div class="sev sev-${a.severity}">${a.severity}</div>
+                <div style="flex:1">
+                  <div class="al-title">${a.title}</div>
+                  <div class="al-desc">${a.description}</div>
+                </div>
+                <div class="al-time">${timeAgo(a.created_at)}</div>
+              </div>`).join('')}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">Remediation Engine Status</div><span class="badge b-cyan">AUTONOMOUS</span></div>
+        <div class="pb">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center">
+            ${[['✓ '+resolved,'TOTAL FIXED','var(--green)'],['SMART','ENGINE MODE','var(--cyan)'],['60s','SCAN CYCLE','var(--cyan)']].map(([v,l,c])=>`
+              <div style="padding:14px;background:var(--bg2);border:1px solid var(--b)">
+                <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:700;color:${c}">${v}</div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:2px;margin-top:4px">${l}</div>
+              </div>`).join('')}
+          </div>
+          <div style="margin-top:16px">
+            ${[['🔍','DETECT','Scans every 60s'],['🔒','BLOCK','Firewall rules auto-created'],['🔄','RECOVER','Files restored from vault'],['📊','REPORT','Dashboard updates live']].map(([i,t,d])=>`
+              <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--b)">
+                <span style="font-size:16px">${i}</span>
+                <div><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:2px">${t}</div>
+                <div style="font-size:11px;color:var(--t2)">${d}</div></div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">Threat Level</div></div>
+        <div class="gauge-wrap" style="--gc:${secure?'var(--green)':isHighRisk?'var(--red)':'var(--orange)'}">
+          <div class="gauge"><div class="gauge-val">${secure?'SAFE':isHighRisk?'HIGH':'MED'}</div></div>
+          <div class="gauge-lbl">${secure?'● SYSTEM SECURED':isHighRisk?'⚠ CRITICAL EXPOSURE':'⚠ THREATS ACTIVE'}</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">Before / After</div></div>
+        <div class="pb">
+          ${resolved>0?`
+            <div style="margin-bottom:12px;padding:10px;background:rgba(255,45,85,0.08);border:1px solid rgba(255,45,85,0.2)">
+              <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--red);letter-spacing:2px;margin-bottom:6px">PREVIOUS STATE</div>
+              ${S.resolved.slice(0,3).map(a=>`<div style="font-size:11px;color:var(--t2);padding:3px 0">⚠ ${a.title}</div>`).join('')}
+            </div>
+            <div style="text-align:center;padding:8px 0;font-size:20px">↓</div>
+            <div style="padding:10px;background:rgba(0,255,136,0.06);border:1px solid rgba(0,255,136,0.25)">
+              <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--green);letter-spacing:2px;margin-bottom:6px">CURRENT STATE</div>
+              ${S.alerts.length===0?`<div style="font-size:11px;color:var(--green)">✓ All ${resolved} threats resolved</div><div style="font-size:11px;color:var(--green)">✓ Firewall rules active</div><div style="font-size:11px;color:var(--green)">✓ Monitoring continuous</div>`:`<div style="font-size:11px;color:var(--orange)">${S.alerts.length} threats pending resolution</div>`}
+            </div>`:
+            `<div class="empty"><div style="font-size:32px">⚙</div><div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t3);letter-spacing:2px">AWAITING DATA</div></div>`}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">Devices</div><span class="badge b-green">${online} ONLINE</span></div>
+        <div class="pb">
+          ${S.devices.slice(0,3).map(d=>`
+            <div class="dev-row">
+              <div><div style="font-family:'Share Tech Mono',monospace;font-size:12px">${d.hostname}</div>
+              <div style="font-size:10px;color:var(--t2)">${d.platform}</div></div>
+              <div style="text-align:right">
+                <div class="risk ${riskClass(d.risk_score)}">${d.risk_score}</div>
+                <div style="font-size:9px;color:var(--t2);letter-spacing:1px">RISK</div>
+              </div>
+            </div>`).join('')||`<div class="empty"><div class="spinner"></div></div>`}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── REMEDIATION PAGE ─────────────────────────────────────────
+function renderRemediation(el){
+  const resolved=S.resolved, active=S.alerts;
+  el.innerHTML=`
+  <div class="ph fade-in">
+    <div class="pt">AUTONOMOUS <span>REMEDIATION</span></div>
+    <button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button>
+  </div>
+
+  <div class="stats-grid fade-in">
+    <div class="sc green"><div class="sc-lbl">Total Resolved</div><div class="sc-val" style="color:var(--green)">${resolved.length}</div><div class="sc-sub">AUTO-FIXED</div></div>
+    <div class="sc red"><div class="sc-lbl">Still Active</div><div class="sc-val">${active.length}</div><div class="sc-sub">${active.length===0?'✓ ALL CLEAR':'PENDING'}</div></div>
+    <div class="sc cyan"><div class="sc-lbl">Engine Mode</div><div class="sc-val" style="font-size:20px">SMART</div><div class="sc-sub">CRITICAL + HIGH</div></div>
+    <div class="sc cyan"><div class="sc-lbl">Cycle Interval</div><div class="sc-val" style="font-size:24px">60s</div><div class="sc-sub">CONTINUOUS SCAN</div></div>
+  </div>
+
+  <div class="g2 fade-in">
+    <div class="panel">
+      <div class="panel-hdr"><div class="panel-title">Resolved Threats History</div><span class="badge b-green">${resolved.length} FIXED</span></div>
+      <div class="pb" style="max-height:500px;overflow-y:auto">
+        ${resolved.length===0?`
+          <div class="empty">
+            <div class="spinner"></div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:2px">WAITING FOR FIRST REMEDIATION CYCLE...</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:4px">Runs automatically every 60 seconds</div>
+          </div>`:
+          resolved.map(a=>`
+            <div class="rem-item">
+              <div class="rem-dot">${a.type==='port_exposure'?'🔒':a.type==='critical_exposure'?'⚡':'✓'}</div>
+              <div style="flex:1">
+                <div class="rem-title">${a.title}</div>
+                <div class="rem-desc">${a.description}</div>
+                <div class="rem-time">Device: ${a.device_id} · ${timeAgo(a.created_at)} · Severity was: <span style="color:${sevColor(a.severity)}">${a.severity}</span></div>
+              </div>
+              <div style="text-align:right">
+                <span class="badge b-green">RESOLVED</span>
+                ${a.resolved_at?`<div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t3);margin-top:4px">${timeAgo(a.resolved_at)}</div>`:''}
+              </div>
+            </div>`).join('')}
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">Current Threats</div>
+          <span class="badge ${active.length>0?'b-red':'b-green'}">${active.length>0?active.length+' ACTIVE':'ALL CLEAR'}</span>
+        </div>
+        <div class="pb">
+          ${active.length===0?`
+            <div style="text-align:center;padding:28px">
+              <div style="font-size:52px;margin-bottom:12px">🛡</div>
+              <div style="font-family:'Orbitron',monospace;font-size:16px;color:var(--green);letter-spacing:3px;text-shadow:0 0 20px var(--green)">ALL CLEAR</div>
+              <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);margin-top:8px;letter-spacing:2px">NO ACTIVE THREATS</div>
+            </div>`:
+            active.map(a=>`
+              <div class="al-item">
+                <div class="sev sev-${a.severity}">${a.severity}</div>
+                <div style="flex:1"><div class="al-title">${a.title}</div><div class="al-desc">${a.description}</div></div>
+              </div>`).join('')}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">Before vs After</div></div>
+        <div class="pb">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--red);letter-spacing:2px;margin-bottom:8px">THREATS BEFORE ZYVARON</div>
+          ${resolved.length===0?`<div style="font-size:11px;color:var(--t3)">No history yet</div>`
+            :resolved.slice(0,4).map(a=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:11px;color:var(--t2)"><span style="color:${sevColor(a.severity)}">●</span>${a.title}</div>`).join('')}
+          <div style="text-align:center;padding:10px;font-size:18px;color:var(--green)">↓ ZYVARON BLOCKED</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--green);letter-spacing:2px;margin-bottom:8px">CURRENT SECURE STATE</div>
+          <div style="font-size:11px;color:var(--green)">✓ ${resolved.length} threats auto-resolved</div>
+          <div style="font-size:11px;color:var(--green);margin-top:4px">✓ Windows Firewall rules active</div>
+          <div style="font-size:11px;color:var(--green);margin-top:4px">✓ Continuous monitoring running</div>
+          <div style="font-size:11px;color:var(--green);margin-top:4px">✓ File vault protecting ${S.devices.reduce((a,d)=>a+(d.indexed_files||0),0).toLocaleString()} files</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── DEVICES PAGE ─────────────────────────────────────────────
+function renderDevices(el){
+  el.innerHTML=`
+  <div class="ph fade-in"><div class="pt">REGISTERED <span>DEVICES</span></div><button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button></div>
+  <div class="panel fade-in">
+    <div class="panel-hdr"><div class="panel-title">All Devices</div><span class="badge b-cyan">${S.devices.length} TOTAL</span></div>
+    <div class="pb">
+      ${S.devices.length===0?`<div class="empty"><div class="spinner"></div><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:2px">WAITING FOR AGENT...</div></div>`
+        :S.devices.map(d=>`
+          <div class="dev-row" style="margin-bottom:12px">
+            <div style="margin-right:16px;font-size:28px">${d.platform==='Windows'?'⊞':'◉'}</div>
+            <div style="flex:1">
+              <div style="font-family:'Share Tech Mono',monospace;font-size:14px">${d.hostname}</div>
+              <div style="font-size:11px;color:var(--t2);margin-top:4px">${d.platform} · ${d.architecture} · ID: ${d.id}</div>
+              <div style="font-size:11px;color:var(--t3);margin-top:2px">Last seen: ${timeAgo(d.last_seen)}</div>
+            </div>
+            <div style="text-align:right">
+              <div class="risk ${riskClass(d.risk_score)}" style="font-size:28px">${d.risk_score}</div>
+              <div style="font-size:9px;color:var(--t2);letter-spacing:1px">RISK SCORE</div>
+              <span class="badge ${d.online?'b-green':'b-red'}" style="margin-top:8px;display:inline-block">${d.online?'ONLINE':'OFFLINE'}</span>
+            </div>
+          </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+// ── ALERTS PAGE ──────────────────────────────────────────────
+function renderAlerts(el){
+  const c=S.counts;
+  el.innerHTML=`
+  <div class="ph fade-in"><div class="pt">SECURITY <span>ALERTS</span></div><button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button></div>
+  <div class="stats-grid fade-in">
+    <div class="sc red"><div class="sc-lbl">Critical</div><div class="sc-val">${c.CRITICAL||0}</div></div>
+    <div class="sc orange"><div class="sc-lbl">High</div><div class="sc-val">${c.HIGH||0}</div></div>
+    <div class="sc"><div class="sc-lbl">Medium</div><div class="sc-val" style="font-size:28px">${c.MEDIUM||0}</div></div>
+    <div class="sc green"><div class="sc-lbl">Resolved</div><div class="sc-val" style="color:var(--green)">${S.resolved.length}</div></div>
+  </div>
+  <div class="g2 fade-in">
+    <div class="panel">
+      <div class="panel-hdr"><div class="panel-title">Active Alerts</div><span class="badge ${S.alerts.length>0?'b-red':'b-green'}">${S.alerts.length>0?S.alerts.length+' ACTIVE':'ALL CLEAR'}</span></div>
+      <div class="pb">
+        ${S.alerts.length===0?`<div class="empty"><div style="font-size:48px">🛡</div><div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--green);letter-spacing:3px">NO ACTIVE THREATS</div></div>`
+          :S.alerts.map(a=>`
+            <div class="al-item">
+              <div class="sev sev-${a.severity}">${a.severity}</div>
+              <div style="flex:1"><div class="al-title">${a.title}</div><div class="al-desc">${a.description}</div></div>
+              <div class="al-time">${timeAgo(a.created_at)}</div>
+            </div>`).join('')}
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-hdr"><div class="panel-title">Resolved History</div><span class="badge b-green">${S.resolved.length} FIXED</span></div>
+      <div class="pb" style="max-height:400px;overflow-y:auto">
+        ${S.resolved.length===0?`<div class="empty"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:2px">NO HISTORY YET</div></div>`
+          :S.resolved.map(a=>`
+            <div class="rem-item">
+              <div class="rem-dot">✓</div>
+              <div style="flex:1"><div class="rem-title">${a.title}</div>
+              <div class="rem-desc">Was ${a.severity} · ${timeAgo(a.created_at)}</div></div>
+              <span class="badge b-green">FIXED</span>
+            </div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── FILES PAGE ───────────────────────────────────────────────
+function renderFiles(el){
+  const dev       = S.devices[0]||{};
+  const deviceId  = dev.id||'';
+  const fs        = S.fileStats||{};
+  // Files Protected: use device indexed_files (set at startup scan)
+  const files     = dev.indexed_files || fs.total_indexed || 0;
+  // Deduplicate deleted list by filename — same file deleted twice should show once
+  const rawDeleted = S.deletedFiles||[];
+  const _seenDel = new Set();
+  const deleted = rawDeleted.filter(f=>{
+    const fname = (f.file_path||'').replace(/\\/g,'/').split('/').pop();
+    if(!fname || _seenDel.has(fname)) return false;
+    _seenDel.add(fname);
+    return true;
+  });
+
+  el.innerHTML=`
+  <div class="ph fade-in"><div class="pt">FILE <span>VAULT</span></div><button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button></div>
+
+  <div class="stats-grid fade-in">
+    <div class="sc green">
+      <div class="sc-icon">▣</div>
+      <div class="sc-lbl">Files Protected</div>
+      <div class="sc-val" style="color:var(--green)">${files.toLocaleString()||'0'}</div>
+      <div class="sc-sub">INDEXED & MONITORED</div>
+    </div>
+    <div class="sc ${deleted.length>0?'red':'green'}">
+      <div class="sc-icon">🗑</div>
+      <div class="sc-lbl">Deleted Files</div>
+      <div class="sc-val" style="color:${deleted.length>0?'var(--red)':'var(--green)'}">${deleted.length}</div>
+      <div class="sc-sub">${deleted.length>0?'AWAITING RECOVERY':'ALL FILES PRESENT'}</div>
+    </div>
+    <div class="sc green">
+      <div class="sc-icon">✓</div>
+      <div class="sc-lbl">Recovered</div>
+      <div class="sc-val" style="color:var(--green)">${fs.recovered||0}</div>
+      <div class="sc-sub">FILES RESTORED</div>
+    </div>
+    <div class="sc cyan">
+      <div class="sc-icon">📷</div>
+      <div class="sc-lbl">Snapshots</div>
+      <div class="sc-val" style="font-size:20px">${fs.snapshots_count||0}</div>
+      <div class="sc-sub">${fs.last_snapshot?'LAST: '+timeAgo(fs.last_snapshot):'NO SNAPSHOT YET'}</div>
+    </div>
+  </div>
+
+  <div class="g2 fade-in">
+
+    <div>
+      <div class="panel" style="margin-bottom:16px">
+        <div class="panel-hdr">
+          <div class="panel-title">Deleted Files — Click to Recover</div>
+          <span class="badge ${deleted.length>0?'b-red':'b-green'}">${deleted.length>0?deleted.length+' DELETED':'ALL CLEAR'}</span>
+        </div>
+        <div class="pb" style="max-height:380px;overflow-y:auto">
+          ${deleted.length===0?`
+            <div style="text-align:center;padding:36px">
+              <div style="font-size:52px;margin-bottom:12px">✅</div>
+              <div style="font-family:'Orbitron',monospace;font-size:14px;color:var(--green);letter-spacing:3px">ALL FILES PRESENT</div>
+              <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);margin-top:8px;letter-spacing:2px">NO DELETIONS DETECTED</div>
+            </div>
+          `:renderDeletedList(deleted, deviceId)}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">How File Recovery Works</div></div>
+        <div class="pb">
+          ${[
+            ['1','DELETE DETECTED','File disappears from disk — ZYVARON detects within 5 minutes','var(--red)'],
+            ['2','APPEARS HERE','Deleted file listed above with RECOVER button','var(--orange)'],
+            ['3','CLICK RECOVER','Agent receives request within 30 seconds','var(--cyan)'],
+            ['4','RESTORED','File copied back from vault snapshot to original location','var(--green)'],
+            ['5','VERIFIED','SHA-256 hash checked — file integrity confirmed','var(--green)'],
+          ].map(([n,t,d,c])=>`
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--b)">
+              <div style="width:24px;height:24px;border-radius:50%;background:${c};display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:10px;font-weight:700;color:var(--bg);flex-shrink:0">${n}</div>
+              <div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:${c};letter-spacing:2px">${t}</div>
+                <div style="font-size:11px;color:var(--t2);margin-top:3px">${d}</div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">Vault Status</div><span class="badge b-green">HEALTHY</span></div>
+        <div class="pb">
+          ${[['📁','Documents','Monitored','var(--green)'],['🖥','Desktop','Monitored','var(--green)'],['📷','Snapshots','Every 5 min','var(--cyan)'],['🔄','Auto-Recovery','Enabled','var(--green)']].map(([icon,n,s,c])=>`
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--b)">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:18px">${icon}</span>
+                <span style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--t1)">${n}</span>
+              </div>
+              <span style="font-size:10px;color:${c};letter-spacing:1px">${s}</span>
+            </div>`).join('')}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">File Activity</div><span class="badge b-cyan">LIVE</span></div>
+        <div class="pb">
+          ${[
+            ['Files Indexed',   files.toLocaleString(),    'var(--cyan)'],
+            ['Modified',        fs.modified||0,            'var(--orange)'],
+            ['Deleted',         fs.deleted_unrecovered||0, 'var(--red)'],
+            ['Recovered',       fs.recovered||0,           'var(--green)'],
+            ['New Files Found', fs.new_files||0,           'var(--cyan)'],
+          ].map(([l,v,c])=>`
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--b)">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:1px">${l}</span>
+              <span style="font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:${c}">${v}</span>
+            </div>`).join('')}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">Recovery Time</div></div>
+        <div class="pb" style="text-align:center;padding:20px">
+          <div style="font-family:'Orbitron',monospace;font-size:48px;font-weight:900;color:var(--green);text-shadow:0 0 30px var(--green)">~30s</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:3px;margin-top:8px">FROM CLICK TO RESTORED</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:8px">Agent polls every 30 seconds<br>for recovery requests</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── PORTS PAGE ───────────────────────────────────────────────
+function renderPorts(el){
+  const portData=S.summary.ports||{open_ports:[],risk_score:0};
+  const ports=portData.open_ports||[];
+  const riskPorts={445:'CRITICAL',3389:'HIGH',23:'CRITICAL',21:'HIGH',1433:'HIGH',3306:'HIGH',5900:'CRITICAL'};
+  el.innerHTML=`
+  <div class="ph fade-in"><div class="pt">PORT <span>SCANNER</span></div><button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button></div>
+  <div class="stats-grid fade-in">
+    <div class="sc cyan"><div class="sc-lbl">Open Ports</div><div class="sc-val">${ports.length}</div></div>
+    <div class="sc red"><div class="sc-lbl">Dangerous</div><div class="sc-val">${ports.filter(p=>riskPorts[p.port]).length}</div></div>
+    <div class="sc green"><div class="sc-lbl">Blocked</div><div class="sc-val" style="color:var(--green)">${S.resolved.filter(a=>a.type==='port_exposure').length}</div><div class="sc-sub">BY ZYVARON</div></div>
+    <div class="sc cyan"><div class="sc-lbl">Risk Score</div><div class="sc-val">${portData.risk_score||0}</div></div>
+  </div>
+  <div class="panel fade-in">
+    <div class="panel-hdr"><div class="panel-title">Open Ports</div><span class="badge b-cyan">${ports.length} FOUND</span></div>
+    <div class="pb">
+      ${ports.length===0?`<div class="empty"><div class="spinner"></div><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:2px">LOADING PORT DATA...</div></div>`
+        :ports.map(p=>{
+          const risk=riskPorts[p.port]||'LOW';
+          return`<div class="port-row">
+            <span style="color:var(--cyan);font-size:14px">${p.port}</span>
+            <span style="color:var(--t1);flex:1;margin:0 12px">${p.service||'Unknown'}</span>
+            <span class="sev sev-${risk}">${risk}</span>
+          </div>`;}).join('')}
+    </div>
+  </div>`;
+}
+
+// ── SYSTEM PAGE ──────────────────────────────────────────────
+function renderSystem(el){
+  const sys=S.summary.system||{};
+  const cpu=sys.cpu_percent||0, ram=sys.ram_percent||0, disk=sys.disk_percent||0;
+  el.innerHTML=`
+  <div class="ph fade-in"><div class="pt">SYSTEM <span>HEALTH</span></div><button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button></div>
+  <div class="g2 fade-in">
+    <div class="panel">
+      <div class="panel-hdr"><div class="panel-title">Resource Usage</div><span class="badge b-cyan">LIVE</span></div>
+      <div class="pb" style="padding-top:20px">
+        ${[['CPU',cpu,'m-cpu','var(--cyan)'],['RAM',ram,'m-ram','#a855f7'],['DISK',disk,'m-disk','var(--orange)']].map(([l,v,cls,c])=>`
+          <div class="metric">
+            <div class="m-lbl">${l}</div>
+            <div class="m-bar"><div class="m-fill ${cls}" style="width:${v}%"></div></div>
+            <div class="m-val" style="color:${c}">${v.toFixed(1)}%</div>
+          </div>`).join('')}
+        ${cpu>80?`<div style="padding:10px;background:var(--og);border:1px solid var(--orange);font-size:11px;color:var(--orange);margin-top:12px">⚠ High CPU usage detected — possible cryptominer activity</div>`:''}
+        ${ram>90?`<div style="padding:10px;background:var(--rg);border:1px solid var(--red);font-size:11px;color:var(--red);margin-top:12px">⚠ Critical RAM usage — system may become unstable</div>`:''}
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-hdr"><div class="panel-title">System Info</div></div>
+      <div class="pb">
+        ${S.devices[0]?[
+          ['Hostname',S.devices[0].hostname],['Platform',S.devices[0].platform],
+          ['Architecture',S.devices[0].architecture],['Agent ID',S.devices[0].id],
+          ['Status',S.devices[0].online?'ONLINE':'OFFLINE'],
+        ].map(([k,v])=>`
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--b);font-size:12px">
+            <span style="color:var(--t2);font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px">${k}</span>
+            <span style="color:var(--t1)">${v}</span>
+          </div>`).join(''):`<div class="empty"><div class="spinner"></div></div>`}
+      </div>
+    </div>
+  </div>`;
+}
+
+
+function copyCmd(cmd){
+  navigator.clipboard.writeText(cmd).then(()=>{
+    // Brief visual feedback
+    const el = event.target.closest('div');
+    if(el){ const orig=el.style.borderColor; el.style.borderColor='var(--green)'; setTimeout(()=>el.style.borderColor=orig,1000); }
+  }).catch(()=>{});
+}
+
+// ── CVE SCANNER PAGE ─────────────────────────────────────────
+function renderCVE(el){
+  const sum  = S.cveSummary||{};
+  const cves = S.cveEntries||[];
+  const critical = cves.filter(c=>c.severity==='CRITICAL');
+  const high     = cves.filter(c=>c.severity==='HIGH');
+  const medium   = cves.filter(c=>c.severity==='MEDIUM');
+  const lastScan = sum.last_scan ? timeAgo(sum.last_scan+'Z') : 'Never';
+  const hasData  = sum.last_scan != null;
+
+  function cveRow(c){
+    const sc = c.score>=9?'var(--red)':c.score>=7?'var(--orange)':'var(--yellow)';
+    const pa = c.patch_action||{};
+    const modeLabel = S.remMode==='auto'?'AUTO UPDATE ENABLED':S.remMode==='manual'?'MANUAL MODE — NO AUTO ACTION':'SMART MODE — MANUAL PATCH';
+    const modeColor = S.remMode==='auto'?'var(--green)':S.remMode==='manual'?'var(--orange)':'var(--cyan)';
+    const patchCmd  = pa.command ? `<div style="margin-top:6px;padding:6px 10px;background:rgba(0,0,0,0.4);border:1px solid var(--b);border-radius:2px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:1px;cursor:pointer" onclick="copyCmd('${(pa.command||'').replace(/'/g,"\'")}')" title="Click to copy">&gt; ${pa.command||''} <span style="color:var(--t3)">← click to copy</span></div>`:
+      pa.method==='windows_update'?`<div style="margin-top:6px;font-size:10px;color:var(--cyan)">▶ Open Settings → Windows Update → Check for updates</div>`:
+      `<div style="margin-top:6px;font-size:10px;color:var(--t2)">▶ ${pa.description||'Update '+c.software+' to latest version'}</div>`;
+    return `
+    <div style="background:var(--bg2);border:1px solid var(--b);margin-bottom:10px;padding:14px 16px">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <div style="min-width:52px;text-align:center;flex-shrink:0">
+          <div style="font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:${sc}">${c.score.toFixed(1)}</div>
+          <div style="font-size:9px;color:var(--t2);letter-spacing:1px">CVSS</div>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:${sc};font-weight:700;letter-spacing:1px">${c.cve_id}</span>
+            <span class="badge ${c.severity==='CRITICAL'?'b-red':c.severity==='HIGH'?'b-orange':'b-cyan'}">${c.severity}</span>
+            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2)">${c.software} v${c.version}</span>
+          </div>
+          <div style="font-size:11px;color:var(--t1);line-height:1.6;margin-bottom:8px">${c.description||'No description available.'}</div>
+
+          <!-- Patch section -->
+          <div style="background:rgba(0,245,255,0.04);border:1px solid var(--b);padding:8px 12px;margin-top:6px">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+              <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:${modeColor};letter-spacing:2px">HOW TO FIX — ${modeLabel}</div>
+              ${pa.auto_update?`<span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--green);border:1px solid var(--green);padding:2px 6px">AUTO UPDATE</span>`:`<span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--orange);border:1px solid var(--orange);padding:2px 6px">MANUAL UPDATE</span>`}
+            </div>
+            ${patchCmd}
+          </div>
+
+          <div style="display:flex;align-items:center;gap:16px;margin-top:8px">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t3)">Published: ${c.published||'N/A'}</span>
+            <a href="${c.url}" target="_blank" style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);text-decoration:none;letter-spacing:1px">→ NVD DETAILS</a>
+          </div>
+        </div>
+        <button onclick="markCVEPatched('${c.cve_id}','${c.device_id}')"
+          style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--green);background:var(--gg);border:1px solid var(--green);padding:8px 12px;cursor:pointer;white-space:nowrap;clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);flex-shrink:0;transition:all 0.2s"
+          onmouseover="this.style.background='rgba(0,255,136,0.25)'" onmouseout="this.style.background='var(--gg)'">
+          ✓ PATCHED
+        </button>
+      </div>
+    </div>`;
+  }
+
+  el.innerHTML = `
+  <div class="ph fade-in">
+    <div class="pt">CVE <span>VULNERABILITY SCANNER</span></div>
+    <button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button>
+  </div>
+
+  <div class="stats-grid fade-in">
+    <div class="sc red">
+      <div class="sc-icon">☠</div>
+      <div class="sc-lbl">Critical CVEs</div>
+      <div class="sc-val">${sum.critical||0}</div>
+      <div class="sc-sub">${sum.critical>0?'IMMEDIATE PATCH':'✓ NONE FOUND'}</div>
+    </div>
+    <div class="sc orange">
+      <div class="sc-icon">⚠</div>
+      <div class="sc-lbl">High CVEs</div>
+      <div class="sc-val">${sum.high||0}</div>
+      <div class="sc-sub">${sum.high>0?'PATCH REQUIRED':'✓ NONE FOUND'}</div>
+    </div>
+    <div class="sc cyan">
+      <div class="sc-icon">◈</div>
+      <div class="sc-lbl">Medium CVEs</div>
+      <div class="sc-val" style="font-size:28px">${sum.medium||0}</div>
+      <div class="sc-sub">MONITOR</div>
+    </div>
+    <div class="sc green">
+      <div class="sc-icon">⊞</div>
+      <div class="sc-lbl">Apps Scanned</div>
+      <div class="sc-val" style="font-size:28px;color:var(--green)">${sum.apps_scanned||0}</div>
+      <div class="sc-sub">LAST: ${lastScan}</div>
+    </div>
+  </div>
+
+  ${!hasData?`
+  <div class="panel fade-in">
+    <div class="panel-hdr"><div class="panel-title">CVE Scan Status</div><span class="badge b-cyan">INITIALIZING</span></div>
+    <div class="pb">
+      <div style="text-align:center;padding:40px">
+        <div style="font-size:52px;margin-bottom:16px">🔍</div>
+        <div style="font-family:'Orbitron',monospace;font-size:16px;color:var(--cyan);letter-spacing:3px;margin-bottom:8px">FIRST SCAN IN PROGRESS</div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--t2);letter-spacing:2px;margin-bottom:20px">Agent scans installed software against NVD CVE database</div>
+        <div style="font-size:11px;color:var(--t3);line-height:1.8">
+          ⏱ First CVE scan runs 60 seconds after agent starts<br>
+          📡 Queries NIST National Vulnerability Database (NVD)<br>
+          🔄 Rescans automatically every 6 hours<br>
+          ⚡ Rate limited to respect NVD API (5 req/30s)
+        </div>
+      </div>
+    </div>
+  </div>`:
+  `<div class="g31 fade-in">
+    <div>
+      ${critical.length>0?`
+      <div class="panel" style="margin-bottom:16px">
+        <div class="panel-hdr">
+          <div class="panel-title">Critical Vulnerabilities</div>
+          <span class="badge b-red">${critical.length} CRITICAL</span>
+        </div>
+        <div class="pb" style="max-height:320px;overflow-y:auto">
+          ${critical.map(cveRow).join('')}
+        </div>
+      </div>`:''}
+
+      ${high.length>0?`
+      <div class="panel" style="margin-bottom:16px">
+        <div class="panel-hdr">
+          <div class="panel-title">High Severity Vulnerabilities</div>
+          <span class="badge b-orange">${high.length} HIGH</span>
+        </div>
+        <div class="pb" style="max-height:280px;overflow-y:auto">
+          ${high.map(cveRow).join('')}
+        </div>
+      </div>`:''}
+
+      ${medium.length>0?`
+      <div class="panel">
+        <div class="panel-hdr">
+          <div class="panel-title">Medium Severity Vulnerabilities</div>
+          <span class="badge b-cyan">${medium.length} MEDIUM</span>
+        </div>
+        <div class="pb" style="max-height:240px;overflow-y:auto">
+          ${medium.map(cveRow).join('')}
+        </div>
+      </div>`:''}
+
+      ${cves.length===0?`
+      <div class="panel">
+        <div class="pb" style="text-align:center;padding:40px">
+          <div style="font-size:52px;margin-bottom:12px">🛡</div>
+          <div style="font-family:'Orbitron',monospace;font-size:18px;color:var(--green);letter-spacing:3px;text-shadow:0 0 20px var(--green)">NO VULNERABILITIES FOUND</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);margin-top:8px;letter-spacing:2px">ALL SCANNED SOFTWARE IS UP TO DATE</div>
+        </div>
+      </div>`:''}
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">Scan Summary</div><span class="badge b-green">COMPLETE</span></div>
+        <div class="pb">
+          ${[
+            ['Total CVEs',    sum.total||0,       (sum.total||0)>0?'var(--red)':'var(--green)'],
+            ['Critical',      sum.critical||0,    'var(--red)'],
+            ['High',          sum.high||0,        'var(--orange)'],
+            ['Medium',        sum.medium||0,      'var(--yellow)'],
+            ['Apps Scanned',  sum.apps_scanned||0,'var(--cyan)'],
+            ['Last Scan',     lastScan,           'var(--green)'],
+          ].map(([l,v,c])=>`
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--b)">
+              <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:1px">${l}</span>
+              <span style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:${c}">${v}</span>
+            </div>`).join('')}
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">CVE Risk Level</div></div>
+        <div class="gauge-wrap" style="--gc:${(sum.critical||0)>0?'var(--red)':(sum.high||0)>0?'var(--orange)':(sum.medium||0)>0?'var(--yellow)':'var(--green)'}">
+          <div class="gauge">
+            <div class="gauge-val">${(sum.critical||0)>0?'CRIT':(sum.high||0)>0?'HIGH':(sum.medium||0)>0?'MED':'SAFE'}</div>
+          </div>
+          <div class="gauge-lbl">${(sum.total||0)===0?'● NO CVES DETECTED':'⚠ PATCHES REQUIRED'}</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-hdr"><div class="panel-title">How It Works</div></div>
+        <div class="pb">
+          ${[
+            ['🔍','ENUMERATE','Reads installed apps from Windows registry'],
+            ['📡','QUERY NVD','Checks NIST CVE database for each app'],
+            ['📊','SCORE','CVSS v3 scoring: Critical/High/Medium'],
+            ['🚨','ALERT','Creates security alerts for Critical+High CVEs'],
+            ['✓','PATCH','Mark as patched after updating software'],
+          ].map(([i,t,d])=>`
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--b)">
+              <span style="font-size:14px;flex-shrink:0">${i}</span>
+              <div>
+                <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:2px">${t}</div>
+                <div style="font-size:10px;color:var(--t2);margin-top:2px">${d}</div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>`}`;
+}
+
+async function markCVEPatched(cveId, deviceId){
+  try{
+    const r = await fetch(`${API}/api/cve/resolve/${cveId}`,{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({device_id: deviceId})
+    });
+    const d = await r.json();
+    if(d.resolved >= 0){
+      // Remove from local state and re-render
+      S.cveEntries = S.cveEntries.filter(c=>c.cve_id!==cveId);
+      if(S.cveSummary.total) S.cveSummary.total = Math.max(0, S.cveSummary.total-1);
+      renderCVE(document.getElementById('main'));
+    }
+  }catch(e){ console.error('Patch mark failed:', e); }
+}
+
+// Start
+fetchAll();
+setInterval(fetchAll, 30000);
+</script>
+</body>
+</html>

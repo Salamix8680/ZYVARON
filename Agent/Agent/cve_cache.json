@@ -1,0 +1,287 @@
+{
+  "windows_11:0.8.8.90": {
+    "cached_at": "2026-03-27T12:29:07.231704",
+    "cves": []
+  },
+  "git:2.53.0": {
+    "cached_at": "2026-03-27T12:29:10.488314",
+    "cves": [
+      {
+        "cve_id": "CVE-2015-7082",
+        "software": "Git",
+        "version": "2.53.0",
+        "score": 10.0,
+        "severity": "CRITICAL",
+        "description": "Multiple unspecified vulnerabilities in Git before 2.5.4, as used in Apple Xcode before 7.2, have unknown impact and attack vectors.  NOTE: this CVE is associated only with Xcode use cases.",
+        "published": "2015-12-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-7082"
+      },
+      {
+        "cve_id": "CVE-2016-2315",
+        "software": "Git",
+        "version": "2.53.0",
+        "score": 9.8,
+        "severity": "CRITICAL",
+        "description": "revision.c in git before 2.7.4 uses an incorrect integer data type, which allows remote attackers to execute arbitrary code via a (1) long filename or (2) many nested trees, leading to a heap-based bu",
+        "published": "2016-04-08",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-2315"
+      },
+      {
+        "cve_id": "CVE-2012-2055",
+        "software": "Git",
+        "version": "2.53.0",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "GitHub Enterprise before 20120304 does not properly restrict the use of a hash to provide values for a model's attributes, which allows remote attackers to set the public_key[user_id] value via a modi",
+        "published": "2012-04-05",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-2055"
+      },
+      {
+        "cve_id": "CVE-2013-3670",
+        "software": "Git",
+        "version": "2.53.0",
+        "score": 4.3,
+        "severity": "MEDIUM",
+        "description": "The rle_unpack function in vmdav.c in libavcodec in FFmpeg git 20130328 through 20130501 does not properly use the bytestream2 API, which allows remote attackers to cause a denial of service (out-of-b",
+        "published": "2013-06-10",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-3670"
+      }
+    ]
+  },
+  "chrome:146.0.7680.80": {
+    "cached_at": "2026-03-22T18:57:46.919044",
+    "cves": [
+      {
+        "cve_id": "CVE-2026-3916",
+        "software": "Google Chrome",
+        "version": "146.0.7680.80",
+        "score": 9.6,
+        "severity": "CRITICAL",
+        "description": "Out of bounds read in Web Speech in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3916"
+      },
+      {
+        "cve_id": "CVE-2026-3913",
+        "software": "Google Chrome",
+        "version": "146.0.7680.80",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Heap buffer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Critical)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3913"
+      },
+      {
+        "cve_id": "CVE-2026-3914",
+        "software": "Google Chrome",
+        "version": "146.0.7680.80",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Integer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3914"
+      },
+      {
+        "cve_id": "CVE-2026-3915",
+        "software": "Google Chrome",
+        "version": "146.0.7680.80",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Heap buffer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to perform an out of bounds memory read via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3915"
+      },
+      {
+        "cve_id": "CVE-2026-3917",
+        "software": "Google Chrome",
+        "version": "146.0.7680.80",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Use after free in Agents in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3917"
+      }
+    ]
+  },
+  "edge:146.0.3856.72": {
+    "cached_at": "2026-03-27T12:29:17.843858",
+    "cves": []
+  },
+  "edge:146.0.3856.62": {
+    "cached_at": "2026-03-22T18:57:53.014728",
+    "cves": []
+  },
+  "visual_studio:1.111.0": {
+    "cached_at": "2026-03-27T12:29:24.001618",
+    "cves": []
+  },
+  "notepad\\+\\+:8.1.9": {
+    "cached_at": "2026-03-27T12:29:27.759424",
+    "cves": []
+  },
+  "python:3.14-64": {
+    "cached_at": "2026-03-27T12:29:31.105074",
+    "cves": [
+      {
+        "cve_id": "CVE-2007-5741",
+        "software": "Python 3.14.3",
+        "version": "3.14-64",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "Plone 2.5 through 2.5.4 and 3.0 through 3.0.2 allows remote attackers to execute arbitrary Python code via network data containing pickled objects for the (1) statusmessages or (2) linkintegrity modul",
+        "published": "2007-11-07",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2007-5741"
+      },
+      {
+        "cve_id": "CVE-2008-3142",
+        "software": "Python 3.14.3",
+        "version": "3.14-64",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "Multiple buffer overflows in Python 2.5.2 and earlier on 32bit platforms allow context-dependent attackers to cause a denial of service (crash) or have unspecified other impact via a long string that ",
+        "published": "2008-08-01",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2008-3142"
+      },
+      {
+        "cve_id": "CVE-2009-2940",
+        "software": "Python 3.14.3",
+        "version": "3.14-64",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "The pygresql module 3.8.1 and 4.0 for Python does not properly support the PQescapeStringConn function, which might allow remote attackers to leverage escaping issues involving multibyte character enc",
+        "published": "2009-10-22",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-2940"
+      },
+      {
+        "cve_id": "CVE-2009-0668",
+        "software": "Python 3.14.3",
+        "version": "3.14-64",
+        "score": 6.5,
+        "severity": "MEDIUM",
+        "description": "Unspecified vulnerability in Zope Object Database (ZODB) before 3.8.2, when certain Zope Enterprise Objects (ZEO) database sharing is enabled, allows remote attackers to execute arbitrary Python code ",
+        "published": "2009-08-07",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-0668"
+      },
+      {
+        "cve_id": "CVE-2010-1634",
+        "software": "Python 3.14.3",
+        "version": "3.14-64",
+        "score": 5.0,
+        "severity": "MEDIUM",
+        "description": "Multiple integer overflows in audioop.c in the audioop module in Python 2.6, 2.7, 3.1, and 3.2 allow context-dependent attackers to cause a denial of service (application crash) via a large fragment, ",
+        "published": "2010-05-27",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-1634"
+      }
+    ]
+  },
+  "python:3.14.3150.0": {
+    "cached_at": "2026-03-27T12:29:34.360978",
+    "cves": [
+      {
+        "cve_id": "CVE-2007-5741",
+        "software": "Python 3.14.3 (64-bit)",
+        "version": "3.14.3150.0",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "Plone 2.5 through 2.5.4 and 3.0 through 3.0.2 allows remote attackers to execute arbitrary Python code via network data containing pickled objects for the (1) statusmessages or (2) linkintegrity modul",
+        "published": "2007-11-07",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2007-5741"
+      },
+      {
+        "cve_id": "CVE-2008-3142",
+        "software": "Python 3.14.3 (64-bit)",
+        "version": "3.14.3150.0",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "Multiple buffer overflows in Python 2.5.2 and earlier on 32bit platforms allow context-dependent attackers to cause a denial of service (crash) or have unspecified other impact via a long string that ",
+        "published": "2008-08-01",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2008-3142"
+      },
+      {
+        "cve_id": "CVE-2009-2940",
+        "software": "Python 3.14.3 (64-bit)",
+        "version": "3.14.3150.0",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "The pygresql module 3.8.1 and 4.0 for Python does not properly support the PQescapeStringConn function, which might allow remote attackers to leverage escaping issues involving multibyte character enc",
+        "published": "2009-10-22",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-2940"
+      },
+      {
+        "cve_id": "CVE-2009-0668",
+        "software": "Python 3.14.3 (64-bit)",
+        "version": "3.14.3150.0",
+        "score": 6.5,
+        "severity": "MEDIUM",
+        "description": "Unspecified vulnerability in Zope Object Database (ZODB) before 3.8.2, when certain Zope Enterprise Objects (ZEO) database sharing is enabled, allows remote attackers to execute arbitrary Python code ",
+        "published": "2009-08-07",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-0668"
+      },
+      {
+        "cve_id": "CVE-2010-1634",
+        "software": "Python 3.14.3 (64-bit)",
+        "version": "3.14.3150.0",
+        "score": 5.0,
+        "severity": "MEDIUM",
+        "description": "Multiple integer overflows in audioop.c in the audioop module in Python 2.6, 2.7, 3.1, and 3.2 allow context-dependent attackers to cause a denial of service (application crash) via a large fragment, ",
+        "published": "2010-05-27",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-1634"
+      }
+    ]
+  },
+  "chrome:146.0.7680.165": {
+    "cached_at": "2026-03-27T12:29:14.085566",
+    "cves": [
+      {
+        "cve_id": "CVE-2026-3916",
+        "software": "Google Chrome",
+        "version": "146.0.7680.165",
+        "score": 9.6,
+        "severity": "CRITICAL",
+        "description": "Out of bounds read in Web Speech in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3916"
+      },
+      {
+        "cve_id": "CVE-2026-3913",
+        "software": "Google Chrome",
+        "version": "146.0.7680.165",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Heap buffer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Critical)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3913"
+      },
+      {
+        "cve_id": "CVE-2026-3914",
+        "software": "Google Chrome",
+        "version": "146.0.7680.165",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Integer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3914"
+      },
+      {
+        "cve_id": "CVE-2026-3915",
+        "software": "Google Chrome",
+        "version": "146.0.7680.165",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Heap buffer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to perform an out of bounds memory read via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3915"
+      },
+      {
+        "cve_id": "CVE-2026-3917",
+        "software": "Google Chrome",
+        "version": "146.0.7680.165",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Use after free in Agents in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3917"
+      }
+    ]
+  }
+}
