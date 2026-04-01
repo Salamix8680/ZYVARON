@@ -414,10 +414,9 @@ class RemediationEngine:
             details=f"[SMART] {cve_id} in {software} — patch {software} to latest version",
             severity=severity,
         )
-
-        def process_alerts(self, alerts: list) -> list:
+    def process_alerts(self, alerts: list) -> list:
         """
-        Main entry: process alert list, run appropriate remediation.
+         Main entry: process alert list, run appropriate remediation.
         KEY FIX: Always returns an action for port alerts, even if already blocked,
         so server can mark alert as resolved.
         """
