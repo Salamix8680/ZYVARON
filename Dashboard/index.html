@@ -26,7 +26,7 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 .hdr::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);animation:scanH 4s linear infinite}
 @keyframes scanH{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 .logo{display:flex;align-items:center;gap:12px}
-.logo-hex{width:36px;height:36px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);background:var(--cg);border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:11px;font-weight:900;color:var(--cyan);animation:pulse 2s ease-in-out infinite}
+.logo-hex{width:50px;height:40px;clip-path:(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);background:var(--cg);border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:11px;font-weight:900;color:var(--cyan);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 10px var(--cyan)}50%{box-shadow:0 0 30px var(--cyan),0 0 60px var(--cg)}}
 .logo-name{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:var(--cyan);letter-spacing:4px;text-shadow:0 0 20px var(--cyan)}
 .logo-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t2);letter-spacing:3px}
@@ -151,7 +151,8 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 
 <header class="hdr">
   <div class="logo">
-    <div class="logo-hex">Z</div>
+    <div class="logo-hex"> <img src="Dashboard\TECH BBOS.png" alt="Zyvaron Logo">
+</div>
     <div>
       <div class="logo-name">ZYVARON</div>
       <div class="logo-sub">SECURITY OPERATIONS CENTER</div>
@@ -191,34 +192,27 @@ body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(r
 
 <script>
 const API = 'http://localhost:8000';
-let S = { devices:[], alerts:[], resolved:[], counts:{}, summary:{}, fileStats:{}, deletedFiles:[], recoveredFiles:[], page:'overview', remMode:'smart', cveSummary:{}, cveEntries:[], cveLatest:{} };
+let S = { devices:[], alerts:[], resolved:[], counts:{}, summary:{}, fileStats:{}, deletedFiles:[], recoveredFiles:[], page:'overview', remMode:'smart', cveSummary:{}, cveEntries:[] };
 
 // Clock
 setInterval(()=>{document.getElementById('clock').textContent=new Date().toTimeString().slice(0,8)},1000);
 
 function timeAgo(iso){
-  if(!iso) return 'unknown';
-  // Server stores UTC timestamps without 'Z' suffix — add it so JS parses as UTC not local
-  const utc = iso.endsWith('Z') ? iso : iso + 'Z';
-  const s = Math.floor((Date.now() - new Date(utc)) / 1000);
-  if(s < 0) return 'just now';
-  if(s < 60) return s + 's ago';
-  if(s < 3600) return Math.floor(s/60) + 'm ago';
-  if(s < 86400) return Math.floor(s/3600) + 'h ago';
-  return Math.floor(s/86400) + 'd ago';
+  const s=Math.floor((Date.now()-new Date(iso))/1000);
+  if(s<60)return s+'s ago';if(s<3600)return Math.floor(s/60)+'m ago';
+  if(s<86400)return Math.floor(s/3600)+'h ago';return Math.floor(s/86400)+'d ago';
 }
 function riskClass(n){return n>=20?'critical':n>=10?'high':n>=5?'medium':'low'}
 function sevColor(s){return{CRITICAL:'var(--red)',HIGH:'var(--orange)',MEDIUM:'var(--yellow)',LOW:'var(--green)'}[s]||'var(--cyan)'}
 
 async function fetchAll(){
   try{
-    const [dr,ar,allr,fsr,dfr,mr] = await Promise.all([
+    const [dr,ar,allr,fsr,dfr] = await Promise.all([
       fetch(`${API}/api/devices/`).then(r=>r.json()).catch(()=>({devices:[]})),
       fetch(`${API}/api/alerts/`).then(r=>r.json()).catch(()=>({alerts:[],severity_counts:{}})),
       fetch(`${API}/api/alerts/all`).then(r=>r.json()).catch(()=>({resolved_alerts:[],total_resolved:0})),
       fetch(`${API}/api/files/stats`).then(r=>r.json()).catch(()=>({})),
       fetch(`${API}/api/files/deleted`).then(r=>r.json()).catch(()=>({deleted_files:[]})),
-      fetch(`${API}/api/alerts/remediation-mode`).then(r=>r.json()).catch(()=>({mode:'smart'})),
     ]);
     S.devices      = dr.devices||[];
     S.alerts       = ar.alerts||[];
@@ -226,20 +220,6 @@ async function fetchAll(){
     S.resolved     = allr.resolved_alerts||[];
     S.fileStats    = fsr||{};
     S.deletedFiles = dfr.deleted_files||[];
-    S.remMode      = mr.mode||'smart';
-
-    // Fetch CVE summary
-    try {
-      const devId = S.devices[0]?.id||'';
-      if(devId){
-        const [cveSum, cveEnt] = await Promise.all([
-          fetch(`${API}/api/cve/summary?device_id=${devId}`).then(r=>r.json()).catch(()=>({})),
-          fetch(`${API}/api/cve/entries?device_id=${devId}&limit=50`).then(r=>r.json()).catch(()=>({entries:[]})),
-        ]);
-        S.cveSummary  = cveSum||{};
-        S.cveEntries  = cveEnt.entries||[];
-      }
-    } catch(e){}
 
     const online = S.devices.filter(d=>d.online).length;
     document.getElementById('h-devices').textContent  = online;
@@ -251,71 +231,25 @@ async function fetchAll(){
         const sr = await fetch(`${API}/api/devices/${S.devices[0].id}/summary`).then(r=>r.json());
         S.summary = sr;
       }catch(e){}
+
+      // Fetch CVE data
+      try{
+        const devId = S.devices[0].id;
+        const [cveSum, cveEnt] = await Promise.all([
+          fetch(`${API}/api/cve/summary?device_id=${devId}`).then(r=>r.json()).catch(()=>({})),
+          fetch(`${API}/api/cve/entries?device_id=${devId}&limit=100`).then(r=>r.json()).catch(()=>({entries:[]})),
+        ]);
+        S.cveSummary = cveSum || {};
+        S.cveEntries = cveEnt.entries || [];
+      }catch(e){}
     }
+    
     renderPage(S.page);
   }catch(e){ renderPage(S.page); }
 }
 
-function safeHash(s){
-  return Math.abs(s.split('').reduce(function(h,c){return(Math.imul(31,h)+c.charCodeAt(0))|0;},0)).toString(36);
-}
-
-function renderDeletedList(deleted, deviceId){
-  if(!deleted || deleted.length===0) return "";
-  var seen = {};
-  var html = "";
-  var btnStyle = [
-    "font-family:Share Tech Mono,monospace",
-    "font-size:10px",
-    "color:var(--cyan)",
-    "background:var(--cg)",
-    "border:1px solid var(--cyan)",
-    "padding:8px 14px",
-    "cursor:pointer",
-    "letter-spacing:1px",
-    "white-space:nowrap",
-    "clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)",
-    "transition:all 0.2s",
-    "flex-shrink:0"
-  ].join(";");
-  for(var i=0;i<deleted.length;i++){
-    var f = deleted[i];
-    var fp = f.file_path || "";
-    var parts = fp.replace(/\\/g,"/").split("/");
-    var fname = parts[parts.length-1];
-    if(!fname || seen[fname]) continue;
-    seen[fname] = true;
-    var dir = fp.substring(0, fp.length - fname.length);
-    var sid = "rbtn-" + safeHash(fp);
-    var det = f.detected_at || "";
-    var did = f.device_id || deviceId || "";
-    var safeFp = fp.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
-    html += "<div data-file-row=\"1\" style=\"display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--b)\">";
-    html += "<div style=\"font-size:24px;flex-shrink:0\">🗑</div>";
-    html += "<div style=\"flex:1;min-width:0\">";
-    html += "<div style=\"font-family:Share Tech Mono,monospace;font-size:12px;color:var(--red);white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">" + fname + "</div>";
-    html += "<div style=\"font-size:10px;color:var(--t3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">" + dir + "</div>";
-    html += "<div style=\"font-size:9px;color:var(--t2);margin-top:3px;font-family:Share Tech Mono,monospace\">" + timeAgo(det) + " &middot; " + did + "</div>";
-    html += "</div>";
-    html += "<button id=\"" + sid + "\" data-fp=\"" + safeFp + "\" data-did=\"" + did + "\"";
-    html += " onclick=\"handleRecover(this)\"";
-    html += " style=\"" + btnStyle + "\"";
-    html += " onmouseover=\"this.style.background='rgba(0,245,255,0.25)'\"";
-    html += " onmouseout=\"this.style.background='var(--cg)'\"";
-    html += ">&#x27F3; RECOVER</button>";
-    html += "</div>";
-  }
-  return html;
-}
-
-function handleRecover(btn){
-  var fp = btn.getAttribute('data-fp');
-  var did = btn.getAttribute('data-did');
-  requestRecovery(fp, did, btn);
-}
-
-async function requestRecovery(filePath, deviceId, btn){
-  if(!btn){ var sid='rbtn-'+safeHash(filePath); btn=document.getElementById(sid); }
+async function requestRecovery(filePath, deviceId){
+  const btn = document.getElementById('rbtn-'+btoa(filePath).slice(0,8));
   if(btn){ btn.textContent='QUEUING...'; btn.disabled=true; btn.style.opacity='0.5'; }
   try{
     const r = await fetch(`${API}/api/files/recover`, {
@@ -325,88 +259,14 @@ async function requestRecovery(filePath, deviceId, btn){
     });
     const d = await r.json();
     if(d.success){
-      if(btn){
-        btn.textContent='✓ QUEUED';
-        btn.style.color='var(--green)';
-        btn.style.borderColor='var(--green)';
-        btn.style.opacity='1';
-      }
-      // Remove item from the deleted list immediately in UI
-      const row = btn ? btn.closest('[data-file-row]') : null;
-      if(row){ row.style.opacity='0.4'; row.style.pointerEvents='none'; }
-      // Full refresh after agent picks it up (30s poll + buffer)
-      setTimeout(fetchAll, 35000);
+      if(btn){ btn.textContent='✓ QUEUED'; btn.style.color='var(--green)'; btn.style.borderColor='var(--green)'; }
+      setTimeout(fetchAll, 35000); // Refresh after agent picks it up
     } else {
-      if(btn){ btn.textContent='FAILED'; btn.style.color='var(--red)'; btn.style.opacity='1'; btn.disabled=false; }
+      if(btn){ btn.textContent='FAILED'; btn.style.color='var(--red)'; }
     }
   }catch(e){
-    if(btn){ btn.textContent='ERROR'; btn.style.color='var(--red)'; btn.style.opacity='1'; btn.disabled=false; }
+    if(btn){ btn.textContent='ERROR'; btn.style.color='var(--red)'; }
   }
-}
-
-async function setRemMode(mode){
-  try{
-    const r = await fetch(`${API}/api/alerts/remediation-mode`,{
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({mode})
-    });
-    const d = await r.json();
-    if(d.status==='ok'){
-      S.remMode = mode;
-      // Update button states
-      ['smart','auto','manual'].forEach(m=>{
-        const b = document.getElementById('rem-btn-'+m);
-        if(b){
-          b.style.background = m===mode ? 'rgba(0,245,255,0.35)' : 'var(--cg)';
-          b.style.borderColor = m===mode ? 'var(--cyan)' : 'rgba(0,245,255,0.3)';
-          b.style.color = m===mode ? 'var(--cyan)' : 'var(--t2)';
-          b.style.boxShadow = m===mode ? '0 0 20px rgba(0,245,255,0.3)' : 'none';
-        }
-      });
-      // Show confirmation
-      const status = document.getElementById('rem-mode-status');
-      if(status){
-        const labels = {smart:'SMART MODE — Auto-blocks threats, skips file recovery', auto:'AUTO MODE — Fully autonomous, recovers files too', manual:'MANUAL MODE — Detects only, no automatic actions'};
-        status.textContent = labels[mode]||mode.toUpperCase();
-        status.style.color = mode==='manual'?'var(--orange)':mode==='auto'?'var(--green)':'var(--cyan)';
-      }
-    }
-  }catch(e){ console.error('Mode switch failed:', e); }
-}
-
-function remModePanel(){
-  const m = S.remMode||'smart';
-  const modes = [
-    {id:'smart', label:'SMART', icon:'⚡', desc:'Auto-blocks threats only', color:'var(--cyan)'},
-    {id:'auto',  label:'AUTO',  icon:'🤖', desc:'Fully autonomous',         color:'var(--green)'},
-    {id:'manual',label:'MANUAL',icon:'🖱', desc:'Detect only, no actions',  color:'var(--orange)'},
-  ];
-  const labels = {smart:'SMART MODE — Auto-blocks threats, skips file recovery', auto:'AUTO MODE — Fully autonomous, recovers files too', manual:'MANUAL MODE — Detects only, no automatic actions'};
-  return `
-  <div class="panel fade-in" style="margin-bottom:20px">
-    <div class="panel-hdr">
-      <div class="panel-title">Remediation Mode</div>
-      <span class="badge ${m==='manual'?'b-orange':m==='auto'?'b-green':'b-cyan'}">${m.toUpperCase()} ACTIVE</span>
-    </div>
-    <div class="pb">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px">
-        ${modes.map(mo=>`
-          <button id="rem-btn-${mo.id}" onclick="setRemMode('${mo.id}')"
-            style="padding:16px 10px;background:${mo.id===m?'rgba(0,245,255,0.35)':'var(--cg)'};
-              border:1px solid ${mo.id===m?'var(--cyan)':'rgba(0,245,255,0.3)'};
-              cursor:pointer;transition:all 0.2s;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
-              color:${mo.id===m?mo.color:'var(--t2)'};
-              box-shadow:${mo.id===m?'0 0 20px rgba(0,245,255,0.3)':'none'}">
-            <div style="font-size:22px;margin-bottom:6px">${mo.icon}</div>
-            <div style="font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:2px">${mo.label}</div>
-            <div style="font-size:10px;color:var(--t2);margin-top:4px;font-family:'Share Tech Mono',monospace">${mo.desc}</div>
-          </button>`).join('')}
-      </div>
-      <div id="rem-mode-status" style="font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;text-align:center;padding:8px;background:var(--bg2);border:1px solid var(--b);color:${m==='manual'?'var(--orange)':m==='auto'?'var(--green)':'var(--cyan)'}">
-        ${labels[m]||m.toUpperCase()}
-      </div>
-    </div>
-  </div>`;
 }
 
 function go(page,el){
@@ -432,7 +292,7 @@ function renderPage(p){
 function renderOverview(el){
   const critical = S.counts.CRITICAL||0, high=S.counts.HIGH||0;
   const online   = S.devices.filter(d=>d.online).length;
-  const files    = S.devices.reduce((a,d)=>a+(d.indexed_files||0),0) || S.fileStats.total_indexed || 0;
+  const files    = S.devices.reduce((a,d)=>a+(d.indexed_files||0),0)||3088;
   const resolved = S.resolved.length;
   const secure   = S.alerts.length===0;
   const isHighRisk = critical>0;
@@ -457,8 +317,6 @@ function renderOverview(el){
       </div>
     </div>
   </div>`:``}
-
-  ${remModePanel()}
 
   <div class="stats-grid fade-in">
     <div class="sc red"><div class="sc-icon">⚠</div><div class="sc-lbl">Critical Alerts</div>
@@ -718,18 +576,9 @@ function renderAlerts(el){
 function renderFiles(el){
   const dev       = S.devices[0]||{};
   const deviceId  = dev.id||'';
+  const files     = dev.indexed_files||0;
   const fs        = S.fileStats||{};
-  // Files Protected: use device indexed_files (set at startup scan)
-  const files     = dev.indexed_files || fs.total_indexed || 0;
-  // Deduplicate deleted list by filename — same file deleted twice should show once
-  const rawDeleted = S.deletedFiles||[];
-  const _seenDel = new Set();
-  const deleted = rawDeleted.filter(f=>{
-    const fname = (f.file_path||'').replace(/\\/g,'/').split('/').pop();
-    if(!fname || _seenDel.has(fname)) return false;
-    _seenDel.add(fname);
-    return true;
-  });
+  const deleted   = S.deletedFiles||[];
 
   el.innerHTML=`
   <div class="ph fade-in"><div class="pt">FILE <span>VAULT</span></div><button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button></div>
@@ -756,8 +605,8 @@ function renderFiles(el){
     <div class="sc cyan">
       <div class="sc-icon">📷</div>
       <div class="sc-lbl">Snapshots</div>
-      <div class="sc-val" style="font-size:20px">${fs.snapshots_count||0}</div>
-      <div class="sc-sub">${fs.last_snapshot?'LAST: '+timeAgo(fs.last_snapshot):'NO SNAPSHOT YET'}</div>
+      <div class="sc-val" style="font-size:20px">1h</div>
+      <div class="sc-sub">AUTO BACKUP INTERVAL</div>
     </div>
   </div>
 
@@ -776,7 +625,27 @@ function renderFiles(el){
               <div style="font-family:'Orbitron',monospace;font-size:14px;color:var(--green);letter-spacing:3px">ALL FILES PRESENT</div>
               <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);margin-top:8px;letter-spacing:2px">NO DELETIONS DETECTED</div>
             </div>
-          `:renderDeletedList(deleted, deviceId)}
+          `:deleted.map(f=>{
+            const btnId = 'rbtn-'+btoa(f.file_path||'').slice(0,8);
+            const fileName = (f.file_path||'').split('\\').pop().split('/').pop();
+            const dir = (f.file_path||'').replace(/[^\\\/]*$/, '');
+            return `
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--b)">
+              <div style="font-size:24px;flex-shrink:0">🗑</div>
+              <div style="flex:1;min-width:0">
+                <div style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--red);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${fileName}</div>
+                <div style="font-size:10px;color:var(--t3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${dir}</div>
+                <div style="font-size:9px;color:var(--t2);margin-top:3px;font-family:'Share Tech Mono',monospace">${timeAgo(f.detected_at)} · ${f.device_id}</div>
+              </div>
+              <button
+                id="${btnId}"
+                onclick="requestRecovery('${(f.file_path||'').replace(/'/g,"\\'")}', '${f.device_id}')"
+                style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);background:var(--cg);border:1px solid var(--cyan);padding:8px 14px;cursor:pointer;letter-spacing:1px;white-space:nowrap;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);transition:all 0.2s;flex-shrink:0"
+                onmouseover="this.style.background='rgba(0,245,255,0.25)'"
+                onmouseout="this.style.background='var(--cg)'"
+              >⟳ RECOVER</button>
+            </div>`;
+          }).join('')}
         </div>
       </div>
 
@@ -805,7 +674,7 @@ function renderFiles(el){
       <div class="panel">
         <div class="panel-hdr"><div class="panel-title">Vault Status</div><span class="badge b-green">HEALTHY</span></div>
         <div class="pb">
-          ${[['📁','Documents','Monitored','var(--green)'],['🖥','Desktop','Monitored','var(--green)'],['📷','Snapshots','Every 5 min','var(--cyan)'],['🔄','Auto-Recovery','Enabled','var(--green)']].map(([icon,n,s,c])=>`
+          ${[['📁','Documents','Monitored','var(--green)'],['🖥','Desktop','Monitored','var(--green)'],['📷','Snapshots','Every 1 hour','var(--cyan)'],['🔄','Auto-Recovery','Enabled','var(--green)']].map(([icon,n,s,c])=>`
             <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--b)">
               <div style="display:flex;align-items:center;gap:10px">
                 <span style="font-size:18px">${icon}</span>
@@ -911,71 +780,36 @@ function renderSystem(el){
 }
 
 
-function copyCmd(cmd){
-  navigator.clipboard.writeText(cmd).then(()=>{
-    // Brief visual feedback
-    const el = event.target.closest('div');
-    if(el){ const orig=el.style.borderColor; el.style.borderColor='var(--green)'; setTimeout(()=>el.style.borderColor=orig,1000); }
-  }).catch(()=>{});
-}
-
 // ── CVE SCANNER PAGE ─────────────────────────────────────────
 function renderCVE(el){
-  const sum  = S.cveSummary||{};
-  const cves = S.cveEntries||[];
+  const sum  = S.cveSummary || {};
+  const cves = S.cveEntries || [];
   const critical = cves.filter(c=>c.severity==='CRITICAL');
   const high     = cves.filter(c=>c.severity==='HIGH');
   const medium   = cves.filter(c=>c.severity==='MEDIUM');
-  const lastScan = sum.last_scan ? timeAgo(sum.last_scan+'Z') : 'Never';
-  const hasData  = sum.last_scan != null;
 
-  function cveRow(c){
-    const sc = c.score>=9?'var(--red)':c.score>=7?'var(--orange)':'var(--yellow)';
-    const pa = c.patch_action||{};
-    const modeLabel = S.remMode==='auto'?'AUTO UPDATE ENABLED':S.remMode==='manual'?'MANUAL MODE — NO AUTO ACTION':'SMART MODE — MANUAL PATCH';
-    const modeColor = S.remMode==='auto'?'var(--green)':S.remMode==='manual'?'var(--orange)':'var(--cyan)';
-    const patchCmd  = pa.command ? `<div style="margin-top:6px;padding:6px 10px;background:rgba(0,0,0,0.4);border:1px solid var(--b);border-radius:2px;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--cyan);letter-spacing:1px;cursor:pointer" onclick="copyCmd('${(pa.command||'').replace(/'/g,"\'")}')" title="Click to copy">&gt; ${pa.command||''} <span style="color:var(--t3)">← click to copy</span></div>`:
-      pa.method==='windows_update'?`<div style="margin-top:6px;font-size:10px;color:var(--cyan)">▶ Open Settings → Windows Update → Check for updates</div>`:
-      `<div style="margin-top:6px;font-size:10px;color:var(--t2)">▶ ${pa.description||'Update '+c.software+' to latest version'}</div>`;
-    return `
-    <div style="background:var(--bg2);border:1px solid var(--b);margin-bottom:10px;padding:14px 16px">
-      <div style="display:flex;align-items:flex-start;gap:12px">
-        <div style="min-width:52px;text-align:center;flex-shrink:0">
-          <div style="font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:${sc}">${c.score.toFixed(1)}</div>
-          <div style="font-size:9px;color:var(--t2);letter-spacing:1px">CVSS</div>
-        </div>
-        <div style="flex:1;min-width:0">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap">
-            <span style="font-family:'Share Tech Mono',monospace;font-size:12px;color:${sc};font-weight:700;letter-spacing:1px">${c.cve_id}</span>
-            <span class="badge ${c.severity==='CRITICAL'?'b-red':c.severity==='HIGH'?'b-orange':'b-cyan'}">${c.severity}</span>
-            <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2)">${c.software} v${c.version}</span>
-          </div>
-          <div style="font-size:11px;color:var(--t1);line-height:1.6;margin-bottom:8px">${c.description||'No description available.'}</div>
+  function sevCol(s){ return{CRITICAL:'var(--red)',HIGH:'var(--orange)',MEDIUM:'var(--yellow)'}[s]||'var(--cyan)'; }
 
-          <!-- Patch section -->
-          <div style="background:rgba(0,245,255,0.04);border:1px solid var(--b);padding:8px 12px;margin-top:6px">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
-              <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:${modeColor};letter-spacing:2px">HOW TO FIX — ${modeLabel}</div>
-              ${pa.auto_update?`<span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--green);border:1px solid var(--green);padding:2px 6px">AUTO UPDATE</span>`:`<span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--orange);border:1px solid var(--orange);padding:2px 6px">MANUAL UPDATE</span>`}
-            </div>
-            ${patchCmd}
-          </div>
-
-          <div style="display:flex;align-items:center;gap:16px;margin-top:8px">
-            <span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--t3)">Published: ${c.published||'N/A'}</span>
-            <a href="${c.url}" target="_blank" style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);text-decoration:none;letter-spacing:1px">→ NVD DETAILS</a>
-          </div>
-        </div>
-        <button onclick="markCVEPatched('${c.cve_id}','${c.device_id}')"
-          style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--green);background:var(--gg);border:1px solid var(--green);padding:8px 12px;cursor:pointer;white-space:nowrap;clip-path:polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%);flex-shrink:0;transition:all 0.2s"
-          onmouseover="this.style.background='rgba(0,255,136,0.25)'" onmouseout="this.style.background='var(--gg)'">
-          ✓ PATCHED
-        </button>
+  function cveRow(c){ return `
+    <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--b)">
+      <div style="font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:${sevCol(c.severity)};min-width:44px;text-align:center;text-shadow:0 0 10px ${sevCol(c.severity)}">${c.score||'?'}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:${sevCol(c.severity)};letter-spacing:1px;margin-bottom:3px">${c.cve_id}</div>
+        <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:3px">${c.software||''} ${c.version||''}</div>
+        <div style="font-size:10px;color:var(--t2);line-height:1.5">${(c.description||'').slice(0,120)}${(c.description||'').length>120?'...':''}</div>
+        ${c.patch_action||c.url?`<div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);margin-top:5px;letter-spacing:1px">→ ${c.patch_action||c.url}</div>`:''}
       </div>
-    </div>`;
-  }
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <span class="sev sev-${c.severity}">${c.severity}</span>
+        ${c.resolved
+          ? `<span class="badge b-green">PATCHED</span>`
+          : `<button onclick="markCVEPatched('${c.cve_id}','${c.device_id}')"
+               style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--green);background:var(--gg);border:1px solid var(--green);padding:5px 10px;cursor:pointer;letter-spacing:1px;white-space:nowrap">
+               ✓ MARK PATCHED</button>`}
+      </div>
+    </div>`; }
 
-  el.innerHTML = `
+  el.innerHTML=`
   <div class="ph fade-in">
     <div class="pt">CVE <span>VULNERABILITY SCANNER</span></div>
     <button class="rbtn" onclick="fetchAll()">⟳ REFRESH</button>
@@ -983,68 +817,52 @@ function renderCVE(el){
 
   <div class="stats-grid fade-in">
     <div class="sc red">
-      <div class="sc-icon">☠</div>
+      <div class="sc-icon">⚠</div>
       <div class="sc-lbl">Critical CVEs</div>
-      <div class="sc-val">${sum.critical||0}</div>
-      <div class="sc-sub">${sum.critical>0?'IMMEDIATE PATCH':'✓ NONE FOUND'}</div>
+      <div class="sc-val">${critical.length}</div>
+      <div class="sc-sub">${critical.length===0?'✓ ALL CLEAR':'PATCH NOW'}</div>
     </div>
     <div class="sc orange">
-      <div class="sc-icon">⚠</div>
-      <div class="sc-lbl">High CVEs</div>
-      <div class="sc-val">${sum.high||0}</div>
-      <div class="sc-sub">${sum.high>0?'PATCH REQUIRED':'✓ NONE FOUND'}</div>
-    </div>
-    <div class="sc cyan">
       <div class="sc-icon">◈</div>
+      <div class="sc-lbl">High CVEs</div>
+      <div class="sc-val">${high.length}</div>
+      <div class="sc-sub">${high.length===0?'✓ CLEAR':'PATCH SOON'}</div>
+    </div>
+    <div class="sc">
+      <div class="sc-icon">▲</div>
       <div class="sc-lbl">Medium CVEs</div>
-      <div class="sc-val" style="font-size:28px">${sum.medium||0}</div>
+      <div class="sc-val" style="font-size:28px">${medium.length}</div>
       <div class="sc-sub">MONITOR</div>
     </div>
-    <div class="sc green">
-      <div class="sc-icon">⊞</div>
-      <div class="sc-lbl">Apps Scanned</div>
-      <div class="sc-val" style="font-size:28px;color:var(--green)">${sum.apps_scanned||0}</div>
-      <div class="sc-sub">LAST: ${lastScan}</div>
+    <div class="sc cyan">
+      <div class="sc-icon">▣</div>
+      <div class="sc-lbl">Total Found</div>
+      <div class="sc-val">${cves.length}</div>
+      <div class="sc-sub">ACROSS ALL SOFTWARE</div>
     </div>
   </div>
 
-  ${!hasData?`
-  <div class="panel fade-in">
-    <div class="panel-hdr"><div class="panel-title">CVE Scan Status</div><span class="badge b-cyan">INITIALIZING</span></div>
-    <div class="pb">
-      <div style="text-align:center;padding:40px">
-        <div style="font-size:52px;margin-bottom:16px">🔍</div>
-        <div style="font-family:'Orbitron',monospace;font-size:16px;color:var(--cyan);letter-spacing:3px;margin-bottom:8px">FIRST SCAN IN PROGRESS</div>
-        <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--t2);letter-spacing:2px;margin-bottom:20px">Agent scans installed software against NVD CVE database</div>
-        <div style="font-size:11px;color:var(--t3);line-height:1.8">
-          ⏱ First CVE scan runs 60 seconds after agent starts<br>
-          📡 Queries NIST National Vulnerability Database (NVD)<br>
-          🔄 Rescans automatically every 6 hours<br>
-          ⚡ Rate limited to respect NVD API (5 req/30s)
-        </div>
-      </div>
-    </div>
-  </div>`:
-  `<div class="g31 fade-in">
-    <div>
+  <div class="g2 fade-in">
+    <div style="display:flex;flex-direction:column;gap:16px">
+
       ${critical.length>0?`
-      <div class="panel" style="margin-bottom:16px">
+      <div class="panel">
         <div class="panel-hdr">
           <div class="panel-title">Critical Vulnerabilities</div>
           <span class="badge b-red">${critical.length} CRITICAL</span>
         </div>
-        <div class="pb" style="max-height:320px;overflow-y:auto">
+        <div class="pb" style="max-height:400px;overflow-y:auto">
           ${critical.map(cveRow).join('')}
         </div>
       </div>`:''}
 
       ${high.length>0?`
-      <div class="panel" style="margin-bottom:16px">
+      <div class="panel">
         <div class="panel-hdr">
-          <div class="panel-title">High Severity Vulnerabilities</div>
+          <div class="panel-title">High Vulnerabilities</div>
           <span class="badge b-orange">${high.length} HIGH</span>
         </div>
-        <div class="pb" style="max-height:280px;overflow-y:auto">
+        <div class="pb" style="max-height:400px;overflow-y:auto">
           ${high.map(cveRow).join('')}
         </div>
       </div>`:''}
@@ -1052,90 +870,73 @@ function renderCVE(el){
       ${medium.length>0?`
       <div class="panel">
         <div class="panel-hdr">
-          <div class="panel-title">Medium Severity Vulnerabilities</div>
+          <div class="panel-title">Medium Vulnerabilities</div>
           <span class="badge b-cyan">${medium.length} MEDIUM</span>
         </div>
-        <div class="pb" style="max-height:240px;overflow-y:auto">
+        <div class="pb" style="max-height:300px;overflow-y:auto">
           ${medium.map(cveRow).join('')}
         </div>
       </div>`:''}
 
       ${cves.length===0?`
       <div class="panel">
-        <div class="pb" style="text-align:center;padding:40px">
-          <div style="font-size:52px;margin-bottom:12px">🛡</div>
-          <div style="font-family:'Orbitron',monospace;font-size:18px;color:var(--green);letter-spacing:3px;text-shadow:0 0 20px var(--green)">NO VULNERABILITIES FOUND</div>
-          <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);margin-top:8px;letter-spacing:2px">ALL SCANNED SOFTWARE IS UP TO DATE</div>
+        <div class="panel-hdr"><div class="panel-title">CVE Scan Status</div><span class="badge b-cyan">INITIALIZING</span></div>
+        <div class="pb">
+          <div class="empty" style="padding:40px">
+            <div class="spinner"></div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:2px">AWAITING FIRST CVE SCAN</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:8px;text-align:center">
+              First scan runs 60 seconds after agent starts<br>
+              Rescans automatically every 6 hours
+            </div>
+          </div>
         </div>
       </div>`:''}
     </div>
 
     <div style="display:flex;flex-direction:column;gap:16px">
       <div class="panel">
-        <div class="panel-hdr"><div class="panel-title">Scan Summary</div><span class="badge b-green">COMPLETE</span></div>
+        <div class="panel-hdr"><div class="panel-title">Scan Info</div><span class="badge b-cyan">NIST NVD</span></div>
         <div class="pb">
           ${[
-            ['Total CVEs',    sum.total||0,       (sum.total||0)>0?'var(--red)':'var(--green)'],
-            ['Critical',      sum.critical||0,    'var(--red)'],
-            ['High',          sum.high||0,        'var(--orange)'],
-            ['Medium',        sum.medium||0,      'var(--yellow)'],
-            ['Apps Scanned',  sum.apps_scanned||0,'var(--cyan)'],
-            ['Last Scan',     lastScan,           'var(--green)'],
+            ['Database',      'NIST National Vulnerability Database',    'var(--cyan)'],
+            ['Scan Interval', 'Every 6 hours',                           'var(--green)'],
+            ['Min Score',     'CVSS ≥ 4.0 reported',                    'var(--orange)'],
+            ['Total Found',   cves.length+' CVEs',                      'var(--cyan)'],
+            ['Patched',       cves.filter(c=>c.resolved).length+' resolved', 'var(--green)'],
           ].map(([l,v,c])=>`
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--b)">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--b)">
               <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--t2);letter-spacing:1px">${l}</span>
-              <span style="font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:${c}">${v}</span>
+              <span style="font-size:11px;font-weight:600;color:${c}">${v}</span>
             </div>`).join('')}
         </div>
       </div>
 
       <div class="panel">
-        <div class="panel-hdr"><div class="panel-title">CVE Risk Level</div></div>
-        <div class="gauge-wrap" style="--gc:${(sum.critical||0)>0?'var(--red)':(sum.high||0)>0?'var(--orange)':(sum.medium||0)>0?'var(--yellow)':'var(--green)'}">
-          <div class="gauge">
-            <div class="gauge-val">${(sum.critical||0)>0?'CRIT':(sum.high||0)>0?'HIGH':(sum.medium||0)>0?'MED':'SAFE'}</div>
-          </div>
-          <div class="gauge-lbl">${(sum.total||0)===0?'● NO CVES DETECTED':'⚠ PATCHES REQUIRED'}</div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="panel-hdr"><div class="panel-title">How It Works</div></div>
+        <div class="panel-hdr"><div class="panel-title">How to Patch</div></div>
         <div class="pb">
           ${[
-            ['🔍','ENUMERATE','Reads installed apps from Windows registry'],
-            ['📡','QUERY NVD','Checks NIST CVE database for each app'],
-            ['📊','SCORE','CVSS v3 scoring: Critical/High/Medium'],
-            ['🚨','ALERT','Creates security alerts for Critical+High CVEs'],
-            ['✓','PATCH','Mark as patched after updating software'],
-          ].map(([i,t,d])=>`
-            <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--b)">
-              <span style="font-size:14px;flex-shrink:0">${i}</span>
-              <div>
-                <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:2px">${t}</div>
-                <div style="font-size:10px;color:var(--t2);margin-top:2px">${d}</div>
-              </div>
+            ['1','Copy the winget command shown on each CVE row','var(--cyan)'],
+            ['2','Open PowerShell as Administrator','var(--cyan)'],
+            ['3','Paste and run the command','var(--green)'],
+            ['4','Click MARK PATCHED on the dashboard','var(--green)'],
+            ['5','ZYVARON removes it from the active list','var(--green)'],
+          ].map(([n,d,c])=>`
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px solid var(--b)">
+              <div style="width:22px;height:22px;border-radius:50%;background:${c};display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:9px;font-weight:700;color:var(--bg);flex-shrink:0">${n}</div>
+              <div style="font-size:11px;color:var(--t2);padding-top:3px">${d}</div>
             </div>`).join('')}
         </div>
       </div>
     </div>
-  </div>`}`;
+  </div>`;
 }
 
 async function markCVEPatched(cveId, deviceId){
   try{
-    const r = await fetch(`${API}/api/cve/resolve/${cveId}`,{
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({device_id: deviceId})
-    });
-    const d = await r.json();
-    if(d.resolved >= 0){
-      // Remove from local state and re-render
-      S.cveEntries = S.cveEntries.filter(c=>c.cve_id!==cveId);
-      if(S.cveSummary.total) S.cveSummary.total = Math.max(0, S.cveSummary.total-1);
-      renderCVE(document.getElementById('main'));
-    }
-  }catch(e){ console.error('Patch mark failed:', e); }
+    await fetch(`${API}/api/cve/resolve/${cveId}?device_id=${deviceId}`, {method:'POST'});
+    await fetchAll();
+  }catch(e){ console.error('Failed to mark CVE patched:', e); }
 }
 
 // Start
