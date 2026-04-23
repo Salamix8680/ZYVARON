@@ -7,7 +7,8 @@ Provides endpoints for dashboard to query CVE data.
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 from datetime import datetime
-from db.database import get_db, CVEScan, CVEEntry, Alert, Device
+from db.database import get_db, CVEScan, CVEEntry, Device
+
 
 router = APIRouter()
 
@@ -63,26 +64,7 @@ def receive_cve_scan(payload: dict, db: Session = Depends(get_db)):
             ))
             new_cves += 1
 
-    # Create security alerts for CRITICAL/HIGH CVEs
-    for cve in data.get("cves", []):
-        severity = cve.get("severity", "")
-        if severity in ("CRITICAL", "HIGH"):
-            title = f"CVE {cve.get('cve_id')} — {cve.get('software', '')}"
-            # Don't duplicate
-            existing_alert = db.query(Alert).filter(
-                Alert.device_id  == agent_id,
-                Alert.title      == title,
-                Alert.resolved   == False,
-            ).first()
-            if not existing_alert:
-                db.add(Alert(
-                    device_id   = agent_id,
-                    alert_type  = "cve_vulnerability",
-                    severity    = severity,
-                    title       = title,
-                    description = f"CVSS {cve.get('score')}: {cve.get('description', '')[:150]}",
-                    data        = cve,
-                ))
+
 
     db.commit()
     return {
@@ -145,6 +127,7 @@ def resolve_cve(cve_id: str, payload: dict = {}, db: Session = Depends(get_db)):
     entries = q.all()
     for e in entries:
         e.resolved = True
+
     # Also resolve any alerts for this CVE
     alert_q = db.query(Alert).filter(Alert.title.contains(cve_id), Alert.resolved == False)
     for a in alert_q.all():

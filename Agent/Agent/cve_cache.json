@@ -1,10 +1,10 @@
 {
   "windows_11:0.8.8.90": {
-    "cached_at": "2026-03-27T12:29:07.231704",
+    "cached_at": "2026-04-20T19:23:43.951058",
     "cves": []
   },
   "git:2.53.0": {
-    "cached_at": "2026-03-27T12:29:10.488314",
+    "cached_at": "2026-04-20T19:23:47.477148",
     "cves": [
       {
         "cve_id": "CVE-2015-7082",
@@ -14,7 +14,14 @@
         "severity": "CRITICAL",
         "description": "Multiple unspecified vulnerabilities in Git before 2.5.4, as used in Apple Xcode before 7.2, have unknown impact and attack vectors.  NOTE: this CVE is associated only with Xcode use cases.",
         "published": "2015-12-11",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-7082"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-7082",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Git.Git",
+          "winget_id": "Git.Git",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Git.Git"
+        }
       },
       {
         "cve_id": "CVE-2016-2315",
@@ -24,7 +31,14 @@
         "severity": "CRITICAL",
         "description": "revision.c in git before 2.7.4 uses an incorrect integer data type, which allows remote attackers to execute arbitrary code via a (1) long filename or (2) many nested trees, leading to a heap-based bu",
         "published": "2016-04-08",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-2315"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-2315",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Git.Git",
+          "winget_id": "Git.Git",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Git.Git"
+        }
       },
       {
         "cve_id": "CVE-2012-2055",
@@ -34,7 +48,14 @@
         "severity": "HIGH",
         "description": "GitHub Enterprise before 20120304 does not properly restrict the use of a hash to provide values for a model's attributes, which allows remote attackers to set the public_key[user_id] value via a modi",
         "published": "2012-04-05",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-2055"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2012-2055",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Git.Git",
+          "winget_id": "Git.Git",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Git.Git"
+        }
       },
       {
         "cve_id": "CVE-2013-3670",
@@ -44,7 +65,14 @@
         "severity": "MEDIUM",
         "description": "The rle_unpack function in vmdav.c in libavcodec in FFmpeg git 20130328 through 20130501 does not properly use the bytestream2 API, which allows remote attackers to cause a denial of service (out-of-b",
         "published": "2013-06-10",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-3670"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2013-3670",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Git.Git",
+          "winget_id": "Git.Git",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Git.Git"
+        }
       }
     ]
   },
@@ -116,11 +144,11 @@
     "cves": []
   },
   "notepad\\+\\+:8.1.9": {
-    "cached_at": "2026-03-27T12:29:27.759424",
+    "cached_at": "2026-04-20T19:24:05.421451",
     "cves": []
   },
   "python:3.14-64": {
-    "cached_at": "2026-03-27T12:29:31.105074",
+    "cached_at": "2026-04-20T19:24:08.778187",
     "cves": [
       {
         "cve_id": "CVE-2007-5741",
@@ -130,7 +158,14 @@
         "severity": "HIGH",
         "description": "Plone 2.5 through 2.5.4 and 3.0 through 3.0.2 allows remote attackers to execute arbitrary Python code via network data containing pickled objects for the (1) statusmessages or (2) linkintegrity modul",
         "published": "2007-11-07",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2007-5741"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2007-5741",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       },
       {
         "cve_id": "CVE-2008-3142",
@@ -140,7 +175,14 @@
         "severity": "HIGH",
         "description": "Multiple buffer overflows in Python 2.5.2 and earlier on 32bit platforms allow context-dependent attackers to cause a denial of service (crash) or have unspecified other impact via a long string that ",
         "published": "2008-08-01",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2008-3142"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2008-3142",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       },
       {
         "cve_id": "CVE-2009-2940",
@@ -150,7 +192,14 @@
         "severity": "HIGH",
         "description": "The pygresql module 3.8.1 and 4.0 for Python does not properly support the PQescapeStringConn function, which might allow remote attackers to leverage escaping issues involving multibyte character enc",
         "published": "2009-10-22",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-2940"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-2940",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       },
       {
         "cve_id": "CVE-2009-0668",
@@ -160,7 +209,14 @@
         "severity": "MEDIUM",
         "description": "Unspecified vulnerability in Zope Object Database (ZODB) before 3.8.2, when certain Zope Enterprise Objects (ZEO) database sharing is enabled, allows remote attackers to execute arbitrary Python code ",
         "published": "2009-08-07",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-0668"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-0668",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       },
       {
         "cve_id": "CVE-2010-1634",
@@ -170,12 +226,19 @@
         "severity": "MEDIUM",
         "description": "Multiple integer overflows in audioop.c in the audioop module in Python 2.6, 2.7, 3.1, and 3.2 allow context-dependent attackers to cause a denial of service (application crash) via a large fragment, ",
         "published": "2010-05-27",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-1634"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-1634",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       }
     ]
   },
   "python:3.14.3150.0": {
-    "cached_at": "2026-03-27T12:29:34.360978",
+    "cached_at": "2026-04-20T19:24:12.626744",
     "cves": [
       {
         "cve_id": "CVE-2007-5741",
@@ -185,7 +248,14 @@
         "severity": "HIGH",
         "description": "Plone 2.5 through 2.5.4 and 3.0 through 3.0.2 allows remote attackers to execute arbitrary Python code via network data containing pickled objects for the (1) statusmessages or (2) linkintegrity modul",
         "published": "2007-11-07",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2007-5741"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2007-5741",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       },
       {
         "cve_id": "CVE-2008-3142",
@@ -195,7 +265,14 @@
         "severity": "HIGH",
         "description": "Multiple buffer overflows in Python 2.5.2 and earlier on 32bit platforms allow context-dependent attackers to cause a denial of service (crash) or have unspecified other impact via a long string that ",
         "published": "2008-08-01",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2008-3142"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2008-3142",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       },
       {
         "cve_id": "CVE-2009-2940",
@@ -205,7 +282,14 @@
         "severity": "HIGH",
         "description": "The pygresql module 3.8.1 and 4.0 for Python does not properly support the PQescapeStringConn function, which might allow remote attackers to leverage escaping issues involving multibyte character enc",
         "published": "2009-10-22",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-2940"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-2940",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       },
       {
         "cve_id": "CVE-2009-0668",
@@ -215,7 +299,14 @@
         "severity": "MEDIUM",
         "description": "Unspecified vulnerability in Zope Object Database (ZODB) before 3.8.2, when certain Zope Enterprise Objects (ZEO) database sharing is enabled, allows remote attackers to execute arbitrary Python code ",
         "published": "2009-08-07",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-0668"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-0668",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       },
       {
         "cve_id": "CVE-2010-1634",
@@ -225,7 +316,14 @@
         "severity": "MEDIUM",
         "description": "Multiple integer overflows in audioop.c in the audioop module in Python 2.6, 2.7, 3.1, and 3.2 allow context-dependent attackers to cause a denial of service (application crash) via a large fragment, ",
         "published": "2010-05-27",
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-1634"
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-1634",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       }
     ]
   },
@@ -281,6 +379,394 @@
         "description": "Use after free in Agents in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
         "published": "2026-03-11",
         "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3917"
+      }
+    ]
+  },
+  "chrome:146.0.7680.167": {
+    "cached_at": "2026-04-01T12:57:03.480860",
+    "cves": [
+      {
+        "cve_id": "CVE-2026-3916",
+        "software": "Google Chrome",
+        "version": "146.0.7680.167",
+        "score": 9.6,
+        "severity": "CRITICAL",
+        "description": "Out of bounds read in Web Speech in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3916",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-3913",
+        "software": "Google Chrome",
+        "version": "146.0.7680.167",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Heap buffer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Critical)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3913",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-3914",
+        "software": "Google Chrome",
+        "version": "146.0.7680.167",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Integer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3914",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-3915",
+        "software": "Google Chrome",
+        "version": "146.0.7680.167",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Heap buffer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to perform an out of bounds memory read via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3915",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-3917",
+        "software": "Google Chrome",
+        "version": "146.0.7680.167",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Use after free in Agents in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3917",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      }
+    ]
+  },
+  "edge:146.0.3856.84": {
+    "cached_at": "2026-04-01T12:57:06.480853",
+    "cves": []
+  },
+  "visual_studio:1.113.0": {
+    "cached_at": "2026-04-01T12:57:11.642138",
+    "cves": []
+  },
+  "chrome:146.0.7680.180": {
+    "cached_at": "2026-04-14T20:12:57.491732",
+    "cves": [
+      {
+        "cve_id": "CVE-2026-3916",
+        "software": "Google Chrome",
+        "version": "146.0.7680.180",
+        "score": 9.6,
+        "severity": "CRITICAL",
+        "description": "Out of bounds read in Web Speech in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3916",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-3913",
+        "software": "Google Chrome",
+        "version": "146.0.7680.180",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Heap buffer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Critical)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3913",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-3914",
+        "software": "Google Chrome",
+        "version": "146.0.7680.180",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Integer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3914",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-3915",
+        "software": "Google Chrome",
+        "version": "146.0.7680.180",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Heap buffer overflow in WebML in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to perform an out of bounds memory read via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3915",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-3917",
+        "software": "Google Chrome",
+        "version": "146.0.7680.180",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Use after free in Agents in Google Chrome prior to 146.0.7680.71 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-03-11",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3917",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      }
+    ]
+  },
+  "edge:147.0.3912.60": {
+    "cached_at": "2026-04-15T23:48:28.387935",
+    "cves": []
+  },
+  "visual_studio:1.115.0": {
+    "cached_at": "2026-04-20T19:24:02.445724",
+    "cves": []
+  },
+  "chrome:147.0.7727.56": {
+    "cached_at": "2026-04-20T19:23:50.647717",
+    "cves": [
+      {
+        "cve_id": "CVE-2026-5858",
+        "software": "Google Chrome",
+        "version": "147.0.7727.56",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Heap buffer overflow in WebML in Google Chrome prior to 147.0.7727.55 allowed a remote attacker to execute arbitrary code via a crafted HTML page. (Chromium security severity: Critical)",
+        "published": "2026-04-08",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5858",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-5859",
+        "software": "Google Chrome",
+        "version": "147.0.7727.56",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Integer overflow in WebML in Google Chrome prior to 147.0.7727.55 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Critical)",
+        "published": "2026-04-08",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5859",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-5860",
+        "software": "Google Chrome",
+        "version": "147.0.7727.56",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Use after free in WebRTC in Google Chrome prior to 147.0.7727.55 allowed a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-04-08",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5860",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-5861",
+        "software": "Google Chrome",
+        "version": "147.0.7727.56",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Use after free in V8 in Google Chrome prior to 147.0.7727.55 allowed a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: High)",
+        "published": "2026-04-08",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5861",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      },
+      {
+        "cve_id": "CVE-2026-5862",
+        "software": "Google Chrome",
+        "version": "147.0.7727.56",
+        "score": 8.8,
+        "severity": "HIGH",
+        "description": "Inappropriate implementation in V8 in Google Chrome prior to 147.0.7727.55 allowed a remote attacker to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: Hi",
+        "published": "2026-04-08",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5862",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Google.Chrome",
+          "winget_id": "Google.Chrome",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Google.Chrome"
+        }
+      }
+    ]
+  },
+  "edge:147.0.3912.72": {
+    "cached_at": "2026-04-20T19:23:54.095261",
+    "cves": []
+  },
+  "microsoft_office:1.25.28902": {
+    "cached_at": "2026-04-20T19:23:59.366094",
+    "cves": []
+  },
+  "windows_11:11": {
+    "cached_at": "2026-04-21T17:35:48.132355",
+    "cves": []
+  },
+  "python:3.14": {
+    "cached_at": "2026-04-21T17:35:51.586243",
+    "cves": [
+      {
+        "cve_id": "CVE-2007-5741",
+        "software": "Python",
+        "version": "3.14",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "Plone 2.5 through 2.5.4 and 3.0 through 3.0.2 allows remote attackers to execute arbitrary Python code via network data containing pickled objects for the (1) statusmessages or (2) linkintegrity modul",
+        "published": "2007-11-07",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2007-5741",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
+      },
+      {
+        "cve_id": "CVE-2008-3142",
+        "software": "Python",
+        "version": "3.14",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "Multiple buffer overflows in Python 2.5.2 and earlier on 32bit platforms allow context-dependent attackers to cause a denial of service (crash) or have unspecified other impact via a long string that ",
+        "published": "2008-08-01",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2008-3142",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
+      },
+      {
+        "cve_id": "CVE-2009-2940",
+        "software": "Python",
+        "version": "3.14",
+        "score": 7.5,
+        "severity": "HIGH",
+        "description": "The pygresql module 3.8.1 and 4.0 for Python does not properly support the PQescapeStringConn function, which might allow remote attackers to leverage escaping issues involving multibyte character enc",
+        "published": "2009-10-22",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-2940",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
+      },
+      {
+        "cve_id": "CVE-2009-0668",
+        "software": "Python",
+        "version": "3.14",
+        "score": 6.5,
+        "severity": "MEDIUM",
+        "description": "Unspecified vulnerability in Zope Object Database (ZODB) before 3.8.2, when certain Zope Enterprise Objects (ZEO) database sharing is enabled, allows remote attackers to execute arbitrary Python code ",
+        "published": "2009-08-07",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2009-0668",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
+      },
+      {
+        "cve_id": "CVE-2010-1634",
+        "software": "Python",
+        "version": "3.14",
+        "score": 5.0,
+        "severity": "MEDIUM",
+        "description": "Multiple integer overflows in audioop.c in the audioop module in Python 2.6, 2.7, 3.1, and 3.2 allow context-dependent attackers to cause a denial of service (application crash) via a large fragment, ",
+        "published": "2010-05-27",
+        "url": "https://nvd.nist.gov/vuln/detail/CVE-2010-1634",
+        "patch_action": {
+          "method": "winget",
+          "command": "winget upgrade --id Python.Python.3.14",
+          "winget_id": "Python.Python.3.14",
+          "auto_update": true,
+          "description": "Run in PowerShell (Admin): winget upgrade --id Python.Python.3.14"
+        }
       }
     ]
   }

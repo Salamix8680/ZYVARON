@@ -12,41 +12,36 @@ class AlertEngine:
 
     @staticmethod
     def check_system(agent_id: str, data: dict) -> list:
-        """Check system metrics for problems.
-        CPU/RAM alerts only trigger at extreme levels that indicate actual threats
-        (cryptominer, runaway process) — not normal high usage.
-        These show in System Health page, NOT as security alerts.
-        """
+        """Check system metrics for problems."""
         alerts = []
         cpu = data.get("cpu", {})
         mem = data.get("memory", {}).get("ram", {})
         disks = data.get("disks", [])
         processes = data.get("processes", [])
 
-        # CPU alert only at truly critical sustained levels (>98% = likely cryptominer/freeze)
-        # Normal heavy usage (90-97%) is NOT a security alert - shown in System Health only
+        # High CPU usage
         cpu_usage = cpu.get("usage_percent", 0)
-        if cpu_usage > 98:
+        if cpu_usage > 90:
             alerts.append({
                 "type": "high_cpu",
                 "severity": "HIGH",
                 "title": f"CPU usage critical: {cpu_usage}%",
-                "description": f"CPU at {cpu_usage}% — possible cryptominer or system freeze. Investigate running processes.",
+                "description": f"Device CPU is at {cpu_usage}% — possible cryptominer or runaway process.",
                 "data": {"cpu_usage": cpu_usage},
             })
 
-        # RAM alert only when system is about to become unresponsive (>95%)
+        # High RAM usage
         ram_pct = mem.get("percent_used", 0)
-        if ram_pct > 95:
+        if ram_pct > 90:
             alerts.append({
                 "type": "high_memory",
-                "severity": "HIGH",
-                "title": f"Memory critical: {ram_pct}%",
-                "description": f"RAM at {ram_pct}% — system may freeze or crash imminently.",
+                "severity": "MEDIUM",
+                "title": f"Memory usage critical: {ram_pct}%",
+                "description": f"RAM at {ram_pct}% — device may become unstable.",
                 "data": {"ram_percent": ram_pct},
             })
 
-        # Disk almost full (keep this threshold — disk full is always a problem)
+        # Disk almost full
         for disk in disks:
             if disk.get("health_warning"):
                 usage = disk.get("usage", {})
@@ -74,50 +69,36 @@ class AlertEngine:
 
     @staticmethod
     def check_ports(agent_id: str, data: dict) -> list:
-        """Check port scan results for dangerous exposures.
-        - Ports blocked by ZYVARON → create as already-RESOLVED alerts (show in history)
-        - Unblocked dangerous ports → create as active alerts
-        """
+        """Check port scan results for dangerous exposures."""
         alerts = []
         open_ports = data.get("open_ports", [])
         status = data.get("status", "CLEAN")
 
-        ZYVARON_BLOCKED_PORTS = {3389, 445, 23, 21, 1433, 3306, 5900}
-        BLOCKED_NAMES = {
-            3389: "RDP", 445: "SMB", 23: "Telnet", 21: "FTP",
-            1433: "MSSQL", 3306: "MySQL", 5900: "VNC"
+        SEVERITY_MAP = {
+            "CRITICAL": "CRITICAL",
+            "HIGH": "HIGH",
+            "MEDIUM": "MEDIUM",
+            "LOW": "LOW",
         }
 
-        dangerous_unblocked = []
         for port in open_ports:
-            port_num = port.get("port")
             risk = port.get("risk", "LOW")
             if risk in ("CRITICAL", "HIGH"):
-                if port_num in ZYVARON_BLOCKED_PORTS:
-                    # Already blocked — create pre-resolved alert so it shows in history
-                    alerts.append({
-                        "type": "port_exposure",
-                        "severity": risk,
-                        "title": f"Dangerous port open: {port_num} ({BLOCKED_NAMES.get(port_num, port.get('service',''))})",
-                        "description": f"Port {port_num} — ZYVARON firewall rule already active. Port is blocked.",
-                        "data": {"port": port},
-                        "auto_resolve": True,
-                    })
-                else:
-                    dangerous_unblocked.append(port)
-                    alerts.append({
-                        "type": "port_exposure",
-                        "severity": risk,
-                        "title": f"Dangerous port open: {port_num} ({port.get('service','')})",
-                        "description": port.get("reason", "Risky port exposed to network."),
-                        "data": {"port": port},
-                    })
+                alerts.append({
+                    "type": "port_exposure",
+                    "severity": SEVERITY_MAP.get(risk, "MEDIUM"),
+                    "title": f"Dangerous port open: {port['port']} ({port['service']})",
+                    "description": port.get("reason", "Risky port exposed to network."),
+                    "data": {"port": port},
+                })
 
-        if status == "CRITICAL" and dangerous_unblocked:
+        # Overall critical status
+        if status == "CRITICAL":
+            critical_count = data.get("critical_exposures", 0)
             alerts.append({
                 "type": "critical_exposure",
                 "severity": "CRITICAL",
-                "title": f"Device has {len(dangerous_unblocked)} critical port exposure(s)",
+                "title": f"Device has {critical_count} critical port exposure(s)",
                 "description": "Immediate action required. Critical services are exposed to the network.",
                 "data": {"scan_summary": data},
             })
@@ -132,11 +113,7 @@ class AlertEngine:
 
     @staticmethod
     def check_files(agent_id: str, data: dict) -> list:
-        """Check file change events for threats.
-        NOTE: Individual file deletions are NOT threats — they are handled by
-        the File Vault system (stored as FileEvents, shown in File Vault dashboard).
-        Only mass deletion (ransomware pattern) generates a threat alert.
-        """
+        """Check file change events for threats."""
         alerts = []
         deleted = data.get("deleted", [])
         modified = data.get("modified", [])
@@ -148,20 +125,33 @@ class AlertEngine:
         # Filter out internal ZYVARON files
         user_deleted = [f for f in deleted if not is_internal(f.get("path", ""))]
 
-        # Mass deletion only — possible ransomware (10+ files at once = threat)
+        # Mass deletion — possible ransomware
         if len(user_deleted) > 10:
             alerts.append({
                 "type": "mass_deletion",
                 "severity": "CRITICAL",
                 "title": f"Mass file deletion detected: {len(user_deleted)} files deleted",
-                "description": "Large number of files deleted simultaneously — possible ransomware attack. Check File Vault for recovery.",
+                "description": "Large number of files deleted simultaneously — possible ransomware attack. Immediate recovery recommended.",
                 "data": {
                     "deleted_count": len(user_deleted),
                     "sample_paths": [f.get("path") for f in user_deleted[:5]],
                 },
             })
-        # Individual deletions: DO NOT generate threat alerts.
-        # They are visible in the File Vault page as deletable/recoverable items.
+
+        # Individual deleted files — alert ONCE per unique path only
+        elif user_deleted:
+            seen_paths = set()
+            for f in user_deleted[:5]:
+                path = f.get("path", "unknown")
+                if path not in seen_paths:
+                    seen_paths.add(path)
+                    alerts.append({
+                        "type": "file_deleted",
+                        "severity": "HIGH",
+                        "title": f"File deleted: {path}",
+                        "description": "Protected file was deleted or moved. Recovery available from vault.",
+                        "data": {"file": f, "path": path},
+                    })
 
         # Mass modification — ransomware encryption pattern
         if len(modified) > 20:
@@ -174,4 +164,3 @@ class AlertEngine:
             })
 
         return alerts
-

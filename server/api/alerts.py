@@ -9,7 +9,7 @@ router = APIRouter()
 
 @router.get("/")
 def get_alerts(resolved: bool = Query(default=False), limit: int = Query(default=100), db: Session = Depends(get_db)):
-    alerts = db.query(Alert).filter(Alert.resolved == resolved).order_by(Alert.created_at.desc()).limit(limit).all()
+    alerts = db.query(Alert).filter(Alert.resolved == resolved, Alert.alert_type != "cve_vulnerability").order_by(Alert.created_at.desc()).limit(limit).all()
     counts = {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0}
     for a in alerts:
         counts[a.severity] = counts.get(a.severity, 0) + 1
@@ -18,7 +18,7 @@ def get_alerts(resolved: bool = Query(default=False), limit: int = Query(default
 
 @router.get("/all")
 def get_all_alerts(limit: int = Query(default=200), db: Session = Depends(get_db)):
-    all_alerts = db.query(Alert).order_by(Alert.created_at.desc()).limit(limit).all()
+    all_alerts = db.query(Alert).filter(Alert.alert_type != "cve_vulnerability").order_by(Alert.created_at.desc()).limit(limit).all()
     active = [a for a in all_alerts if not a.resolved]
     resolved = [a for a in all_alerts if a.resolved]
     counts = {"CRITICAL": 0, "HIGH": 0, "MEDIUM": 0, "LOW": 0}
@@ -35,9 +35,9 @@ def get_all_alerts(limit: int = Query(default=200), db: Session = Depends(get_db
 
 @router.get("/stats")
 def get_alert_stats(db: Session = Depends(get_db)):
-    total = db.query(Alert).count()
-    active = db.query(Alert).filter(Alert.resolved == False).count()
-    resolved = db.query(Alert).filter(Alert.resolved == True).count()
+    total    = db.query(Alert).filter(Alert.alert_type != "cve_vulnerability").count()
+    active   = db.query(Alert).filter(Alert.alert_type != "cve_vulnerability", Alert.resolved == False).count()
+    resolved = db.query(Alert).filter(Alert.alert_type != "cve_vulnerability", Alert.resolved == True).count()
     return {"total": total, "active": active, "resolved": resolved}
 
 

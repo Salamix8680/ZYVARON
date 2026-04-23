@@ -6940,3 +6940,640 @@ client_connection: Connection<ConnectionKey(host='localhost', port=8000, is_ssl=
 2026-03-27 13:42:24,833 [INFO] AgentCore: Remediation check | 11 unresolved | Mode: SMART
 2026-03-27 13:43:11,016 [INFO] AgentCore: Shutdown signal received
 2026-03-27 13:43:11,017 [INFO] AgentCore: Agent tasks cancelled — shutting down.
+2026-04-01 13:54:57,489 [INFO] FileVault: FileVault initialized | Vault: vault
+2026-04-01 13:54:57,514 [INFO] Reporter: Reporter initialized | Server: http://localhost:8000 | Local: reports
+2026-04-01 13:54:57,560 [INFO] RemediationEngine: RemediationEngine initialized | Mode: SMART
+2026-04-01 13:54:57,585 [INFO] CVEChecker: CVEChecker initialized
+2026-04-01 13:54:57,585 [INFO] AgentCore: ZYVARON Agent initialized | ID: agent_7268
+2026-04-01 13:54:57,636 [INFO] AgentCore: ============================================================
+2026-04-01 13:54:57,636 [INFO] AgentCore:   ZYVARON Agent STARTING
+2026-04-01 13:54:57,637 [INFO] AgentCore:   Agent ID    : agent_7268
+2026-04-01 13:54:57,637 [INFO] AgentCore:   Version     : 0.3.0
+2026-04-01 13:54:57,638 [INFO] AgentCore:   Remediation : SMART
+2026-04-01 13:54:57,638 [INFO] AgentCore:   Time        : 2026-04-01T13:54:57.636595
+2026-04-01 13:54:57,638 [INFO] AgentCore: ============================================================
+2026-04-01 13:54:57,639 [INFO] AgentCore: Running initial full scan...
+2026-04-01 13:55:11,288 [INFO] AgentCore:   System info collected [OK] | OS: Windows
+2026-04-01 13:55:11,289 [INFO] FileVault: Building initial file index...
+2026-04-01 13:55:11,290 [INFO] FileVault:   Scanning: C:\Users\Admin\Documents
+2026-04-01 13:55:14,354 [INFO] FileVault:   Scanning: C:\Users\Admin\Desktop
+2026-04-01 13:55:14,361 [INFO] FileVault: Index complete | 15 files indexed
+2026-04-01 13:55:16,671 [INFO] AgentCore:   File index built [OK] | 15 files indexed
+2026-04-01 13:55:16,674 [INFO] FileVault: Creating snapshot: snap_1775048116_startup
+2026-04-01 13:55:16,852 [INFO] FileVault: Snapshot complete | ID: snap_1775048116_startup | Files: 15
+2026-04-01 13:55:16,855 [INFO] AgentCore:   Startup snapshot created [OK] | 15 files | ID: snap_1775048116_startup
+2026-04-01 13:55:19,184 [INFO] PortScanner: Scanning 127.0.0.1 ports 1-10000
+2026-04-01 13:55:44,796 [INFO] PortScanner: Scan complete | 6 open ports | Risk score: 21 | Status: CRITICAL
+2026-04-01 13:55:44,797 [WARNING] PortScanner: CRITICAL PORT: 445 (SMB) — SMB exposed — common ransomware vector (EternalBlue)
+2026-04-01 13:55:47,162 [INFO] AgentCore:   Port scan done [OK] | 6 open ports found
+2026-04-01 13:55:49,437 [INFO] AgentCore: Initial scan complete [OK]
+2026-04-01 13:55:49,437 [INFO] AgentCore: All monitoring loops started [OK]
+2026-04-01 13:56:52,046 [INFO] FileVault: Running file integrity check...
+2026-04-01 13:56:53,429 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 13:56:53,430 [INFO] AgentCore: CVE vulnerability scan starting...
+2026-04-01 13:56:53,431 [INFO] CVEChecker: CVE scan starting...
+2026-04-01 13:56:55,279 [INFO] CVEChecker: Found 45 installed applications
+2026-04-01 13:56:55,279 [INFO] CVEChecker: Scanning 35 relevant apps (of 45 total)...
+2026-04-01 13:57:00,219 [WARNING] CVEChecker:   Git 2.53.0: 4 CVE(s) found
+2026-04-01 13:57:03,485 [WARNING] CVEChecker:   Google Chrome 146.0.7680.167: 5 CVE(s) found
+2026-04-01 13:57:20,521 [WARNING] CVEChecker:   Python 3.14.3 3.14-64: 5 CVE(s) found
+2026-04-01 13:57:23,561 [WARNING] CVEChecker:   Python 3.14.3 (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 13:57:25,565 [WARNING] CVEChecker:   Python 3.14.3 Add to Path (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 13:57:27,570 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 13:57:29,574 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit symbols) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 13:57:31,587 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 13:57:33,602 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 13:57:35,612 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 13:57:37,631 [INFO] CVEChecker: CVE scan complete | 14 CVEs | Critical: 3 | High: 8
+2026-04-01 13:57:39,933 [INFO] AgentCore: CVE scan reported | 14 CVEs | Critical: 3 | High: 8
+2026-04-01 13:57:53,436 [INFO] FileVault: Running file integrity check...
+2026-04-01 13:57:53,812 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 13:58:53,814 [INFO] FileVault: Running file integrity check...
+2026-04-01 13:58:54,171 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 13:59:54,181 [INFO] FileVault: Running file integrity check...
+2026-04-01 13:59:54,571 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:00:54,582 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:00:54,960 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:01:54,971 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:01:55,355 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:02:55,358 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:02:55,779 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:03:55,781 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:03:56,157 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:04:56,165 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:04:56,603 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:05:56,617 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:05:57,003 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:06:57,009 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:06:57,457 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:07:57,473 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:07:57,801 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:08:57,815 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:08:58,208 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:09:58,219 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:09:58,628 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:10:58,640 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:10:59,043 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:11:56,522 [INFO] AgentCore:   Mode changed: SMART → AUTO
+2026-04-01 14:11:59,057 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:11:59,387 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:12:02,481 [INFO] AgentCore: Shutdown signal received
+2026-04-01 14:12:02,543 [INFO] AgentCore: Agent tasks cancelled — shutting down.
+2026-04-01 14:12:33,903 [INFO] FileVault: FileVault initialized | Vault: vault
+2026-04-01 14:12:33,904 [INFO] Reporter: Reporter initialized | Server: http://localhost:8000 | Local: reports
+2026-04-01 14:12:33,905 [INFO] RemediationEngine: RemediationEngine initialized | Mode: SMART
+2026-04-01 14:12:33,906 [INFO] CVEChecker: CVEChecker initialized
+2026-04-01 14:12:33,907 [INFO] AgentCore: ZYVARON Agent initialized | ID: agent_9212
+2026-04-01 14:12:33,908 [INFO] AgentCore: ============================================================
+2026-04-01 14:12:33,908 [INFO] AgentCore:   ZYVARON Agent STARTING
+2026-04-01 14:12:33,908 [INFO] AgentCore:   Agent ID    : agent_9212
+2026-04-01 14:12:33,909 [INFO] AgentCore:   Version     : 0.3.0
+2026-04-01 14:12:33,909 [INFO] AgentCore:   Remediation : SMART
+2026-04-01 14:12:33,909 [INFO] AgentCore:   Time        : 2026-04-01T14:12:33.908304
+2026-04-01 14:12:33,910 [INFO] AgentCore: ============================================================
+2026-04-01 14:12:33,910 [INFO] AgentCore: Running initial full scan...
+2026-04-01 14:12:37,548 [INFO] AgentCore:   System info collected [OK] | OS: Windows
+2026-04-01 14:12:37,548 [INFO] FileVault: Building initial file index...
+2026-04-01 14:12:37,549 [INFO] FileVault:   Scanning: C:\Users\Admin\Documents
+2026-04-01 14:12:37,927 [INFO] FileVault:   Scanning: C:\Users\Admin\Desktop
+2026-04-01 14:12:37,933 [INFO] FileVault: Index complete | 15 files indexed
+2026-04-01 14:12:38,302 [INFO] AgentCore:   File index built [OK] | 15 files indexed
+2026-04-01 14:12:38,304 [INFO] FileVault: Creating snapshot: snap_1775049158_startup
+2026-04-01 14:12:38,378 [INFO] FileVault: Snapshot complete | ID: snap_1775049158_startup | Files: 15
+2026-04-01 14:12:38,381 [INFO] AgentCore:   Startup snapshot created [OK] | 15 files | ID: snap_1775049158_startup
+2026-04-01 14:12:38,770 [INFO] PortScanner: Scanning 127.0.0.1 ports 1-10000
+2026-04-01 14:13:04,674 [INFO] PortScanner: Scan complete | 7 open ports | Risk score: 22 | Status: CRITICAL
+2026-04-01 14:13:04,674 [WARNING] PortScanner: CRITICAL PORT: 445 (SMB) — SMB exposed — common ransomware vector (EternalBlue)
+2026-04-01 14:13:05,151 [INFO] AgentCore:   Port scan done [OK] | 7 open ports found
+2026-04-01 14:13:05,418 [INFO] AgentCore: Initial scan complete [OK]
+2026-04-01 14:13:05,418 [INFO] AgentCore: All monitoring loops started [OK]
+2026-04-01 14:13:05,688 [INFO] AgentCore:   Mode changed: SMART → AUTO
+2026-04-01 14:14:07,987 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:14:08,392 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:14:08,393 [INFO] AgentCore: CVE vulnerability scan starting...
+2026-04-01 14:14:08,394 [INFO] CVEChecker: CVE scan starting...
+2026-04-01 14:14:09,059 [INFO] CVEChecker: Found 45 installed applications
+2026-04-01 14:14:09,060 [INFO] CVEChecker: Scanning 35 relevant apps (of 45 total)...
+2026-04-01 14:14:09,340 [INFO] AgentCore:   Mode changed: AUTO → SMART
+2026-04-01 14:14:11,061 [WARNING] CVEChecker:   Git 2.53.0: 4 CVE(s) found
+2026-04-01 14:14:13,075 [WARNING] CVEChecker:   Google Chrome 146.0.7680.167: 5 CVE(s) found
+2026-04-01 14:14:23,133 [WARNING] CVEChecker:   Python 3.14.3 3.14-64: 5 CVE(s) found
+2026-04-01 14:14:25,147 [WARNING] CVEChecker:   Python 3.14.3 (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 14:14:27,163 [WARNING] CVEChecker:   Python 3.14.3 Add to Path (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 14:14:29,182 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 14:14:31,191 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit symbols) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 14:14:33,205 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 14:14:35,222 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 14:14:37,242 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-01 14:14:39,245 [INFO] CVEChecker: CVE scan complete | 14 CVEs | Critical: 3 | High: 8
+2026-04-01 14:14:39,851 [INFO] AgentCore: CVE scan reported | 14 CVEs | Critical: 3 | High: 8
+2026-04-01 14:15:08,404 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:15:08,820 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:15:12,106 [INFO] AgentCore: Remediation check | 11 unresolved | Mode: SMART
+2026-04-01 14:15:12,169 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2009-2940 — Python 3.14.3 | [SMART] CVE CVE-2009-2940 — Python 3.14.3 in Unknown — patch Unknown to latest version
+2026-04-01 14:15:12,607 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2008-3142 — Python 3.14.3 | [SMART] CVE CVE-2008-3142 — Python 3.14.3 in Unknown — patch Unknown to latest version
+2026-04-01 14:15:12,876 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2007-5741 — Python 3.14.3 | [SMART] CVE CVE-2007-5741 — Python 3.14.3 in Unknown — patch Unknown to latest version
+2026-04-01 14:15:13,149 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2012-2055 — Git | [SMART] CVE CVE-2012-2055 — Git in Unknown — patch Unknown to latest version
+2026-04-01 14:15:13,425 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2026-3917 — Google Chrome | [SMART] CVE CVE-2026-3917 — Google Chrome in Unknown — patch Unknown to latest version
+2026-04-01 14:15:13,707 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2026-3915 — Google Chrome | [SMART] CVE CVE-2026-3915 — Google Chrome in Unknown — patch Unknown to latest version
+2026-04-01 14:15:13,970 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2026-3914 — Google Chrome | [SMART] CVE CVE-2026-3914 — Google Chrome in Unknown — patch Unknown to latest version
+2026-04-01 14:15:14,238 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2026-3913 — Google Chrome | [SMART] CVE CVE-2026-3913 — Google Chrome in Unknown — patch Unknown to latest version
+2026-04-01 14:15:14,504 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2026-3916 — Google Chrome | [SMART] CVE CVE-2026-3916 — Google Chrome in Unknown — patch Unknown to latest version
+2026-04-01 14:15:14,784 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2016-2315 — Git | [SMART] CVE CVE-2016-2315 — Git in Unknown — patch Unknown to latest version
+2026-04-01 14:15:15,070 [INFO] AgentCore:   [FIXED] CVE_PATCH_REQUIRED | CVE CVE-2015-7082 — Git | [SMART] CVE CVE-2015-7082 — Git in Unknown — patch Unknown to latest version
+2026-04-01 14:15:15,355 [INFO] AgentCore: Remediation summary | Total: 0 | Success: 0 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-01 14:16:08,836 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:16:09,358 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:17:09,370 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:17:09,773 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:18:09,779 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:18:10,171 [INFO] FileVault: Integrity check CLEAN | 15 files verified
+2026-04-01 14:19:10,183 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:19:10,185 [WARNING] FileVault: FILE DELETED: C:\Users\Admin\Documents\GDS.mhtml
+2026-04-01 14:19:10,598 [WARNING] FileVault: Integrity check ALERT | 0 modified, 1 deleted
+2026-04-01 14:19:11,025 [WARNING] AgentCore: File changes detected: 1 change(s)
+2026-04-01 14:19:11,026 [WARNING] AgentCore:   1 deleted file(s) — user can recover via File Vault dashboard
+2026-04-01 14:20:11,039 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:20:11,532 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:21:11,535 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:21:12,060 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:22:12,068 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:22:12,561 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:23:12,565 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:23:13,117 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:24:13,132 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:24:13,565 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:25:13,581 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:25:14,077 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:26:14,087 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:26:14,573 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:27:14,575 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:27:15,007 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:28:15,021 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:28:15,526 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:29:15,538 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:29:15,937 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:30:15,950 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:30:16,359 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:31:16,365 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:31:16,866 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:32:16,875 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:32:17,469 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:33:17,481 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:33:17,936 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:34:17,942 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:34:18,419 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:35:18,440 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:35:19,038 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:36:19,046 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:36:19,576 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:37:19,598 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:37:20,054 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:38:21,947 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:38:22,320 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:39:22,331 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:39:22,854 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:40:22,869 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:40:23,434 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:41:23,439 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:41:23,809 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:42:23,814 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:42:24,202 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:43:24,217 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:43:24,552 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:44:24,556 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:44:25,009 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:45:25,024 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:45:25,395 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:46:25,398 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:46:25,763 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:47:25,769 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:47:26,180 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:48:26,188 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:48:26,614 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:49:26,624 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:49:26,975 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:50:26,984 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:50:27,389 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:51:27,402 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:51:27,821 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:52:27,823 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:52:28,161 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:53:28,173 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:53:28,649 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:54:28,650 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:54:29,052 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:55:29,065 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:55:29,449 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:56:29,464 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:56:29,954 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:57:29,968 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:57:31,817 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:58:31,828 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:58:32,204 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 14:59:32,205 [INFO] FileVault: Running file integrity check...
+2026-04-01 14:59:32,566 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 15:00:32,575 [INFO] FileVault: Running file integrity check...
+2026-04-01 15:00:33,032 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 15:01:33,035 [INFO] FileVault: Running file integrity check...
+2026-04-01 15:01:33,434 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 15:02:33,444 [INFO] FileVault: Running file integrity check...
+2026-04-01 15:02:33,894 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-01 15:03:35,362 [INFO] FileVault: Running file integrity check...
+2026-04-01 15:03:35,807 [INFO] FileVault: Integrity check CLEAN | 14 files verified
+2026-04-14 21:10:06,571 [INFO] FileVault: FileVault initialized | Vault: vault
+2026-04-14 21:10:06,593 [INFO] Reporter: Reporter initialized | Server: http://localhost:8000 | Local: reports
+2026-04-14 21:10:06,908 [INFO] RemediationEngine: RemediationEngine initialized | Mode: SMART
+2026-04-14 21:10:08,901 [INFO] CVEChecker: CVEChecker initialized
+2026-04-14 21:10:08,914 [INFO] AgentCore: ZYVARON Agent initialized | ID: agent_13012
+2026-04-14 21:10:09,173 [INFO] AgentCore: ============================================================
+2026-04-14 21:10:09,180 [INFO] AgentCore:   ZYVARON Agent STARTING
+2026-04-14 21:10:09,181 [INFO] AgentCore:   Agent ID    : agent_13012
+2026-04-14 21:10:09,181 [INFO] AgentCore:   Version     : 0.3.0
+2026-04-14 21:10:09,181 [INFO] AgentCore:   Remediation : SMART
+2026-04-14 21:10:09,182 [INFO] AgentCore:   Time        : 2026-04-14T21:10:09.173199
+2026-04-14 21:10:09,183 [INFO] AgentCore: ============================================================
+2026-04-14 21:10:09,183 [INFO] AgentCore: Running initial full scan...
+2026-04-14 21:10:29,173 [INFO] AgentCore:   System info collected [OK] | OS: Windows
+2026-04-14 21:10:29,173 [INFO] FileVault: Building initial file index...
+2026-04-14 21:10:29,174 [INFO] FileVault:   Scanning: C:\Users\Admin\Documents
+2026-04-14 21:10:40,012 [INFO] FileVault:   Scanning: C:\Users\Admin\Desktop
+2026-04-14 21:10:40,070 [INFO] FileVault: Index complete | 30 files indexed
+2026-04-14 21:10:42,373 [INFO] AgentCore:   File index built [OK] | 30 files indexed
+2026-04-14 21:10:42,376 [INFO] FileVault: Creating snapshot: snap_1776197442_startup
+2026-04-14 21:10:42,725 [INFO] FileVault: Snapshot complete | ID: snap_1776197442_startup | Files: 30
+2026-04-14 21:10:42,748 [INFO] AgentCore:   Startup snapshot created [OK] | 30 files | ID: snap_1776197442_startup
+2026-04-14 21:10:45,059 [INFO] PortScanner: Scanning 127.0.0.1 ports 1-10000
+2026-04-14 21:11:11,178 [INFO] PortScanner: Scan complete | 6 open ports | Risk score: 21 | Status: CRITICAL
+2026-04-14 21:11:11,183 [WARNING] PortScanner: CRITICAL PORT: 445 (SMB) — SMB exposed — common ransomware vector (EternalBlue)
+2026-04-14 21:11:13,679 [INFO] AgentCore:   Port scan done [OK] | 6 open ports found
+2026-04-14 21:11:16,280 [INFO] AgentCore: Initial scan complete [OK]
+2026-04-14 21:11:16,281 [INFO] AgentCore: All monitoring loops started [OK]
+2026-04-14 21:12:20,702 [INFO] FileVault: Running file integrity check...
+2026-04-14 21:12:25,651 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-14 21:12:25,687 [INFO] AgentCore: CVE vulnerability scan starting...
+2026-04-14 21:12:25,741 [INFO] CVEChecker: CVE scan starting...
+2026-04-14 21:12:48,794 [INFO] CVEChecker: Found 45 installed applications
+2026-04-14 21:12:48,794 [INFO] CVEChecker: Scanning 35 relevant apps (of 45 total)...
+2026-04-14 21:12:54,352 [WARNING] CVEChecker:   Git 2.53.0: 4 CVE(s) found
+2026-04-14 21:12:57,496 [WARNING] CVEChecker:   Google Chrome 146.0.7680.180: 5 CVE(s) found
+2026-04-14 21:13:11,820 [WARNING] CVEChecker:   Python 3.14.3 3.14-64: 5 CVE(s) found
+2026-04-14 21:13:14,858 [WARNING] CVEChecker:   Python 3.14.3 (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:13:16,874 [WARNING] CVEChecker:   Python 3.14.3 Add to Path (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:13:18,888 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:13:20,895 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit symbols) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:13:22,917 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:13:24,923 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:13:25,696 [INFO] FileVault: Running file integrity check...
+2026-04-14 21:13:27,228 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-14 21:13:27,229 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:13:29,231 [INFO] CVEChecker: CVE scan complete | 14 CVEs | Critical: 3 | High: 8
+2026-04-14 21:13:31,539 [INFO] AgentCore: CVE scan reported | 14 CVEs | Critical: 3 | High: 8
+2026-04-14 21:14:27,244 [INFO] FileVault: Running file integrity check...
+2026-04-14 21:14:27,867 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-14 21:14:46,663 [INFO] AgentCore: Shutdown signal received
+2026-04-14 21:14:46,704 [INFO] AgentCore: Agent tasks cancelled — shutting down.
+2026-04-14 21:38:34,816 [INFO] FileVault: FileVault initialized | Vault: vault
+2026-04-14 21:38:34,819 [INFO] Reporter: Reporter initialized | Server: http://localhost:8000 | Local: reports
+2026-04-14 21:38:34,836 [INFO] RemediationEngine: RemediationEngine initialized | Mode: SMART
+2026-04-14 21:38:35,199 [INFO] CVEChecker: CVEChecker initialized
+2026-04-14 21:38:35,201 [INFO] AgentCore: ZYVARON Agent initialized | ID: agent_3972
+2026-04-14 21:38:35,216 [INFO] AgentCore: ============================================================
+2026-04-14 21:38:35,234 [INFO] AgentCore:   ZYVARON Agent STARTING
+2026-04-14 21:38:35,263 [INFO] AgentCore:   Agent ID    : agent_3972
+2026-04-14 21:38:35,282 [INFO] AgentCore:   Version     : 0.3.0
+2026-04-14 21:38:35,298 [INFO] AgentCore:   Remediation : SMART
+2026-04-14 21:38:35,305 [INFO] AgentCore:   Time        : 2026-04-14T21:38:35.216584
+2026-04-14 21:38:35,332 [INFO] AgentCore: ============================================================
+2026-04-14 21:38:35,347 [INFO] AgentCore: Running initial full scan...
+2026-04-14 21:38:59,062 [INFO] AgentCore:   System info collected [OK] | OS: Windows
+2026-04-14 21:38:59,062 [INFO] FileVault: Building initial file index...
+2026-04-14 21:38:59,064 [INFO] FileVault:   Scanning: C:\Users\Admin\Documents
+2026-04-14 21:39:01,742 [INFO] FileVault:   Scanning: C:\Users\Admin\Desktop
+2026-04-14 21:39:01,793 [INFO] FileVault: Index complete | 30 files indexed
+2026-04-14 21:39:02,192 [INFO] AgentCore:   File index built [OK] | 30 files indexed
+2026-04-14 21:39:02,193 [INFO] FileVault: Creating snapshot: snap_1776199142_startup
+2026-04-14 21:39:04,576 [INFO] FileVault: Snapshot complete | ID: snap_1776199142_startup | Files: 30
+2026-04-14 21:39:04,576 [INFO] AgentCore:   Startup snapshot created [OK] | 30 files | ID: snap_1776199142_startup
+2026-04-14 21:39:05,839 [INFO] PortScanner: Scanning 127.0.0.1 ports 1-10000
+2026-04-14 21:39:33,662 [INFO] PortScanner: Scan complete | 7 open ports | Risk score: 22 | Status: CRITICAL
+2026-04-14 21:39:33,669 [WARNING] PortScanner: CRITICAL PORT: 445 (SMB) — SMB exposed — common ransomware vector (EternalBlue)
+2026-04-14 21:39:35,273 [INFO] AgentCore:   Port scan done [OK] | 7 open ports found
+2026-04-14 21:39:36,887 [INFO] AgentCore: Remediation check | 4 unresolved | Mode: SMART
+2026-04-14 21:39:36,887 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-14 21:39:36,890 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:39:36,912 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-14 21:39:36,971 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:39:40,698 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:39:41,214 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:39:41,605 [INFO] AgentCore: Remediation summary | Total: 2 | Success: 2 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-14 21:39:41,616 [INFO] AgentCore: Initial scan complete [OK]
+2026-04-14 21:39:41,627 [INFO] AgentCore: All monitoring loops started [OK]
+2026-04-14 21:40:45,405 [INFO] FileVault: Running file integrity check...
+2026-04-14 21:40:50,979 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-14 21:40:50,991 [INFO] AgentCore: CVE vulnerability scan starting...
+2026-04-14 21:40:51,020 [INFO] CVEChecker: CVE scan starting...
+2026-04-14 21:41:01,094 [INFO] CVEChecker: Found 45 installed applications
+2026-04-14 21:41:01,095 [INFO] CVEChecker: Scanning 35 relevant apps (of 45 total)...
+2026-04-14 21:41:03,097 [WARNING] CVEChecker:   Git 2.53.0: 4 CVE(s) found
+2026-04-14 21:41:05,108 [WARNING] CVEChecker:   Google Chrome 146.0.7680.180: 5 CVE(s) found
+2026-04-14 21:41:15,169 [WARNING] CVEChecker:   Python 3.14.3 3.14-64: 5 CVE(s) found
+2026-04-14 21:41:17,184 [WARNING] CVEChecker:   Python 3.14.3 (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:41:19,200 [WARNING] CVEChecker:   Python 3.14.3 Add to Path (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:41:21,204 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:41:23,216 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit symbols) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:41:25,222 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:41:27,244 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:41:29,251 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-14 21:41:31,261 [INFO] CVEChecker: CVE scan complete | 14 CVEs | Critical: 3 | High: 8
+2026-04-14 21:41:31,599 [INFO] AgentCore: CVE scan reported | 14 CVEs | Critical: 3 | High: 8
+2026-04-14 21:41:50,998 [INFO] FileVault: Running file integrity check...
+2026-04-14 21:41:51,718 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-14 21:42:04,853 [INFO] AgentCore: Remediation check | 4 unresolved | Mode: SMART
+2026-04-14 21:42:04,854 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-14 21:42:04,856 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:42:04,858 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-14 21:42:04,881 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:42:06,080 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:42:06,353 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:42:06,622 [INFO] AgentCore: Remediation summary | Total: 4 | Success: 4 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-14 21:42:51,730 [INFO] FileVault: Running file integrity check...
+2026-04-14 21:42:52,969 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-14 21:43:09,749 [INFO] AgentCore: Remediation check | 4 unresolved | Mode: SMART
+2026-04-14 21:43:09,755 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-14 21:43:09,757 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:43:09,759 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-14 21:43:09,782 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:43:10,968 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:43:11,239 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:43:11,503 [INFO] AgentCore: Remediation summary | Total: 6 | Success: 6 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-14 21:43:52,985 [INFO] FileVault: Running file integrity check...
+2026-04-14 21:43:54,307 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-14 21:44:15,141 [INFO] AgentCore: Remediation check | 4 unresolved | Mode: SMART
+2026-04-14 21:44:15,142 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-14 21:44:15,144 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:44:15,148 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-14 21:44:15,166 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:44:17,882 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:44:18,301 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:44:18,631 [INFO] AgentCore: Remediation summary | Total: 8 | Success: 8 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-14 21:44:54,327 [INFO] FileVault: Running file integrity check...
+2026-04-14 21:44:55,055 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-14 21:45:21,369 [INFO] AgentCore: Remediation check | 5 unresolved | Mode: SMART
+2026-04-14 21:45:21,370 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-14 21:45:21,371 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:45:21,372 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-14 21:45:21,385 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:45:22,259 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-14 21:45:22,523 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-14 21:45:22,788 [INFO] AgentCore: Remediation summary | Total: 10 | Success: 10 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-14 21:45:55,064 [INFO] FileVault: Running file integrity check...
+2026-04-14 21:45:55,967 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-16 00:45:44,938 [INFO] FileVault: FileVault initialized | Vault: vault
+2026-04-16 00:45:44,961 [INFO] Reporter: Reporter initialized | Server: http://localhost:8000 | Local: reports
+2026-04-16 00:45:44,996 [INFO] RemediationEngine: RemediationEngine initialized | Mode: SMART
+2026-04-16 00:45:45,124 [INFO] CVEChecker: CVEChecker initialized
+2026-04-16 00:45:45,124 [INFO] AgentCore: ZYVARON Agent initialized | ID: agent_13168
+2026-04-16 00:45:45,180 [INFO] AgentCore: ============================================================
+2026-04-16 00:45:45,180 [INFO] AgentCore:   ZYVARON Agent STARTING
+2026-04-16 00:45:45,180 [INFO] AgentCore:   Agent ID    : agent_13168
+2026-04-16 00:45:45,181 [INFO] AgentCore:   Version     : 0.3.0
+2026-04-16 00:45:45,181 [INFO] AgentCore:   Remediation : SMART
+2026-04-16 00:45:45,181 [INFO] AgentCore:   Time        : 2026-04-16T00:45:45.180387
+2026-04-16 00:45:45,181 [INFO] AgentCore: ============================================================
+2026-04-16 00:45:45,181 [INFO] AgentCore: Running initial full scan...
+2026-04-16 00:46:03,361 [INFO] AgentCore:   System info collected [OK] | OS: Windows
+2026-04-16 00:46:03,361 [INFO] FileVault: Building initial file index...
+2026-04-16 00:46:03,362 [INFO] FileVault:   Scanning: C:\Users\Admin\Documents
+2026-04-16 00:46:15,010 [INFO] FileVault:   Scanning: C:\Users\Admin\Desktop
+2026-04-16 00:46:15,145 [INFO] FileVault: Index complete | 30 files indexed
+2026-04-16 00:46:17,441 [INFO] AgentCore:   File index built [OK] | 30 files indexed
+2026-04-16 00:46:17,441 [INFO] FileVault: Creating snapshot: snap_1776296777_startup
+2026-04-16 00:46:17,665 [INFO] FileVault: Snapshot complete | ID: snap_1776296777_startup | Files: 30
+2026-04-16 00:46:17,671 [INFO] AgentCore:   Startup snapshot created [OK] | 30 files | ID: snap_1776296777_startup
+2026-04-16 00:46:19,966 [INFO] PortScanner: Scanning 127.0.0.1 ports 1-10000
+2026-04-16 00:46:46,436 [INFO] PortScanner: Scan complete | 5 open ports | Risk score: 20 | Status: CRITICAL
+2026-04-16 00:46:46,437 [WARNING] PortScanner: CRITICAL PORT: 445 (SMB) — SMB exposed — common ransomware vector (EternalBlue)
+2026-04-16 00:46:48,861 [INFO] AgentCore:   Port scan done [OK] | 5 open ports found
+2026-04-16 00:46:51,192 [INFO] AgentCore: Initial scan complete [OK]
+2026-04-16 00:46:51,192 [INFO] AgentCore: All monitoring loops started [OK]
+2026-04-16 00:47:54,228 [INFO] FileVault: Running file integrity check...
+2026-04-16 00:47:55,739 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-16 00:47:55,740 [INFO] AgentCore: CVE vulnerability scan starting...
+2026-04-16 00:47:55,741 [INFO] CVEChecker: CVE scan starting...
+2026-04-16 00:47:58,436 [INFO] CVEChecker: Found 45 installed applications
+2026-04-16 00:47:58,436 [INFO] CVEChecker: Scanning 35 relevant apps (of 45 total)...
+2026-04-16 00:47:58,826 [INFO] AgentCore: Remediation check | 5 unresolved | Mode: SMART
+2026-04-16 00:47:58,827 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-16 00:47:58,828 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:47:58,835 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-16 00:47:58,859 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:47:59,273 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:47:59,535 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:47:59,800 [INFO] AgentCore: Remediation summary | Total: 2 | Success: 2 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-16 00:48:21,832 [WARNING] CVEChecker:   Git 2.53.0: 4 CVE(s) found
+2026-04-16 00:48:25,074 [WARNING] CVEChecker:   Google Chrome 147.0.7727.56: 5 CVE(s) found
+2026-04-16 00:48:40,266 [WARNING] CVEChecker:   Python 3.14.3 3.14-64: 5 CVE(s) found
+2026-04-16 00:48:43,496 [WARNING] CVEChecker:   Python 3.14.3 (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-16 00:48:45,507 [WARNING] CVEChecker:   Python 3.14.3 Add to Path (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-16 00:48:47,517 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-16 00:48:49,518 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit symbols) 3.14.3150.0: 5 CVE(s) found
+2026-04-16 00:48:51,527 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-16 00:48:53,529 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-16 00:48:55,540 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-16 00:48:55,745 [INFO] FileVault: Running file integrity check...
+2026-04-16 00:48:56,260 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-16 00:48:57,541 [INFO] CVEChecker: CVE scan complete | 14 CVEs | Critical: 2 | High: 9
+2026-04-16 00:48:57,945 [INFO] AgentCore: CVE scan reported | 14 CVEs | Critical: 2 | High: 9
+2026-04-16 00:49:02,325 [INFO] AgentCore: Remediation check | 6 unresolved | Mode: SMART
+2026-04-16 00:49:02,326 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-16 00:49:02,328 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:49:02,329 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-16 00:49:02,343 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:49:02,362 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:49:02,621 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:49:02,890 [INFO] AgentCore: Remediation summary | Total: 4 | Success: 4 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-16 00:49:56,275 [INFO] FileVault: Running file integrity check...
+2026-04-16 00:49:56,859 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-16 00:50:05,742 [INFO] AgentCore: Remediation check | 6 unresolved | Mode: SMART
+2026-04-16 00:50:05,743 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-16 00:50:05,744 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:50:05,745 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-16 00:50:05,794 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:50:05,899 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:50:08,406 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:50:08,742 [INFO] AgentCore: Remediation summary | Total: 6 | Success: 6 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-16 00:50:56,864 [INFO] FileVault: Running file integrity check...
+2026-04-16 00:50:57,512 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-16 00:51:11,841 [INFO] AgentCore: Remediation check | 6 unresolved | Mode: SMART
+2026-04-16 00:51:11,842 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-16 00:51:11,843 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:51:11,843 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-16 00:51:11,858 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:51:11,886 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:51:12,159 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:51:12,419 [INFO] AgentCore: Remediation summary | Total: 8 | Success: 8 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-16 00:51:57,522 [INFO] FileVault: Running file integrity check...
+2026-04-16 00:51:58,070 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-16 00:52:15,338 [INFO] AgentCore: Remediation check | 8 unresolved | Mode: SMART
+2026-04-16 00:52:15,348 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-16 00:52:15,350 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:52:15,351 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-16 00:52:15,368 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:52:15,394 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:52:15,702 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:52:15,965 [INFO] AgentCore: Remediation summary | Total: 10 | Success: 10 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-16 00:52:58,077 [INFO] FileVault: Running file integrity check...
+2026-04-16 00:52:58,535 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-16 00:53:18,305 [INFO] AgentCore: Remediation check | 8 unresolved | Mode: SMART
+2026-04-16 00:53:18,306 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-16 00:53:18,308 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:53:18,308 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-16 00:53:18,310 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:53:18,329 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:53:18,587 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:53:18,852 [INFO] AgentCore: Remediation summary | Total: 12 | Success: 12 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-16 00:53:58,542 [INFO] FileVault: Running file integrity check...
+2026-04-16 00:53:59,570 [INFO] FileVault: Integrity check CLEAN | 30 files verified
+2026-04-16 00:54:21,620 [INFO] AgentCore: Remediation check | 9 unresolved | Mode: SMART
+2026-04-16 00:54:21,620 [INFO] RemediationEngine: Port 3389 already blocked — reporting resolved to server
+2026-04-16 00:54:21,622 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:54:21,623 [INFO] RemediationEngine: Port 445 already blocked — reporting resolved to server
+2026-04-16 00:54:21,633 [INFO] RemediationEngine: REMEDIATION [FIXED] | PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:54:21,656 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 3389 (RDP) | Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389
+2026-04-16 00:54:22,106 [INFO] AgentCore:   [FIXED] PORT_BLOCKED | Port 445 (SMB) | Windows Firewall rule active: ZYVARON-BLOCK-SMB-445
+2026-04-16 00:54:22,379 [INFO] AgentCore: Remediation summary | Total: 14 | Success: 14 | Failed: 0 | Ports blocked: [3389, 445]
+2026-04-20 20:21:12,341 [INFO] FileVault: FileVault initialized | Vault: vault
+2026-04-20 20:21:12,377 [INFO] Reporter: Reporter initialized | Server: http://localhost:8000 | Local: reports
+2026-04-20 20:21:12,397 [INFO] RemediationEngine: RemediationEngine initialized | Mode: SMART
+2026-04-20 20:21:12,398 [INFO] CVEChecker: CVEChecker initialized
+2026-04-20 20:21:12,398 [INFO] AgentCore: ZYVARON Agent initialized | ID: agent_6316
+2026-04-20 20:21:12,449 [INFO] AgentCore: ============================================================
+2026-04-20 20:21:12,450 [INFO] AgentCore:   ZYVARON Agent STARTING
+2026-04-20 20:21:12,450 [INFO] AgentCore:   Agent ID    : agent_6316
+2026-04-20 20:21:12,450 [INFO] AgentCore:   Version     : 0.3.0
+2026-04-20 20:21:12,450 [INFO] AgentCore:   Remediation : SMART
+2026-04-20 20:21:12,451 [INFO] AgentCore:   Time        : 2026-04-20T20:21:12.449769
+2026-04-20 20:21:12,451 [INFO] AgentCore: ============================================================
+2026-04-20 20:21:12,451 [INFO] AgentCore: Running initial full scan...
+2026-04-20 20:21:38,667 [INFO] AgentCore:   System info collected [OK] | OS: Windows
+2026-04-20 20:21:38,668 [INFO] FileVault: Building initial file index...
+2026-04-20 20:21:38,669 [INFO] FileVault:   Scanning: C:\Users\Admin\Documents
+2026-04-20 20:21:55,379 [INFO] FileVault:   Scanning: C:\Users\Admin\Desktop
+2026-04-20 20:21:55,452 [INFO] FileVault: Index complete | 32 files indexed
+2026-04-20 20:21:57,763 [INFO] AgentCore:   File index built [OK] | 32 files indexed
+2026-04-20 20:21:57,769 [INFO] FileVault: Creating snapshot: snap_1776712917_startup
+2026-04-20 20:22:00,854 [INFO] FileVault: Snapshot complete | ID: snap_1776712917_startup | Files: 32
+2026-04-20 20:22:00,855 [INFO] AgentCore:   Startup snapshot created [OK] | 32 files | ID: snap_1776712917_startup
+2026-04-20 20:22:03,226 [INFO] PortScanner: Scanning 127.0.0.1 ports 1-10000
+2026-04-20 20:22:29,384 [INFO] PortScanner: Scan complete | 6 open ports | Risk score: 21 | Status: CRITICAL
+2026-04-20 20:22:29,384 [WARNING] PortScanner: CRITICAL PORT: 445 (SMB) — SMB exposed — common ransomware vector (EternalBlue)
+2026-04-20 20:22:31,727 [INFO] AgentCore:   Port scan done [OK] | 6 open ports found
+2026-04-20 20:22:34,018 [INFO] AgentCore: Initial scan complete [OK]
+2026-04-20 20:22:34,019 [INFO] AgentCore: All monitoring loops started [OK]
+2026-04-20 20:23:37,335 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:23:37,683 [WARNING] FileVault: FILE DELETED: C:\Users\Admin\Documents\Z Website\ZYVARON_Website.html
+2026-04-20 20:23:38,167 [WARNING] FileVault: Integrity check ALERT | 0 modified, 1 deleted
+2026-04-20 20:23:38,171 [INFO] AgentCore: CVE vulnerability scan starting...
+2026-04-20 20:23:38,181 [INFO] CVEChecker: CVE scan starting...
+2026-04-20 20:23:42,757 [INFO] CVEChecker: Found 46 installed applications
+2026-04-20 20:23:42,758 [INFO] CVEChecker: Scanning 36 relevant apps (of 46 total)...
+2026-04-20 20:23:43,028 [WARNING] AgentCore: File changes detected: 1 change(s)
+2026-04-20 20:23:43,030 [WARNING] AgentCore:   1 deleted file(s) — user can recover via File Vault dashboard
+2026-04-20 20:23:47,483 [WARNING] CVEChecker:   Git 2.53.0: 4 CVE(s) found
+2026-04-20 20:23:50,656 [WARNING] CVEChecker:   Google Chrome 147.0.7727.56: 5 CVE(s) found
+2026-04-20 20:24:08,785 [WARNING] CVEChecker:   Python 3.14.3 3.14-64: 5 CVE(s) found
+2026-04-20 20:24:12,634 [WARNING] CVEChecker:   Python 3.14.3 (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-20 20:24:14,640 [WARNING] CVEChecker:   Python 3.14.3 Add to Path (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-20 20:24:16,643 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-20 20:24:18,649 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit symbols) 3.14.3150.0: 5 CVE(s) found
+2026-04-20 20:24:20,663 [WARNING] CVEChecker:   Python 3.14.3 Core Interpreter (64-bit) 3.14.3150.0: 5 CVE(s) found
+2026-04-20 20:24:22,672 [WARNING] CVEChecker:   Python 3.14.3 Development Libraries (64-bit debug) 3.14.3150.0: 5 CVE(s) found
+2026-04-20 20:24:24,685 [INFO] CVEChecker: CVE scan complete | 14 CVEs | Critical: 2 | High: 9
+2026-04-20 20:24:24,955 [INFO] AgentCore: CVE scan reported | 14 CVEs | Critical: 2 | High: 9
+2026-04-20 20:24:43,032 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:24:43,810 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:25:43,814 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:25:44,342 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:26:44,344 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:26:45,093 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:27:45,100 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:27:45,753 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:28:45,760 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:28:46,218 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:29:46,233 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:29:46,836 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:30:46,840 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:30:47,848 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:31:47,853 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:31:48,491 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:32:48,497 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:32:49,609 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:33:49,616 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:33:50,739 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:34:50,747 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:34:56,985 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:35:56,996 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:35:57,653 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:36:57,661 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:36:58,246 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:37:58,252 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:37:58,982 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:38:58,988 [INFO] FileVault: Running file integrity check...
+2026-04-20 20:38:59,493 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-20 20:39:28,823 [INFO] AgentCore: Shutdown signal received
+2026-04-20 20:39:28,825 [INFO] AgentCore: Agent tasks cancelled — shutting down.
+2026-04-21 18:31:12,505 [INFO] FileVault: FileVault initialized | Vault: vault
+2026-04-21 18:31:12,770 [INFO] Reporter: Reporter initialized | Server: http://localhost:8000 | Local: reports
+2026-04-21 18:31:12,916 [INFO] RemediationEngine: RemediationEngine initialized | Mode: SMART
+2026-04-21 18:31:13,320 [INFO] CVEChecker: CVEChecker initialized
+2026-04-21 18:31:13,320 [INFO] AgentCore: ZYVARON Agent initialized | ID: agent_16812
+2026-04-21 18:31:13,461 [INFO] AgentCore: ============================================================
+2026-04-21 18:31:13,461 [INFO] AgentCore:   ZYVARON Agent STARTING
+2026-04-21 18:31:13,462 [INFO] AgentCore:   Agent ID    : agent_16812
+2026-04-21 18:31:13,462 [INFO] AgentCore:   Version     : 0.3.0
+2026-04-21 18:31:13,462 [INFO] AgentCore:   Remediation : SMART
+2026-04-21 18:31:13,462 [INFO] AgentCore:   Time        : 2026-04-21T18:31:13.461370
+2026-04-21 18:31:13,463 [INFO] AgentCore: ============================================================
+2026-04-21 18:31:13,463 [INFO] AgentCore: Running initial full scan...
+2026-04-21 18:32:00,966 [INFO] AgentCore:   System info collected [OK] | OS: Windows
+2026-04-21 18:32:00,967 [INFO] FileVault: Building initial file index...
+2026-04-21 18:32:00,967 [INFO] FileVault:   Scanning: C:\Users\Admin\Documents
+2026-04-21 18:32:33,300 [INFO] FileVault:   Scanning: C:\Users\Admin\Desktop
+2026-04-21 18:32:33,395 [INFO] FileVault: Index complete | 32 files indexed
+2026-04-21 18:32:35,685 [INFO] AgentCore:   File index built [OK] | 32 files indexed
+2026-04-21 18:32:35,709 [INFO] FileVault: Creating snapshot: snap_1776792755_startup
+2026-04-21 18:32:36,451 [INFO] FileVault: Snapshot complete | ID: snap_1776792755_startup | Files: 32
+2026-04-21 18:32:36,452 [INFO] AgentCore:   Startup snapshot created [OK] | 32 files | ID: snap_1776792755_startup
+2026-04-21 18:32:38,758 [INFO] PortScanner: Scanning 127.0.0.1 ports 1-10000
+2026-04-21 18:33:09,916 [INFO] PortScanner: Scan complete | 7 open ports | Risk score: 22 | Status: CRITICAL
+2026-04-21 18:33:09,917 [WARNING] PortScanner: CRITICAL PORT: 445 (SMB) — SMB exposed — common ransomware vector (EternalBlue)
+2026-04-21 18:33:10,890 [INFO] AgentCore:   Port scan done [OK] | 7 open ports found
+2026-04-21 18:33:12,681 [INFO] AgentCore: Initial scan complete [OK]
+2026-04-21 18:33:12,682 [INFO] AgentCore: All monitoring loops started [OK]
+2026-04-21 18:34:16,059 [INFO] FileVault: Running file integrity check...
+2026-04-21 18:35:08,332 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-21 18:35:08,332 [INFO] AgentCore: CVE vulnerability scan starting...
+2026-04-21 18:35:08,333 [INFO] CVEChecker: CVE scan starting...
+2026-04-21 18:35:44,112 [WARNING] CVEChecker: Software enumeration error: Command '['powershell', '-NonInteractive', '-Command', "\n$paths = @(\n    'HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*',\n    'HKLM:\\Software\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*',\n    'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*'\n)\n$apps = Get-ItemProperty $paths -ErrorAction SilentlyContinue |\n    Where-Object { $_.DisplayName -ne $null -and $_.DisplayName -ne '' } |\n    Select-Object DisplayName, DisplayVersion, Publisher |\n    Sort-Object DisplayName -Unique\n$apps | ConvertTo-Json -Compress\n"]' timed out after 30 seconds
+2026-04-21 18:35:44,113 [INFO] CVEChecker: Found 2 installed applications
+2026-04-21 18:35:44,113 [INFO] CVEChecker: Scanning 2 relevant apps (of 2 total)...
+2026-04-21 18:35:51,591 [WARNING] CVEChecker:   Python 3.14: 5 CVE(s) found
+2026-04-21 18:35:53,592 [INFO] CVEChecker: CVE scan complete | 5 CVEs | Critical: 0 | High: 3
+2026-04-21 18:35:54,162 [INFO] AgentCore: CVE scan reported | 5 CVEs | Critical: 0 | High: 3
+2026-04-21 18:36:08,342 [INFO] FileVault: Running file integrity check...
+2026-04-21 18:36:20,136 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-21 18:37:20,156 [INFO] FileVault: Running file integrity check...
+2026-04-21 18:37:20,633 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-21 18:38:20,642 [INFO] FileVault: Running file integrity check...
+2026-04-21 18:38:21,137 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-21 18:39:21,141 [INFO] FileVault: Running file integrity check...
+2026-04-21 18:39:21,553 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-21 18:40:21,564 [INFO] FileVault: Running file integrity check...
+2026-04-21 18:40:22,015 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-21 18:41:22,019 [INFO] FileVault: Running file integrity check...
+2026-04-21 18:41:22,617 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-21 18:42:22,628 [INFO] FileVault: Running file integrity check...
+2026-04-21 18:42:23,114 [INFO] FileVault: Integrity check CLEAN | 32 files verified
+2026-04-21 18:42:54,212 [INFO] AgentCore: Shutdown signal received
+2026-04-21 18:42:54,213 [INFO] AgentCore: Agent tasks cancelled — shutting down.

@@ -23,20 +23,10 @@ def list_devices(db: Session = Depends(get_db)):
     for d in devices:
         last_seen = d.last_seen or d.first_seen
         online = (now - last_seen).seconds < 300 if last_seen else False
-        # Count indexed files for this device
-        indexed_files = db.query(FileEvent).filter(
-            FileEvent.device_id == d.id,
-            FileEvent.event_type == "new"
-        ).count()
-        # Also check initial index report
-        total_indexed = db.query(FileEvent).filter(
-            FileEvent.device_id == d.id
-        ).count()
         result.append({
             "id": d.id, "hostname": d.hostname, "platform": d.platform,
             "architecture": d.architecture, "risk_score": d.risk_score,
             "online": online,
-            "indexed_files": d.indexed_files or 0,
             "first_seen": d.first_seen.isoformat() if d.first_seen else None,
             "last_seen": d.last_seen.isoformat() if d.last_seen else None,
         })

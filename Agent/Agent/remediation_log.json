@@ -11,7 +11,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
       "severity": "HIGH",
-      "timestamp": "2026-03-20T18:07:31.918210"
+      "timestamp": "2026-04-15T23:47:58.828046"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -19,7 +19,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
       "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:07:31.968600"
+      "timestamp": "2026-04-15T23:47:58.836047"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -27,7 +27,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
       "severity": "HIGH",
-      "timestamp": "2026-03-20T18:08:35.026726"
+      "timestamp": "2026-04-15T23:49:02.327433"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -35,7 +35,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
       "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:08:35.031635"
+      "timestamp": "2026-04-15T23:49:02.330191"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -43,7 +43,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
       "severity": "HIGH",
-      "timestamp": "2026-03-20T18:09:38.147030"
+      "timestamp": "2026-04-15T23:50:05.743679"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -51,7 +51,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
       "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:09:38.156715"
+      "timestamp": "2026-04-15T23:50:05.746009"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -59,7 +59,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
       "severity": "HIGH",
-      "timestamp": "2026-03-20T18:10:41.219274"
+      "timestamp": "2026-04-15T23:51:11.842409"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -67,7 +67,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
       "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:10:41.225811"
+      "timestamp": "2026-04-15T23:51:11.844254"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -75,7 +75,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
       "severity": "HIGH",
-      "timestamp": "2026-03-20T18:11:44.349096"
+      "timestamp": "2026-04-15T23:52:15.349597"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -83,7 +83,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
       "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:11:44.356108"
+      "timestamp": "2026-04-15T23:52:15.352258"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -91,7 +91,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
       "severity": "HIGH",
-      "timestamp": "2026-03-20T18:12:47.410170"
+      "timestamp": "2026-04-15T23:53:18.306803"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -99,7 +99,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
       "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:12:47.415716"
+      "timestamp": "2026-04-15T23:53:18.308893"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -107,7 +107,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
       "severity": "HIGH",
-      "timestamp": "2026-03-20T18:13:50.499564"
+      "timestamp": "2026-04-15T23:54:21.621451"
     },
     {
       "action_type": "PORT_BLOCKED",
@@ -115,695 +115,7 @@
       "success": true,
       "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
       "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:13:50.505089"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:14:53.632450"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:14:53.639864"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:15:56.739173"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:15:56.808548"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:16:59.886376"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:16:59.893845"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:18:03.107438"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:18:03.112713"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:19:06.499411"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:19:06.506238"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:20:09.625356"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:20:09.633977"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:21:12.902488"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:21:12.908619"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:22:16.263465"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:22:16.273366"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:23:19.892853"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:23:19.901579"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:24:23.263196"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:24:23.270867"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:25:26.688898"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:25:26.702463"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:26:38.573492"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:26:38.581087"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:27:41.960297"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:27:42.000574"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:28:45.731585"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:28:45.739198"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:29:54.564757"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:29:54.575965"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:30:58.763501"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:30:58.777289"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:32:02.833885"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:32:02.935378"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:33:06.856437"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:33:06.865456"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:34:10.849486"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:34:10.857453"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:35:14.631685"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:35:14.638171"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:36:17.925609"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:36:17.933023"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:37:21.395790"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:37:21.403999"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:38:24.807686"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:38:24.817628"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:39:28.047835"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:39:28.092958"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:40:31.463548"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:40:31.473055"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:41:35.194891"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:41:35.202383"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:42:38.575681"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:42:38.583368"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:43:42.101797"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:43:42.110108"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:44:45.422645"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:44:45.431366"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:45:48.799237"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:45:48.821068"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:46:52.196499"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:46:52.208782"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:47:55.689513"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:47:55.694361"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:48:59.211273"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:48:59.286332"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:50:02.760977"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:50:02.771231"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:51:06.125398"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:51:06.132075"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:52:09.508844"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:52:09.516172"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:53:12.834986"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:53:12.841424"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:54:16.127641"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:54:16.136127"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:55:19.373885"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:55:19.398520"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:56:22.717389"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:56:22.757280"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:57:26.179961"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:57:26.194046"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:58:30.513177"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:58:30.522320"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 3389 (RDP)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-RDP-3389",
-      "severity": "HIGH",
-      "timestamp": "2026-03-20T18:59:34.571366"
-    },
-    {
-      "action_type": "PORT_BLOCKED",
-      "target": "Port 445 (SMB)",
-      "success": true,
-      "details": "Windows Firewall rule active: ZYVARON-BLOCK-SMB-445",
-      "severity": "CRITICAL",
-      "timestamp": "2026-03-20T18:59:34.581618"
+      "timestamp": "2026-04-15T23:54:21.623683"
     }
   ]
 }
