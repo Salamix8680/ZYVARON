@@ -21,7 +21,7 @@ class AlertEngine:
 
         # High CPU usage
         cpu_usage = cpu.get("usage_percent", 0)
-        if cpu_usage > 90:
+        if cpu_usage > 97:
             alerts.append({
                 "type": "high_cpu",
                 "severity": "HIGH",
@@ -32,7 +32,7 @@ class AlertEngine:
 
         # High RAM usage
         ram_pct = mem.get("percent_used", 0)
-        if ram_pct > 90:
+        if ram_pct > 97:
             alerts.append({
                 "type": "high_memory",
                 "severity": "MEDIUM",

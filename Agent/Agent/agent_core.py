@@ -183,7 +183,8 @@ class CyberGuardAgent:
                 log.info(f"Port scan completed | {len(data.get('open_ports', []))} open ports")
                 for port_info in data.get("open_ports", []):
                     port = port_info.get("port")
-                    if port in self.remediator.DANGEROUS_PORTS:
+                    DANGEROUS = {445, 3389, 23, 21, 1433, 3306, 5900}
+                    if port in DANGEROUS:
                         action = self.remediator.remediate_port(port)
                         if action and action.success:
                             log.info(f"  Auto-blocked: port {port}")
