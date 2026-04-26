@@ -15,9 +15,15 @@ __pycache__/
 
 # ── Runtime / generated files ────────
 *.log
+*.json
 cve_cache.json
 remediation_log.json
+Agent/Agent/vault
 vault/vault_db.json
+vault/snapshots
+vault/index
+Agent\Agent\reports
+Agent\Agent\vault
 
 # ── Secrets ──────────────────────────
 .env
