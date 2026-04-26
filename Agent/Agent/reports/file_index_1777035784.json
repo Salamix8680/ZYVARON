@@ -1,0 +1,45 @@
+{
+  "agent_id": "agent_15612",
+  "sent_at": "2026-04-24T14:03:04.381776",
+  "type": "file_index",
+  "data": {
+    "checked_at": "2026-04-24T14:03:04.380908",
+    "total_checked": 32,
+    "total_changes": 5,
+    "modified": [],
+    "deleted": [
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026_signed.pdf",
+        "last_seen": "2026-04-24T14:02:03.158714",
+        "original_hash": "b8f30a558dd988147434969c813927949bfa69871c554993075922228c2dfdd0",
+        "severity": "HIGH"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Documents - Shortcut.lnk",
+        "last_seen": "2026-04-24T14:02:03.159040",
+        "original_hash": "ce08c4086e11df7845f8ccc0e9110ec015c17d0cae9d3b51d5fda77d4de23e9a",
+        "severity": "HIGH"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport - Data Protection Addendum-Schedule 4_signed.pdf",
+        "last_seen": "2026-04-24T14:02:03.161134",
+        "original_hash": "fd6a5fc39e99d646cdb49f6ce66e805d24e35bc2c12eec3c8cf580b1a66d2306",
+        "severity": "HIGH"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport - ITM (SLT) Service Agreement - Schedule 2_signed.pdf",
+        "last_seen": "2026-04-24T14:02:03.162179",
+        "original_hash": "24207c64d13bedfec0a673a8932048c23efdacf2531b3b1746c787d1f41d3fe5",
+        "severity": "HIGH"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport-Freelance Agreement._signed.pdf",
+        "last_seen": "2026-04-24T14:02:03.164508",
+        "original_hash": "ab47fdbbba03d93e4393cb3254a3dcf126afec7053be0af79620786cdd8dccee",
+        "severity": "HIGH"
+      }
+    ],
+    "new_files": [],
+    "status": "ALERT"
+  }
+}

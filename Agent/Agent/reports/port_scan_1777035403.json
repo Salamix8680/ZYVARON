@@ -1,0 +1,73 @@
+{
+  "agent_id": "agent_15612",
+  "sent_at": "2026-04-24T13:56:43.806653",
+  "type": "port_scan",
+  "data": {
+    "target": "127.0.0.1",
+    "scanned_at": "2026-04-24T13:56:17.973456",
+    "scan_duration_seconds": 25.82,
+    "ports_scanned": 10000,
+    "open_ports": [
+      {
+        "port": 135,
+        "state": "open",
+        "service": "epmap",
+        "risk": "UNKNOWN",
+        "reason": "Unknown service",
+        "banner": ""
+      },
+      {
+        "port": 445,
+        "state": "open",
+        "service": "SMB",
+        "risk": "CRITICAL",
+        "reason": "SMB exposed \u2014 common ransomware vector (EternalBlue)",
+        "banner": ""
+      },
+      {
+        "port": 3389,
+        "state": "open",
+        "service": "RDP",
+        "risk": "HIGH",
+        "reason": "Remote Desktop exposed \u2014 brute force target",
+        "banner": ""
+      },
+      {
+        "port": 5040,
+        "state": "open",
+        "service": "unknown-5040",
+        "risk": "UNKNOWN",
+        "reason": "Unknown service",
+        "banner": ""
+      },
+      {
+        "port": 5357,
+        "state": "open",
+        "service": "wsd",
+        "risk": "UNKNOWN",
+        "reason": "Unknown service",
+        "banner": "HTTP/1.1 503 Service Unavailable\r\nContent-Length: 326\r\nContent-Type: text/html; charset=us-ascii\r\nServer: Microsoft-HTTPAPI/2.0\r\nDate: Fri, 24 Apr 2026 12:56:31 GMT\r\nConnection: close"
+      },
+      {
+        "port": 7680,
+        "state": "open",
+        "service": "ms-do",
+        "risk": "UNKNOWN",
+        "reason": "Unknown service",
+        "banner": ""
+      },
+      {
+        "port": 8000,
+        "state": "open",
+        "service": "unknown-8000",
+        "risk": "UNKNOWN",
+        "reason": "Unknown service",
+        "banner": "HTTP/1.1 405 Method Not Allowed\r\ndate: Fri, 24 Apr 2026 12:56:37 GMT\r\nserver: uvicorn\r\nallow: GET\r\ncontent-length: 31\r\ncontent-type: application/json\r\nConnection: close"
+      }
+    ],
+    "total_open": 7,
+    "risk_score": 22,
+    "critical_exposures": 1,
+    "status": "CRITICAL"
+  }
+}

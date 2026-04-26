@@ -1,0 +1,11 @@
+{
+  "agent_id": "agent_15612",
+  "sent_at": "2026-04-24T14:18:49.156886",
+  "type": "snapshot",
+  "data": {
+    "snapshot_id": "snap_1777036724",
+    "total_files": 31,
+    "created_at": "2026-04-24T14:18:44.254583",
+    "label": null
+  }
+}

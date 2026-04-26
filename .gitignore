@@ -1,34 +1,33 @@
-# Virtual environment
+# ── Virtual environment ──────────────
 .venv/
 venv/
 env/
 
-# Python cache
+# ── Python cache ─────────────────────
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
-*.pyd
 
-# Database
+# ── Database ─────────────────────────
 *.db
 *.db-shm
 *.db-wal
 
-# Logs and runtime files
+# ── Runtime / generated files ────────
 *.log
 cve_cache.json
 remediation_log.json
 vault/vault_db.json
 
-# Environment secrets
+# ── Secrets ──────────────────────────
 .env
 .env.*
 
-# OS
+# ── OS ───────────────────────────────
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# IDE
+# ── IDE ──────────────────────────────
 .vscode/
 .idea/

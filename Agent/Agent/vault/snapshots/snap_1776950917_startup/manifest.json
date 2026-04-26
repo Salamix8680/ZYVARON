@@ -1,0 +1,169 @@
+{
+  "snapshot_id": "snap_1776950917_startup",
+  "created_at": "2026-04-23T14:28:37.922376",
+  "label": "startup",
+  "files": [
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\desktop.ini",
+      "snapshot_file": "C__Users__Admin__Documents__desktop.ini",
+      "hash": "cafec240d998e4b6e92ad1329cd417e8e9cbd73157488889fd93a542de4a4844"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Python program.py",
+      "snapshot_file": "C__Users__Admin__Documents__Python program.py",
+      "hash": "3d2398ce8d0b39da1605bf71d4e7ec3c0ffef1ed8f0f196498c3f1847464afd1"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\python-manager-26.0.msix",
+      "snapshot_file": "C__Users__Admin__Documents__python-manager-26.0.msix",
+      "hash": "ca3d0c1f58b74cb2859ae3eb6ee46d502456c08a56cba30797ccc30ffed5a206"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\unnamed.jpg",
+      "snapshot_file": "C__Users__Admin__Documents__unnamed.jpg",
+      "hash": "e3c9f4a55eea55cdb6fde1c5c878fada7fd8213ce90782856c558150fb8f89ab"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\STARTUP\\ZYVARON.png",
+      "snapshot_file": "C__Users__Admin__Documents__STARTUP__ZYVARON.png",
+      "hash": "17df440cdc3dc527affed59d10a52566ba609e4b90b70b9aa7b008dd2dc0968d"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\Zyvaron voiceover.mp3",
+      "snapshot_file": "C__Users__Admin__Documents__ZYVARON VIDEO EXPLANER__Zyvaron voiceover.mp3",
+      "hash": "feca25260ed847c9d2fcdf64f3f47b2d26a150b314509e676328c6e0b9d6e5a5"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\ZYVARON_Explainer.html",
+      "snapshot_file": "C__Users__Admin__Documents__ZYVARON VIDEO EXPLANER__ZYVARON_Explainer.html",
+      "hash": "53390cfa1db1073637db119cb3ee17372859bb92e39e24313a5c90772a8b561c"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\ZYVARON_Voiceover_Script.md",
+      "snapshot_file": "C__Users__Admin__Documents__ZYVARON VIDEO EXPLANER__ZYVARON_Voiceover_Script.md",
+      "hash": "d5990b934af84ef86da4bffa0232518f73c17a22feff92f2dce82c7d7c026878"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\STARTUP\\SETUP FILE\\CyberGuard_Setup_Guide.docx",
+      "snapshot_file": "C__Users__Admin__Documents__STARTUP__SETUP FILE__CyberGuard_Setup_Guide.docx",
+      "hash": "3e245f57ade4d6bef5c9983bf2a498e51e2e64dfeb06c8aaa5a5d02ce3dcb095"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Desktop\\CapCut.lnk",
+      "snapshot_file": "C__Users__Admin__Desktop__CapCut.lnk",
+      "hash": "9f4eb55b71812bbbeaf922f90aeee74a40e941d4c515c6b091079d4a144806a6"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Desktop\\Daniel (Person 1) - Chrome.lnk",
+      "snapshot_file": "C__Users__Admin__Desktop__Daniel (Person 1) - Chrome.lnk",
+      "hash": "690a5272492d0b04b0141bd627ee166f0f6753ae35216d4a20be317b328abe5b"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Desktop\\desktop.ini",
+      "snapshot_file": "C__Users__Admin__Desktop__desktop.ini",
+      "hash": "4b9d687ac625690fd026ed4b236dad1cac90ef69e7ad256cc42766a065b50026"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Desktop\\Microsoft Edge.lnk",
+      "snapshot_file": "C__Users__Admin__Desktop__Microsoft Edge.lnk",
+      "hash": "49b4622702e4571e061cf38e661cfc95f425cb851e91595794b118d89705dbb4"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Desktop\\Visual Studio Code.lnk",
+      "snapshot_file": "C__Users__Admin__Desktop__Visual Studio Code.lnk",
+      "hash": "8b9b49d1684b3e0e0a75bd7abd643a2ebdbd2af428f0464333cc16ee74702641"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\dreamport\\Module - Dreampass Membership.mhtml",
+      "snapshot_file": "C__Users__Admin__Documents__dreamport__Module - Dreampass Membership.mhtml",
+      "hash": "6f80c71ef2a2b4413f7b971f55261ba3aaf1aac8c86db3d81751eaa2befee8fb"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\dreamport\\_...mhtml",
+      "snapshot_file": "C__Users__Admin__Documents__dreamport___...mhtml",
+      "hash": "ff7d9fd05e1b3302dbc3bd0dbe7c62b6af5b7a120691c5a0afa0562f0b356517"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026.pdf",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026.pdf",
+      "hash": "f9c13ddef2701a0a0298e8afba3200dc1094b8e33602674683481aeb82a23f3a"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Dreamport - Data Protection Addendum-Schedule 4.pdf",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__Dreamport - Data Protection Addendum-Schedule 4.pdf",
+      "hash": "52e5522217f357100b6ddd745b33ea9b748a60de4a0bb6907fbd5e122b561cc0"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Dreamport - ITM (SLT) Service Agreement - Schedule 2.pdf",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__Dreamport - ITM (SLT) Service Agreement - Schedule 2.pdf",
+      "hash": "4e489098f602ce84805d4eaaa73f13a9745ea1ef984f68f943e50b524b05bab1"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Dreamport AUP 6.pdf",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__Dreamport AUP 6.pdf",
+      "hash": "f980cb1da6ba37e6026b4e90d4569a31af04b120c72ae8656b67bc1398f526a7"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Dreamport-Freelance Agreement..pdf",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__Dreamport-Freelance Agreement..pdf",
+      "hash": "c21214d0d21868ec811dd199ca7ba3b892aeac8debcd7c89581f1976f993c283"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\STARTUP\\Zyvaron 3.jpeg",
+      "snapshot_file": "C__Users__Admin__Documents__STARTUP__Zyvaron 3.jpeg",
+      "hash": "197f376da52021c76bdbb05fa21fee8a9be9de0d05b6c5cf4981ec59e6bb1320"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\ZYVARON_PitchDeck (1).pptx",
+      "snapshot_file": "C__Users__Admin__Documents__ZYVARON VIDEO EXPLANER__ZYVARON_PitchDeck (1).pptx",
+      "hash": "6d24d9207e0860393181cb4d67034e95f08c3c791265f832e0104331ff47c3b0"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\ZYVARON_PitchDeck.pptx.pdf",
+      "snapshot_file": "C__Users__Admin__Documents__ZYVARON VIDEO EXPLANER__ZYVARON_PitchDeck.pptx.pdf",
+      "hash": "84d6a4be78eeef55ff292ae0d09b497315ddc56dedca8744183076cf9ebb327c"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026_signed.pdf",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__Signed__d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026_signed.pdf",
+      "hash": "b8f30a558dd988147434969c813927949bfa69871c554993075922228c2dfdd0"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Documents - Shortcut.lnk",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__Signed__Documents - Shortcut.lnk",
+      "hash": "ce08c4086e11df7845f8ccc0e9110ec015c17d0cae9d3b51d5fda77d4de23e9a"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport - Data Protection Addendum-Schedule 4_signed.pdf",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__Signed__Dreamport - Data Protection Addendum-Schedule 4_signed.pdf",
+      "hash": "fd6a5fc39e99d646cdb49f6ce66e805d24e35bc2c12eec3c8cf580b1a66d2306"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport - ITM (SLT) Service Agreement - Schedule 2_signed.pdf",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__Signed__Dreamport - ITM (SLT) Service Agreement - Schedule 2_signed.pdf",
+      "hash": "24207c64d13bedfec0a673a8932048c23efdacf2531b3b1746c787d1f41d3fe5"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport-Freelance Agreement._signed.pdf",
+      "snapshot_file": "C__Users__Admin__Documents__Dreamport Contract__Signed__Dreamport-Freelance Agreement._signed.pdf",
+      "hash": "ab47fdbbba03d93e4393cb3254a3dcf126afec7053be0af79620786cdd8dccee"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Unit2.py",
+      "snapshot_file": "C__Users__Admin__Documents__Unit2.py",
+      "hash": "151f6ceae3db0d5790c404417a954794ee9bba55527c54a3418ba24f161208dc"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Z_Website\\LICENSE",
+      "snapshot_file": "C__Users__Admin__Documents__Z_Website__LICENSE",
+      "hash": "74530fad5f3b18e8268387c36c096a8118281a954653298fd7d1663d1deb9e56"
+    },
+    {
+      "original_path": "C:\\Users\\Admin\\Documents\\Z_Website\\ZYVARON_Website.html",
+      "snapshot_file": "C__Users__Admin__Documents__Z_Website__ZYVARON_Website.html",
+      "hash": "db59fc787153d2f4c3ca9cbc7c3549fb40d10b610460ded732aa4691fe7b0b77"
+    }
+  ],
+  "total_files": 32,
+  "errors": 0
+}

@@ -1,0 +1,233 @@
+{
+  "agent_id": "agent_15612",
+  "sent_at": "2026-04-24T12:57:20.929142",
+  "type": "system_info",
+  "data": {
+    "timestamp": "2026-04-24T12:57:17.975198",
+    "device_id": "DESKTOP-IDUOLK0-448500b4a81a",
+    "os": {
+      "platform": "Windows",
+      "platform_release": "11",
+      "platform_version": "10.0.22000",
+      "architecture": "AMD64",
+      "hostname": "DESKTOP-IDUOLK0",
+      "python_version": "3.14.3",
+      "boot_time": "2026-04-06T20:59:26.393119",
+      "uptime_seconds": 1526271
+    },
+    "cpu": {
+      "physical_cores": 2,
+      "logical_cores": 4,
+      "usage_percent": 37.1,
+      "per_core_usage": [
+        34.4,
+        40.6,
+        37.5,
+        50.0
+      ],
+      "frequency_mhz": {
+        "current": 2501.0,
+        "min": 0.0,
+        "max": 2501.0
+      },
+      "load_avg_1m": null
+    },
+    "memory": {
+      "ram": {
+        "total_gb": 7.79,
+        "available_gb": 1.73,
+        "used_gb": 6.06,
+        "percent_used": 77.8
+      },
+      "swap": {
+        "total_gb": 14.11,
+        "used_gb": 2.82,
+        "percent_used": 20.0
+      }
+    },
+    "disks": [
+      {
+        "device": "C:\\",
+        "mountpoint": "C:\\",
+        "filesystem": "NTFS",
+        "usage": {
+          "total_gb": 297.46,
+          "used_gb": 85.66,
+          "free_gb": 211.8,
+          "percent_used": 28.8
+        },
+        "io_stats": null,
+        "health_warning": false
+      },
+      {
+        "device": "D:\\",
+        "mountpoint": "D:\\",
+        "filesystem": "",
+        "usage": "permission_denied",
+        "io_stats": null,
+        "health_warning": false
+      }
+    ],
+    "network_interfaces": [
+      {
+        "name": "Ethernet",
+        "is_up": false,
+        "speed_mbps": 0,
+        "addresses": [
+          {
+            "family": "-1",
+            "address": "FC-45-96-1F-BB-35",
+            "netmask": null
+          },
+          {
+            "family": "2",
+            "address": "169.254.30.151",
+            "netmask": "255.255.0.0"
+          },
+          {
+            "family": "23",
+            "address": "fe80::5104:3587:35f9:638",
+            "netmask": null
+          }
+        ],
+        "bytes_sent": 0,
+        "bytes_recv": 0
+      },
+      {
+        "name": "Wi-Fi",
+        "is_up": false,
+        "speed_mbps": 78,
+        "addresses": [
+          {
+            "family": "-1",
+            "address": "44-85-00-B4-A8-16",
+            "netmask": null
+          },
+          {
+            "family": "2",
+            "address": "192.168.0.175",
+            "netmask": "255.255.255.0"
+          },
+          {
+            "family": "23",
+            "address": "fe80::50e6:8368:6b38:b06b",
+            "netmask": null
+          }
+        ],
+        "bytes_sent": 147572096,
+        "bytes_recv": 566411761
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "is_up": true,
+        "speed_mbps": 1073,
+        "addresses": [
+          {
+            "family": "2",
+            "address": "127.0.0.1",
+            "netmask": "255.0.0.0"
+          },
+          {
+            "family": "23",
+            "address": "::1",
+            "netmask": null
+          }
+        ],
+        "bytes_sent": 0,
+        "bytes_recv": 0
+      }
+    ],
+    "processes": [
+      {
+        "memory_percent": 9.799382148955509e-05,
+        "username": "NT AUTHORITY\\SYSTEM",
+        "pid": 0,
+        "name": "System Idle Process",
+        "cpu_percent": 230.6,
+        "status": "running",
+        "suspicious": false
+      },
+      {
+        "memory_percent": 0.034934797361026386,
+        "username": "NT AUTHORITY\\SYSTEM",
+        "pid": 4368,
+        "name": "valWbioSyncSvc.exe",
+        "cpu_percent": 95.2,
+        "status": "running",
+        "suspicious": false
+      },
+      {
+        "memory_percent": 8.155045824360773,
+        "username": "DESKTOP-IDUOLK0\\Admin",
+        "pid": 5396,
+        "name": "chrome.exe",
+        "cpu_percent": 57.8,
+        "status": "running",
+        "suspicious": false
+      },
+      {
+        "memory_percent": 1.0971388253970589,
+        "username": "NT AUTHORITY\\SYSTEM",
+        "pid": 2820,
+        "name": "svchost.exe",
+        "cpu_percent": 2.7,
+        "status": "running",
+        "suspicious": false
+      },
+      {
+        "memory_percent": 1.7807927210189398,
+        "username": "DESKTOP-IDUOLK0\\Admin",
+        "pid": 15784,
+        "name": "chrome.exe",
+        "cpu_percent": 2.7,
+        "status": "running",
+        "suspicious": false
+      },
+      {
+        "memory_percent": 1.3537356469674588,
+        "username": "DESKTOP-IDUOLK0\\Admin",
+        "pid": 15612,
+        "name": "python3.14t.exe",
+        "cpu_percent": 2.0,
+        "status": "running",
+        "suspicious": false
+      },
+      {
+        "memory_percent": 2.4382332693923647,
+        "username": "DESKTOP-IDUOLK0\\Admin",
+        "pid": 16296,
+        "name": "chrome.exe",
+        "cpu_percent": 2.0,
+        "status": "running",
+        "suspicious": false
+      },
+      {
+        "memory_percent": 4.414768648836691,
+        "username": "NT AUTHORITY\\SYSTEM",
+        "pid": 2964,
+        "name": "MemCompression",
+        "cpu_percent": 1.4,
+        "status": "running",
+        "suspicious": false
+      },
+      {
+        "memory_percent": 3.7941247804325937,
+        "username": "DESKTOP-IDUOLK0\\Admin",
+        "pid": 12332,
+        "name": "chrome.exe",
+        "cpu_percent": 1.1,
+        "status": "running",
+        "suspicious": false
+      },
+      {
+        "memory_percent": 0.03704166452305182,
+        "username": "NT AUTHORITY\\SYSTEM",
+        "pid": 4,
+        "name": "System",
+        "cpu_percent": 0.6,
+        "status": "running",
+        "suspicious": false
+      }
+    ]
+  }
+}

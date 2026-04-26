@@ -1,0 +1,51 @@
+{
+  "agent_id": "agent_15612",
+  "sent_at": "2026-04-24T14:15:24.732457",
+  "type": "file_index",
+  "data": {
+    "checked_at": "2026-04-24T14:15:24.732106",
+    "total_checked": 27,
+    "total_changes": 4,
+    "modified": [],
+    "deleted": [],
+    "new_files": [
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026_signed.pdf",
+        "name": "d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026_signed.pdf",
+        "extension": ".pdf",
+        "size": 414104,
+        "hash": "e75218abfe04d53a377619a3c000a337d4107c665435fd755c0b259ad2ec9bfe",
+        "modified_at": "2026-04-24T14:13:14.193684",
+        "indexed_at": "2026-04-24T14:15:24.722343"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport - Data Protection Addendum-Schedule 4_signed.pdf",
+        "name": "Dreamport - Data Protection Addendum-Schedule 4_signed.pdf",
+        "extension": ".pdf",
+        "size": 435484,
+        "hash": "9bc0c419193d7bd6c056949bb9471a1c300957dc2c5d9f36b49b8b74a151830e",
+        "modified_at": "2026-04-24T14:14:13.680007",
+        "indexed_at": "2026-04-24T14:15:24.724480"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport - ITM (SLT) Service Agreement - Schedule 2_signed.pdf",
+        "name": "Dreamport - ITM (SLT) Service Agreement - Schedule 2_signed.pdf",
+        "extension": ".pdf",
+        "size": 216803,
+        "hash": "41ac6b5d0db93236732f0c710290f7aaa6a6003e1cdc4136c532bbc7e402dce8",
+        "modified_at": "2026-04-24T14:10:44.086694",
+        "indexed_at": "2026-04-24T14:15:24.725985"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport-Freelance Agreement._signed.pdf",
+        "name": "Dreamport-Freelance Agreement._signed.pdf",
+        "extension": ".pdf",
+        "size": 429382,
+        "hash": "3b081ff820294b6e107ce556db929fa0e423f004b7f4e2a4f0e3a78775b44dcb",
+        "modified_at": "2026-04-24T14:08:53.963088",
+        "indexed_at": "2026-04-24T14:15:24.727847"
+      }
+    ],
+    "status": "CLEAN"
+  }
+}

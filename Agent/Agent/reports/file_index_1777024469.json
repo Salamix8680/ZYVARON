@@ -1,0 +1,303 @@
+{
+  "agent_id": "agent_15612",
+  "sent_at": "2026-04-24T10:54:29.284919",
+  "type": "file_index",
+  "data": {
+    "indexed_at": "2026-04-24T10:54:29.282178",
+    "total_files": 32,
+    "scan_paths": [
+      "C:\\Users\\Admin\\Documents",
+      "C:\\Users\\Admin\\Desktop"
+    ],
+    "files": [
+      {
+        "path": "C:\\Users\\Admin\\Documents\\desktop.ini",
+        "name": "desktop.ini",
+        "extension": ".ini",
+        "size": 402,
+        "hash": "cafec240d998e4b6e92ad1329cd417e8e9cbd73157488889fd93a542de4a4844",
+        "modified_at": "2026-03-06T07:24:26.076038",
+        "indexed_at": "2026-04-24T10:52:57.301278"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Python program.py",
+        "name": "Python program.py",
+        "extension": ".py",
+        "size": 982,
+        "hash": "3d2398ce8d0b39da1605bf71d4e7ec3c0ffef1ed8f0f196498c3f1847464afd1",
+        "modified_at": "2026-03-17T00:46:56.815086",
+        "indexed_at": "2026-04-24T10:52:57.604252"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\python-manager-26.0.msix",
+        "name": "python-manager-26.0.msix",
+        "extension": ".msix",
+        "size": 46229451,
+        "hash": "ca3d0c1f58b74cb2859ae3eb6ee46d502456c08a56cba30797ccc30ffed5a206",
+        "modified_at": "2026-03-06T22:19:00.134198",
+        "indexed_at": "2026-04-24T10:53:04.351546"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Unit2.py",
+        "name": "Unit2.py",
+        "extension": ".py",
+        "size": 1163,
+        "hash": "151f6ceae3db0d5790c404417a954794ee9bba55527c54a3418ba24f161208dc",
+        "modified_at": "2026-04-19T22:35:16.832517",
+        "indexed_at": "2026-04-24T10:53:04.635337"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\unnamed.jpg",
+        "name": "unnamed.jpg",
+        "extension": ".jpg",
+        "size": 42397,
+        "hash": "e3c9f4a55eea55cdb6fde1c5c878fada7fd8213ce90782856c558150fb8f89ab",
+        "modified_at": "2026-03-21T02:36:20.261788",
+        "indexed_at": "2026-04-24T10:53:04.678072"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\dreamport\\Module - Dreampass Membership.mhtml",
+        "name": "Module - Dreampass Membership.mhtml",
+        "extension": ".mhtml",
+        "size": 2574630,
+        "hash": "6f80c71ef2a2b4413f7b971f55261ba3aaf1aac8c86db3d81751eaa2befee8fb",
+        "modified_at": "2026-04-09T18:11:19.908301",
+        "indexed_at": "2026-04-24T10:53:06.040009"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\dreamport\\_...mhtml",
+        "name": "_...mhtml",
+        "extension": ".mhtml",
+        "size": 2797336,
+        "hash": "ff7d9fd05e1b3302dbc3bd0dbe7c62b6af5b7a120691c5a0afa0562f0b356517",
+        "modified_at": "2026-04-09T16:46:36.663693",
+        "indexed_at": "2026-04-24T10:53:06.403267"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026.pdf",
+        "name": "d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026.pdf",
+        "extension": ".pdf",
+        "size": 356638,
+        "hash": "f9c13ddef2701a0a0298e8afba3200dc1094b8e33602674683481aeb82a23f3a",
+        "modified_at": "2026-04-10T21:04:18.115916",
+        "indexed_at": "2026-04-24T10:53:10.542977"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Dreamport - Data Protection Addendum-Schedule 4.pdf",
+        "name": "Dreamport - Data Protection Addendum-Schedule 4.pdf",
+        "extension": ".pdf",
+        "size": 422053,
+        "hash": "52e5522217f357100b6ddd745b33ea9b748a60de4a0bb6907fbd5e122b561cc0",
+        "modified_at": "2026-04-10T21:04:25.112822",
+        "indexed_at": "2026-04-24T10:53:11.222114"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Dreamport - ITM (SLT) Service Agreement - Schedule 2.pdf",
+        "name": "Dreamport - ITM (SLT) Service Agreement - Schedule 2.pdf",
+        "extension": ".pdf",
+        "size": 148121,
+        "hash": "4e489098f602ce84805d4eaaa73f13a9745ea1ef984f68f943e50b524b05bab1",
+        "modified_at": "2026-04-10T21:04:12.736073",
+        "indexed_at": "2026-04-24T10:53:11.383715"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Dreamport AUP 6.pdf",
+        "name": "Dreamport AUP 6.pdf",
+        "extension": ".pdf",
+        "size": 147112,
+        "hash": "f980cb1da6ba37e6026b4e90d4569a31af04b120c72ae8656b67bc1398f526a7",
+        "modified_at": "2026-04-10T21:04:50.471513",
+        "indexed_at": "2026-04-24T10:53:11.685403"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Dreamport-Freelance Agreement..pdf",
+        "name": "Dreamport-Freelance Agreement..pdf",
+        "extension": ".pdf",
+        "size": 429606,
+        "hash": "c21214d0d21868ec811dd199ca7ba3b892aeac8debcd7c89581f1976f993c283",
+        "modified_at": "2026-04-10T21:04:01.546401",
+        "indexed_at": "2026-04-24T10:53:11.985316"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\STARTUP\\Zyvaron 3.jpeg",
+        "name": "Zyvaron 3.jpeg",
+        "extension": ".jpeg",
+        "size": 18984,
+        "hash": "197f376da52021c76bdbb05fa21fee8a9be9de0d05b6c5cf4981ec59e6bb1320",
+        "modified_at": "2026-04-04T23:05:29.572268",
+        "indexed_at": "2026-04-24T10:53:12.591454"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\STARTUP\\ZYVARON.png",
+        "name": "ZYVARON.png",
+        "extension": ".png",
+        "size": 1658898,
+        "hash": "17df440cdc3dc527affed59d10a52566ba609e4b90b70b9aa7b008dd2dc0968d",
+        "modified_at": "2026-03-18T15:02:43.444876",
+        "indexed_at": "2026-04-24T10:53:12.874492"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\Zyvaron voiceover.mp3",
+        "name": "Zyvaron voiceover.mp3",
+        "extension": ".mp3",
+        "size": 3818444,
+        "hash": "feca25260ed847c9d2fcdf64f3f47b2d26a150b314509e676328c6e0b9d6e5a5",
+        "modified_at": "2026-03-28T22:03:19.484984",
+        "indexed_at": "2026-04-24T10:53:13.052582"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\ZYVARON_Explainer.html",
+        "name": "ZYVARON_Explainer.html",
+        "extension": ".html",
+        "size": 39899,
+        "hash": "53390cfa1db1073637db119cb3ee17372859bb92e39e24313a5c90772a8b561c",
+        "modified_at": "2026-03-28T21:01:11.783382",
+        "indexed_at": "2026-04-24T10:53:15.307250"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\ZYVARON_PitchDeck (1).pptx",
+        "name": "ZYVARON_PitchDeck (1).pptx",
+        "extension": ".pptx",
+        "size": 94349,
+        "hash": "6d24d9207e0860393181cb4d67034e95f08c3c791265f832e0104331ff47c3b0",
+        "modified_at": "2026-04-14T20:40:24.450392",
+        "indexed_at": "2026-04-24T10:53:16.298001"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\ZYVARON_PitchDeck.pptx.pdf",
+        "name": "ZYVARON_PitchDeck.pptx.pdf",
+        "extension": ".pdf",
+        "size": 836610,
+        "hash": "84d6a4be78eeef55ff292ae0d09b497315ddc56dedca8744183076cf9ebb327c",
+        "modified_at": "2026-04-14T20:40:18.295227",
+        "indexed_at": "2026-04-24T10:53:16.557461"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\ZYVARON VIDEO EXPLANER\\ZYVARON_Voiceover_Script.md",
+        "name": "ZYVARON_Voiceover_Script.md",
+        "extension": ".md",
+        "size": 5988,
+        "hash": "d5990b934af84ef86da4bffa0232518f73c17a22feff92f2dce82c7d7c026878",
+        "modified_at": "2026-03-28T21:01:15.782575",
+        "indexed_at": "2026-04-24T10:53:17.021404"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Z_Website\\LICENSE",
+        "name": "LICENSE",
+        "extension": "",
+        "size": 1089,
+        "hash": "74530fad5f3b18e8268387c36c096a8118281a954653298fd7d1663d1deb9e56",
+        "modified_at": "2026-04-20T18:22:37.720120",
+        "indexed_at": "2026-04-24T10:53:17.222965"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Z_Website\\ZYVARON_Website.html",
+        "name": "ZYVARON_Website.html",
+        "extension": ".html",
+        "size": 133062,
+        "hash": "db59fc787153d2f4c3ca9cbc7c3549fb40d10b610460ded732aa4691fe7b0b77",
+        "modified_at": "2026-04-14T20:46:21.071517",
+        "indexed_at": "2026-04-24T10:53:18.549993"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\STARTUP\\SETUP FILE\\CyberGuard_Setup_Guide.docx",
+        "name": "CyberGuard_Setup_Guide.docx",
+        "extension": ".docx",
+        "size": 12487,
+        "hash": "3e245f57ade4d6bef5c9983bf2a498e51e2e64dfeb06c8aaa5a5d02ce3dcb095",
+        "modified_at": "2026-03-10T22:14:25.649451",
+        "indexed_at": "2026-04-24T10:54:18.360091"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026_signed.pdf",
+        "name": "d-Dreamport - Schedule 3 - Compensation - ITM-VIP-3.1_effective date_01-02-2026_signed.pdf",
+        "extension": ".pdf",
+        "size": 442172,
+        "hash": "b8f30a558dd988147434969c813927949bfa69871c554993075922228c2dfdd0",
+        "modified_at": "2026-04-10T21:17:57.367153",
+        "indexed_at": "2026-04-24T10:54:19.949307"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Documents - Shortcut.lnk",
+        "name": "Documents - Shortcut.lnk",
+        "extension": ".lnk",
+        "size": 740,
+        "hash": "ce08c4086e11df7845f8ccc0e9110ec015c17d0cae9d3b51d5fda77d4de23e9a",
+        "modified_at": "2026-04-13T18:47:16.273179",
+        "indexed_at": "2026-04-24T10:54:24.613082"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport - Data Protection Addendum-Schedule 4_signed.pdf",
+        "name": "Dreamport - Data Protection Addendum-Schedule 4_signed.pdf",
+        "extension": ".pdf",
+        "size": 463549,
+        "hash": "fd6a5fc39e99d646cdb49f6ce66e805d24e35bc2c12eec3c8cf580b1a66d2306",
+        "modified_at": "2026-04-10T21:20:27.290220",
+        "indexed_at": "2026-04-24T10:54:24.957282"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport - ITM (SLT) Service Agreement - Schedule 2_signed.pdf",
+        "name": "Dreamport - ITM (SLT) Service Agreement - Schedule 2_signed.pdf",
+        "extension": ".pdf",
+        "size": 240917,
+        "hash": "24207c64d13bedfec0a673a8932048c23efdacf2531b3b1746c787d1f41d3fe5",
+        "modified_at": "2026-04-10T21:14:07.630662",
+        "indexed_at": "2026-04-24T10:54:25.450500"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Documents\\Dreamport Contract\\Signed\\Dreamport-Freelance Agreement._signed.pdf",
+        "name": "Dreamport-Freelance Agreement._signed.pdf",
+        "extension": ".pdf",
+        "size": 461921,
+        "hash": "ab47fdbbba03d93e4393cb3254a3dcf126afec7053be0af79620786cdd8dccee",
+        "modified_at": "2026-04-10T21:11:27.212820",
+        "indexed_at": "2026-04-24T10:54:27.267358"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Desktop\\CapCut.lnk",
+        "name": "CapCut.lnk",
+        "extension": ".lnk",
+        "size": 1377,
+        "hash": "9f4eb55b71812bbbeaf922f90aeee74a40e941d4c515c6b091079d4a144806a6",
+        "modified_at": "2026-03-28T22:22:49.801125",
+        "indexed_at": "2026-04-24T10:54:27.838086"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Desktop\\Daniel (Person 1) - Chrome.lnk",
+        "name": "Daniel (Person 1) - Chrome.lnk",
+        "extension": ".lnk",
+        "size": 2394,
+        "hash": "690a5272492d0b04b0141bd627ee166f0f6753ae35216d4a20be317b328abe5b",
+        "modified_at": "2026-03-05T20:42:43.618399",
+        "indexed_at": "2026-04-24T10:54:28.418716"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Desktop\\desktop.ini",
+        "name": "desktop.ini",
+        "extension": ".ini",
+        "size": 282,
+        "hash": "4b9d687ac625690fd026ed4b236dad1cac90ef69e7ad256cc42766a065b50026",
+        "modified_at": "2026-03-06T07:24:25.638638",
+        "indexed_at": "2026-04-24T10:54:28.419417"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Desktop\\Microsoft Edge.lnk",
+        "name": "Microsoft Edge.lnk",
+        "extension": ".lnk",
+        "size": 2354,
+        "hash": "49b4622702e4571e061cf38e661cfc95f425cb851e91595794b118d89705dbb4",
+        "modified_at": "2026-03-06T07:24:29.934509",
+        "indexed_at": "2026-04-24T10:54:28.621164"
+      },
+      {
+        "path": "C:\\Users\\Admin\\Desktop\\Visual Studio Code.lnk",
+        "name": "Visual Studio Code.lnk",
+        "extension": ".lnk",
+        "size": 1404,
+        "hash": "8b9b49d1684b3e0e0a75bd7abd643a2ebdbd2af428f0464333cc16ee74702641",
+        "modified_at": "2026-04-20T19:52:36.381895",
+        "indexed_at": "2026-04-24T10:54:28.768666"
+      }
+    ]
+  }
+}
